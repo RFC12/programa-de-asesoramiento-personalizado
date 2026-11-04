@@ -237,6 +237,83 @@ html.fixed-layout .viewer-eyebrow{width:100%}
 #pageSelect{min-height:32px!important}
 }
 
+/* ===== Índice lateral profesional ===== */
+.sidebar{position:sticky;top:56px;align-self:start;max-height:calc(100vh - 56px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:#3d6889 transparent}
+@media (min-height:881px){.sidebar{top:71px;max-height:calc(100vh - 71px)}}
+.sidebar-desc{margin-bottom:14px!important}
+.toc{gap:2px!important}
+.toc-progress{margin:0 8px 14px;padding:10px 12px;border-radius:12px;background:#1d4a6b;border:1px solid #2e5f82}
+.toc-progress-row{display:flex;justify-content:space-between;align-items:baseline;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#a9cde0}
+.toc-progress-row b{font-size:12px;letter-spacing:0;color:#fff;font-variant-numeric:tabular-nums}
+.toc-progress-bar{margin-top:7px;height:5px;border-radius:5px;background:#123653;overflow:hidden}
+.toc-progress-bar i{display:block;height:100%;width:0;border-radius:5px;background:linear-gradient(90deg,#7fd3df,#ff8a3d);transition:width .5s ease}
+.toc-group{margin:0 0 6px}
+.toc-group-label{display:flex;align-items:center;gap:8px;margin:10px 10px 5px;font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:900;color:#86c9dc}
+.toc-group-label:after{content:"";flex:1;height:1px;background:#2e5f82}
+.sidebar .toc-item{display:grid!important;grid-template-columns:30px minmax(0,1fr) auto;align-items:center;gap:10px!important;padding:8px 9px!important;border-radius:11px!important;position:relative;transition:background .2s,transform .2s,color .2s}
+.sidebar .toc-item:hover{background:#21506f!important;transform:translateX(2px)}
+.toc-ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#1d4a6b;border:1px solid #2e5f82;color:#9fdbe6;transition:.2s}
+.toc-ic .icon{width:15px;height:15px}
+.toc-text{display:flex;flex-direction:column;min-width:0}
+.toc-title{font-size:12.5px;font-weight:700;color:#eef6fb;line-height:1.25}
+.toc-sub{font-size:10.5px;color:#9fbdd1;line-height:1.3;margin-top:1px}
+.sidebar .toc-num{width:auto!important;font-size:10px!important;color:#6fa6c0!important;font-weight:800}
+.sidebar .toc-item.current{background:#285774!important;box-shadow:inset 3px 0 #ff8a3d!important}
+.sidebar .toc-item.current .toc-ic{background:#ff8a3d;border-color:#ff8a3d;color:#123653}
+.sidebar .toc-item.current .toc-num{color:#ffd2b3!important}
+.sidebar .toc-item:focus-visible{outline:2px solid #8bd8e4;outline-offset:1px}
+/* índice en ventana (celular/tablet) */
+.dialog-card .toc-progress{background:#eef6fa;border-color:#d4e6ef}
+.dialog-card .toc-progress-row{color:#3c6a86}.dialog-card .toc-progress-row b{color:#123653}
+.dialog-card .toc-progress-bar{background:#dbe9f1}
+.dialog-card .toc-group-label{color:#2a7a93}.dialog-card .toc-group-label:after{background:#d4e6ef}
+.dialog-card .toc-item{display:grid!important;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:12px;padding:9px 10px!important;border-radius:12px}
+.dialog-card .toc-ic{width:34px;height:34px;background:#eef6fa;border-color:#d4e6ef;color:#1f6f8b}
+.dialog-card .toc-title{color:#173a55;font-size:14px}.dialog-card .toc-sub{color:#5b7689;font-size:12px}
+.dialog-card .toc-item.current{background:#fff2e8!important;box-shadow:inset 3px 0 #e2621f}
+.dialog-card .toc-item.current .toc-ic{background:#e2621f;border-color:#e2621f;color:#fff}
+
+/* ===== Barra superior de página ===== */
+.viewer-eyebrow{align-items:center!important;letter-spacing:.06em!important}
+#chapterLabel{display:flex;align-items:center;gap:10px;min-width:0;max-width:none!important}
+.eb-brand{font-weight:900;color:#123653;letter-spacing:.14em}
+.eb-sep{width:18px;height:2px;border-radius:2px;background:#e2621f;flex:0 0 auto}
+.eb-chapter{color:#3d6680;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#pagesCounter{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.eb-dots{display:flex;gap:3px}
+.eb-dots i{width:6px;height:6px;border-radius:50%;background:#c9d8e3;transition:background .3s,transform .3s}
+.eb-dots i.done{background:#7fb6cc}
+.eb-dots i.now{background:#e2621f;transform:scale(1.25)}
+.eb-count{font-weight:900;color:#123653;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.eb-count em{font-style:normal;color:#6a8aa0;font-weight:700}
+@media (max-width:600px){.eb-dots{display:none}.eb-brand{display:none}.eb-sep{display:none}}
+
+/* ===== Íconos animados de la portada ===== */
+@keyframes pap-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes pap-draw{from{stroke-dashoffset:120}to{stroke-dashoffset:0}}
+@keyframes pap-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes pap-ring{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+.cover-triple span{animation:pap-rise .7s cubic-bezier(.2,.7,.2,1) both;transition:transform .25s ease,background-color .25s ease,border-color .25s ease}
+.cover-triple span:nth-child(1){animation-delay:.15s}.cover-triple span:nth-child(2){animation-delay:.3s}.cover-triple span:nth-child(3){animation-delay:.45s}
+.cover-triple .icon{stroke-dasharray:120;animation:pap-draw 1.4s ease-out both,pap-float 4s ease-in-out infinite;transition:transform .25s ease}
+.cover-triple span:nth-child(1) .icon{animation-delay:.35s,1.8s}.cover-triple span:nth-child(2) .icon{animation-delay:.5s,2.4s}.cover-triple span:nth-child(3) .icon{animation-delay:.65s,3s}
+.cover-triple span:hover{transform:translateY(-4px);background-color:#2a5c84!important;border-color:#8bd8e4!important}
+.cover-triple span:hover .icon{transform:scale(1.15)}
+.cover-bars{animation:pap-ring 6s ease-in-out infinite}
+.toc-item.current .toc-ic .icon{animation:pap-float 3.5s ease-in-out infinite}
+body.no-motion .cover-triple span,body.no-motion .cover-triple .icon,body.no-motion .cover-bars,body.no-motion .toc-ic .icon{animation:none!important;stroke-dasharray:none}
+@media (prefers-reduced-motion:reduce){.cover-triple span,.cover-triple .icon,.cover-bars,.toc-ic .icon{animation:none!important;stroke-dasharray:none}}
+@media print{.cover-triple .icon{stroke-dasharray:none!important}}
+@media (min-width:1500px){.workspace{grid-template-columns:256px minmax(0,1fr)!important}.controlbar{left:256px!important}}
+.sidebar-title{font-size:19px!important;margin-bottom:6px!important}
+.sidebar-label{margin-bottom:6px!important}
+.sidebar-desc{font-size:11.5px!important}
+@media (max-height:880px){.sidebar{padding-top:16px!important}.sidebar-desc{display:none}.toc-group-label{margin-top:8px}}
+.cover .cover-bars{top:auto!important;bottom:auto!important;top:38%!important;right:-96px!important;z-index:0!important}
+.cover .cover-triple{position:relative;z-index:2}
+.cover .cover-intro,.cover .cover-ribbon,.cover .cover-title,.cover .cover-foot{position:relative;z-index:2}
+@media (max-width:700px){.cover .cover-bars{width:130px!important;height:130px!important;right:-72px!important;top:31%!important;opacity:.75}}
+
 </style>
 <script>document.documentElement.className+=' js';</script>
 </head>
@@ -349,7 +426,36 @@ html.fixed-layout .viewer-eyebrow{width:100%}
     return c.removeAttribute("id"), c.querySelectorAll("[id]").forEach((x) => x.removeAttribute("id")), c;
   }
   function render() {
-    renderInner(), fitBook();
+    renderInner(), renderExtras(), fitBook();
+  }
+  function chapterOf(i) {
+    if (i === 0)
+      return "Portada";
+    if (i === pages.length - 1)
+      return "Cierre \xB7 Tu siguiente paso";
+    const k = pages[i].querySelector(".p-kicker");
+    return k ? k.textContent.trim() : labels[i];
+  }
+  function renderExtras() {
+    const last = Math.min(current + stepSize(), pages.length), pad = (n) => String(n).padStart(2, "0"), cl = $("#chapterLabel");
+    cl && (cl.innerHTML = '<span class="eb-brand">Revista PAP</span><span class="eb-sep" aria-hidden="true"></span><span class="eb-chapter">'.concat(escapeHTML(chapterOf(current)), "</span>"));
+    const pc = $("#pagesCounter");
+    if (pc) {
+      let dots = "";
+      for (let k = 0; k < pages.length; k++)
+        dots += '<i class="'.concat(k < current ? "done" : k < last ? "now" : "", '"></i>');
+      pc.innerHTML = '<span class="eb-dots" aria-hidden="true">'.concat(dots, '</span><span class="eb-count">P\xE1g. ').concat(pad(current + 1)).concat(last > current + 1 ? "\u2013" + pad(last) : "", " <em>de ").concat(pad(pages.length), "</em></span>");
+    }
+    const pct = Math.round(100 * last / pages.length), tb = $("#tocBar"), tp = $("#tocPct");
+    tb && (tb.style.width = pct + "%"), tp && (tp.textContent = pct + " %");
+    const cur = document.querySelector(".sidebar .toc-item.current");
+    if (cur && cur.scrollIntoView) {
+      const sb = document.querySelector(".sidebar");
+      if (sb && sb.scrollHeight > sb.clientHeight) {
+        const r = cur.getBoundingClientRect(), q = sb.getBoundingClientRect();
+        (r.top < q.top + 60 || r.bottom > q.bottom - 20) && (sb.scrollTop += r.top - q.top - q.height / 2);
+      }
+    }
   }
   function renderInner() {
     const left = $("#leftSlot"), right = $("#rightSlot");
@@ -417,7 +523,16 @@ html.fixed-layout .viewer-eyebrow{width:100%}
   }
   document.addEventListener("visibilitychange", () => {
     document.hidden && moving && (turnTarget !== null && (current = turnTarget, render()), queuedPage = null, finishTurn());
-  }), $("#nextBtn").addEventListener("click", next), $("#prevBtn").addEventListener("click", prev), $("#contentsBtn").addEventListener("click", () => modal('<div class="dialog-card"><h2>\xCDndice de la revista</h2><p>Elige la secci\xF3n que deseas leer.</p><nav>' + $("#toc").innerHTML + "</nav></div>")), $("#pageSelect").innerHTML = labels.map((x, i) => '<option value="'.concat(i, '">').concat(i + 1, " \xB7 ").concat(x, "</option>")).join(""), $("#pageSelect").addEventListener("change", (e) => goto(Number(e.target.value))), $("#toc").innerHTML = labels.map((x, i) => '<button class="toc-item" data-jump="'.concat(i, '"><span class="toc-num">').concat(String(i + 1).padStart(2, "0"), "</span><span>").concat(x, "</span></button>")).join("");
+  }), $("#nextBtn").addEventListener("click", next), $("#prevBtn").addEventListener("click", prev), $("#contentsBtn").addEventListener("click", () => modal('<div class="dialog-card"><h2>\xCDndice de la revista</h2><p>Elige la secci\xF3n que deseas leer.</p><nav>' + $("#toc").innerHTML + "</nav></div>")), $("#pageSelect").innerHTML = labels.map((x, i) => '<option value="'.concat(i, '">').concat(i + 1, " \xB7 ").concat(x, "</option>")).join(""), $("#pageSelect").addEventListener("change", (e) => goto(Number(e.target.value)));
+  const TOC = [
+    ["Inicio", [[0, "Portada", "Presentaci\xF3n del programa", "book"], [1, "Bienvenida e \xEDndice", "Qu\xE9 encontrar\xE1s en esta edici\xF3n", "list"]]],
+    ["Cap. 01 \xB7 Nuestro prop\xF3sito", [[2, "\xBFQu\xE9 es el PAP?", "Misi\xF3n y enfoque del programa", "mind"]]],
+    ["Cap. 02 \xB7 Dimensiones", [[3, "Acad\xE9mica", "Estudio, tiempo y ex\xE1menes", "cap"], [4, "Personal", "Bienestar y emociones", "heart"], [5, "Profesional", "Metas y proyecci\xF3n laboral", "briefcase"]]],
+    ["Cap. 03 \xB7 C\xF3mo funciona", [[6, "Ruta de acompa\xF1amiento", "Las cuatro etapas del proceso", "arrow"]]],
+    ["Cap. 04 \xB7 Nuestro equipo", [[7, "En qu\xE9 te acompa\xF1amos", "Temas que puedes trabajar", "users"]]],
+    ["Recursos", [[8, "Preguntas frecuentes", "Resolvemos tus dudas", "check"], [9, "Mi plan de acci\xF3n", "Tu compromiso personal", "pen"], [10, "Formulario y contacto", "Solicita tu acompa\xF1amiento", "star"]]]
+  ];
+  $("#toc").innerHTML = '<div class="toc-progress" aria-hidden="true"><div class="toc-progress-row"><span>Tu avance</span><b id="tocPct">0 %</b></div><div class="toc-progress-bar"><i id="tocBar"></i></div></div>' + TOC.map(([g, items]) => '<div class="toc-group"><div class="toc-group-label">'.concat(g, "</div>") + items.map(([n, t, d, ic]) => '<button class="toc-item" data-jump="'.concat(n, '" title="').concat(t, '"><span class="toc-ic"><svg width="17" height="17" class="icon sm" aria-hidden="true"><use href="#ic-').concat(ic, '"></use></svg></span><span class="toc-text"><span class="toc-title">').concat(t, '</span><span class="toc-sub">').concat(d, '</span></span><span class="toc-num">').concat(String(n + 1).padStart(2, "0"), "</span></button>")).join("") + "</div>").join("");
   function notify(msg) {
     const t = $("#toast");
     t.textContent = msg, t.classList.add("visible"), clearTimeout(toastTimer), toastTimer = setTimeout(() => t.classList.remove("visible"), 3e3);
