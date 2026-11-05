@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PAP · Revista digital interactiva">
 
-<meta name="pap-version" content="1793914903497">
+<meta name="pap-version" content="1793915297685">
 <style>
 :root{--navy:#072d5b;--deep:#041b3a;--blue:#0d4784;--cyan:#25cbef;--orange:#ff6a18;--paper:#fffefa;--ink:#163452;--muted:#67788e;--line:#dce6f2;--shadow:0 28px 80px rgba(2,16,42,.27);--ease:cubic-bezier(.2,.76,.19,.99)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 2% 10%,#194e87 0,transparent 32%),radial-gradient(circle at 100% 90%,#10537d 0,transparent 34%),#061e3d;color:#152e4d;font:15px/1.47 'Segoe UI',Arial,Helvetica,sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c85022;outline-offset:3px}a{color:inherit}::selection{background:#baf3ff;color:#032348}
@@ -771,6 +771,49 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
 @media (prefers-reduced-motion:reduce){.as-badge i,.as-caret{animation:none}}
 
 #appSearch::-webkit-search-cancel-button{display:none;-webkit-appearance:none}
+/* ===== Ficha con pestañas y generador inteligente ===== */
+.sr-tabwrap{margin-top:10px}
+.sr-tabwrap.sr-collapsed{display:none}
+.sr-tabs{display:flex;gap:4px;border-bottom:1px solid #e3ebf2;margin-bottom:10px;overflow-x:auto;scrollbar-width:none}
+.sr-tabs::-webkit-scrollbar{display:none}
+.sr-tab{flex:0 0 auto;border:0;background:transparent;font:inherit;font-size:12.5px;font-weight:700;color:#5b7689;padding:8px 12px;border-bottom:2.5px solid transparent;cursor:pointer;margin-bottom:-1px}
+.sr-tab:hover{color:#173a55}
+.sr-tab.on{color:#123653;border-bottom-color:#e2621f}
+.sr-panel[hidden]{display:none!important}
+.sr-steps{margin:2px 0 4px;padding-left:20px;color:#244760;font-size:13px;line-height:1.6}
+.sr-steps li{margin:4px 0}
+.sr-more{display:inline-block;margin-top:8px;border:1px solid #d4e6ef;background:#f4f8fb;color:#1f4f78;font:inherit;font-size:12px;font-weight:800;padding:7px 12px;border-radius:10px;cursor:pointer}
+.sr-more:hover{background:#e8f1f8}
+.sr-card .yt-box{margin-top:10px}
+.sr-card .sr-viz{margin-top:0}
+.ap-import{background:#f4f1fc;border:1px solid #e2dcf3;border-radius:12px;padding:11px 12px;margin-bottom:10px}
+.ap-import>b{font-size:12.5px;color:#4b3a8a}
+.ap-import p{margin:3px 0 8px!important;font-size:12px!important;color:#5b5a78!important;line-height:1.5!important}
+.ap-row{display:flex;gap:6px;flex-wrap:wrap}
+.ap-row input{flex:1 1 260px;min-width:0;font:inherit;font-size:13px;border:1px solid #d6cdf0;border-radius:9px;padding:8px 10px;outline:0;background:#fff;color:#173a55}
+.ap-row input:focus{border-color:#7559b5;box-shadow:0 0 0 3px #e9e2fb}
+.ap-row .vz-btn{margin-top:0}
+.ap-file{display:inline-flex;align-items:center;cursor:pointer}
+.ap-status{font-size:12px;margin-top:7px;min-height:0;color:#4d6a80}
+.ap-status.busy:before{content:'';display:inline-block;width:10px;height:10px;margin-right:7px;border-radius:50%;border:2px solid #d6cdf0;border-top-color:#7559b5;vertical-align:-1px;animation:sr-spin .8s linear infinite}
+.ap-status.ok{color:#2f8a55;font-weight:700}.ap-status.err{color:#b3412a;font-weight:700}.ap-status.warn{color:#8a6a10;font-weight:700}
+.ap-choices{display:grid;gap:5px;margin-top:6px}
+.ap-choice{text-align:left;border:1px solid #e2dcf3;background:#fff;border-radius:9px;padding:7px 10px;font:inherit;cursor:pointer}
+.ap-choice:hover{background:#faf8ff;border-color:#c9bde9}
+.ap-choice b{display:block;font-size:12.5px;color:#173a55}.ap-choice small{display:block;font-size:11px;color:#7a8e9e;margin-top:2px}
+.ap-ex{float:right;margin-top:0!important}
+.vz-f textarea{font:inherit;font-size:12.5px;color:#173a55;border:1px solid #d4e3ee;border-radius:8px;padding:6px 8px;background:#fff;resize:vertical;outline:0}
+.vz-f textarea:focus{border-color:#2f6ea8;box-shadow:0 0 0 3px #dbe9f6}
+.vz-f input::placeholder,.vz-f textarea::placeholder{color:#a9b8c4;font-weight:400;font-style:italic}
+.ap-cites{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px;font-family:Inter,system-ui,sans-serif}
+.ap-cites span{background:#f4f1fc;border-radius:8px;padding:6px 8px}
+.ap-cites b{display:block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#7559b5}
+.ap-cites code{font-family:'Times New Roman',Georgia,serif;font-size:13px;color:#1d1d1d}
+.ap-warn{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:4px}
+.ap-warn li{font-size:11.5px;color:#8a5a10;background:#fff8e6;border-radius:7px;padding:4px 9px}
+.ap-warn li:before{content:'⚠ '}
+.ap-actions{display:flex;gap:6px;flex-wrap:wrap}
+@media (max-width:600px){.ap-cites{grid-template-columns:1fr}.ap-ex{float:none}}
 
 </style>
 <script>document.documentElement.className+=' js';</script>
@@ -2207,9 +2250,31 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
     return '<svg width="17" height="17" class="icon sm"><use href="#ic-' + n + '"></use></svg>';
   }
   function srCard(r, hits, first) {
-    const d = r.d, cat = SR_CATS[d.c];
-    return '<article class="sr-card sr-c-' + d.c + '"><div class="sr-head"><span class="sr-ic">' + srIcon(cat[1]) + '</span><div><span class="sr-tag">' + cat[0] + "</span><h3>" + srMark(d.t, hits) + '</h3></div></div><p class="sr-sum">' + srMark(d.s, hits) + "</p>" + (d.a ? '<p class="sr-auth"><span>Basado en</span> ' + srMark(d.a, hits) + "</p>" : "") + (TOOLS[d.t] ? srTool(TOOLS[d.t]) : "") + "<details" + (first ? " open" : "") + "><summary>C\xF3mo aplicarlo</summary><ol>" + d.p.map((x) => "<li>" + srMark(x, hits) + "</li>").join("") + "</ol>" + (VIZ[d.t] ? '<div class="sr-viz" data-viz="' + VIZ[d.t] + '"><b class="sr-viz-t">Vista previa interactiva</b>' + vzHTML(VIZ[d.t]) + "</div>" : "") + (d.why ? '<div class="sr-deep"><div><b>\xBFPor qu\xE9 funciona?</b><p>' + srMark(d.why, hits) + "</p></div><div><b>Ejemplo pr\xE1ctico</b><p>" + srMark(d.ex, hits) + '</p></div><div class="sr-err"><b>Errores comunes</b><p>' + srMark(d.err, hits) + "</p></div></div>" : "") + vidHTML(d.t) + (d.r ? '<div class="sr-refs"><b>Referencias recientes</b>' + d.r.map((x) => "<p>" + srEsc(x.c) + '<span class="sr-reflinks"><a href="' + srEsc(x.l) + '" target="_blank" rel="noopener">Ver en la revista \u2197</a><a href="https://scholar.google.com/scholar?hl=es&amp;q=' + encodeURIComponent('"' + x.t + '"') + '" target="_blank" rel="noopener">Google Acad\xE9mico \u2197</a></span></p>').join("") + "</div>" : "") + '</details><div class="sr-foot">' + (d.form ? '<a class="sr-btn sr-primary" href="' + srEsc(FORM_URL) + '" target="_blank" rel="noopener">Abrir formulario \u2192</a>' : "") + '<a class="sr-btn" href="#pag-' + (d.pg + 1) + '" data-jump="' + d.pg + '">Ver en la revista \xB7 p\xE1g. ' + String(d.pg + 1).padStart(2, "0") + "</a></div></article>";
+    const d = r.d, cat = SR_CATS[d.c], vk = VIZ[d.t], tabs = [];
+    tabs.push(["ap", "C\xF3mo aplicarlo", '<ol class="sr-steps">' + d.p.map((x) => "<li>" + srMark(x, hits) + "</li>").join("") + "</ol>"]), vk && tabs.push(["vz", vk === "apa-ref" ? "Generador inteligente" : "Herramienta interactiva", '<div class="sr-viz" data-viz="' + vk + '">' + vzHTML(vk) + "</div>"]), d.why && tabs.push(["pf", "Profundiza", '<div class="sr-deep"><div><b>\xBFPor qu\xE9 funciona?</b><p>' + srMark(d.why, hits) + "</p></div><div><b>Ejemplo pr\xE1ctico</b><p>" + srMark(d.ex, hits) + '</p></div><div class="sr-err"><b>Errores comunes</b><p>' + srMark(d.err, hits) + "</p></div></div>"]), d.r && tabs.push(["rf", "Referencias", '<div class="sr-refs">' + d.r.map((x) => "<p>" + srEsc(x.c) + '<span class="sr-reflinks"><a href="' + srEsc(x.l) + '" target="_blank" rel="noopener">Ver en la revista \u2197</a><a href="https://scholar.google.com/scholar?hl=es&amp;q=' + encodeURIComponent('"' + x.t + '"') + '" target="_blank" rel="noopener">Google Acad\xE9mico \u2197</a></span></p>').join("") + "</div>"]);
+    const def = vk === "apa-ref" || vk === "apa-cite" ? 1 : 0;
+    return '<article class="sr-card sr-c-' + d.c + '"><div class="sr-head"><span class="sr-ic">' + srIcon(cat[1]) + '</span><div><span class="sr-tag">' + cat[0] + "</span><h3>" + srMark(d.t, hits) + '</h3></div></div><p class="sr-sum">' + srMark(d.s, hits) + "</p>" + (d.a ? '<p class="sr-auth"><span>Basado en</span> ' + srMark(d.a, hits) + "</p>" : "") + (first ? vidHTML(d.t) : '<button type="button" class="sr-more" data-sr-expand>Ver videos, gu\xEDa y herramientas \u25BE</button><div class="sr-lazy" hidden>' + vidHTML(d.t) + "</div>") + '<div class="sr-tabwrap' + (first ? "" : " sr-collapsed") + '"><div class="sr-tabs" role="tablist">' + tabs.map((t, k) => '<button type="button" role="tab" class="sr-tab' + (k === def ? " on" : "") + '" data-sr-tab="' + t[0] + '" aria-selected="' + (k === def) + '">' + t[1] + "</button>").join("") + "</div>" + tabs.map((t, k) => '<div class="sr-panel" data-sr-panel="' + t[0] + '"' + (k === def ? "" : " hidden") + ">" + t[2] + "</div>").join("") + '</div><div class="sr-foot">' + (d.form ? '<a class="sr-btn sr-primary" href="' + srEsc(FORM_URL) + '" target="_blank" rel="noopener">Abrir formulario \u2192</a>' : "") + '<a class="sr-btn" href="#pag-' + (d.pg + 1) + '" data-jump="' + d.pg + '">Ver en la revista \xB7 p\xE1g. ' + String(d.pg + 1).padStart(2, "0") + "</a></div></article>";
   }
+  document.addEventListener("click", (e) => {
+    const t = e.target.closest && e.target.closest("[data-sr-tab]");
+    if (t) {
+      const card = t.closest(".sr-card");
+      card.querySelectorAll("[data-sr-tab]").forEach((b) => {
+        const on = b === t;
+        b.classList.toggle("on", on), b.setAttribute("aria-selected", String(on));
+      }), card.querySelectorAll("[data-sr-panel]").forEach((p) => p.hidden = p.getAttribute("data-sr-panel") !== t.getAttribute("data-sr-tab"));
+      return;
+    }
+    const x = e.target.closest && e.target.closest("[data-sr-expand]");
+    if (x) {
+      const card = x.closest(".sr-card");
+      x.remove();
+      const lz = card.querySelector(".sr-lazy");
+      lz && (lz.hidden = !1);
+      const tw = card.querySelector(".sr-tabwrap");
+      tw && tw.classList.remove("sr-collapsed"), vzInit(card);
+    }
+  });
   function srPageRow(r, hits) {
     const d = r.d;
     return '<a class="sr-page" href="#pag-' + (d.id + 1) + '" data-jump="' + d.id + '"><span class="sr-pnum">' + String(d.id + 1).padStart(2, "0") + "</span><span><b>" + srEsc(labels[d.id]) + "</b><small>" + srMark(srSnippet(d.body, hits), hits) + '</small></span><span class="sr-go">\u2192</span></a>';
@@ -2235,163 +2300,8 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
       return;
     }
     const top = kb[0] ? kb[0].sc : 0, kbs = kb.filter((r) => r.sc >= top * 0.35).slice(0, 8);
-    box.innerHTML = (kbs.length ? '<div class="sr-section">Recursos de apoyo</div>' + kbs.map((r, i) => srCard(r, out.hits, i === 0)).join("") : "") + (pg.length ? '<div class="sr-section">En esta revista</div>' + pg.map((r) => srPageRow(r, out.hits)).join("") : ""), srWeb(q, kbs[0] ? kbs[0].d.t : ""), box.querySelectorAll("[data-apa]").forEach(apaUpdate), box.querySelectorAll("[data-smart]").forEach(smartUpdate), box.querySelector("[data-pomo]") && pomoPaint(), vzInit(box), st.textContent = kbs.length + (kbs.length === 1 ? " recurso" : " recursos") + (pg.length ? " \xB7 " + pg.length + (pg.length === 1 ? " p\xE1gina" : " p\xE1ginas") + " de la revista" : "");
+    box.innerHTML = (kbs.length ? '<div class="sr-section">Recursos de apoyo</div>' + kbs.map((r, i) => srCard(r, out.hits, i === 0)).join("") : "") + (pg.length ? '<div class="sr-section">En esta revista</div>' + pg.map((r) => srPageRow(r, out.hits)).join("") : ""), srWeb(q, kbs[0] ? kbs[0].d.t : ""), vzInit(box), st.textContent = kbs.length + (kbs.length === 1 ? " recurso" : " recursos") + (pg.length ? " \xB7 " + pg.length + (pg.length === 1 ? " p\xE1gina" : " p\xE1ginas") + " de la revista" : "");
   }
-  const TOOLS = { "Normas APA 7: lista de referencias": "apa", "Normas APA 7: citas en el texto": "apa", "T\xE9cnica Pomodoro": "pomo", "Motivaci\xF3n y metas SMART": "smart", "Tablas y figuras en APA 7": "apa" };
-  function apaInit(n) {
-    return n.split(/[\s]+/).filter(Boolean).map((w) => w.split("-").map((p) => p.charAt(0).toUpperCase() + ".").join("-")).join(" ");
-  }
-  function apaAuthors(raw) {
-    return String(raw || "").split(";").map((x) => x.trim()).filter(Boolean).map((a) => {
-      const i = a.indexOf(",");
-      if (i < 0)
-        return { sur: a, full: a, org: !0 };
-      const sur = a.slice(0, i).trim(), giv = a.slice(i + 1).trim();
-      return { sur, full: sur + (giv ? ", " + apaInit(giv) : ""), org: !1 };
-    });
-  }
-  function apaRefAuthors(L) {
-    if (!L.length)
-      return "";
-    const f = L.map((a) => a.full);
-    return f.length === 1 ? f[0] : f.length <= 20 ? f.slice(0, -1).join(", ") + " y " + f[f.length - 1] : f.slice(0, 19).join(", ") + ", . . . " + f[f.length - 1];
-  }
-  function apaInText(L) {
-    return L.length ? L.length === 1 ? L[0].sur : L.length === 2 ? L[0].sur + " y " + L[1].sur : L[0].sur + " et al." : "T\xEDtulo abreviado";
-  }
-  function apaEnd(t) {
-    return t = String(t || "").trim(), t ? /[.?!]$/.test(t) ? t : t + "." : "";
-  }
-  function apaDoi(d) {
-    return d = String(d || "").trim(), d ? /^10\./.test(d) ? "https://doi.org/" + d : d : "";
-  }
-  function apaBuild(f) {
-    const L = apaAuthors(f.au), yr = (f.yr || "s. f.").trim() || "s. f.";
-    let au = apaRefAuthors(L);
-    const E = srEsc;
-    let html = "", auH = au ? E(apaEnd(au)) + " " : "";
-    const date = f.ty === "web" && f.day ? yr + ", " + f.day : yr;
-    f.ty === "libro" ? html = auH + "(" + E(date) + "). <i>" + E(String(f.ti || "T\xEDtulo del libro").trim()) + "</i>" + (f.ed ? " (" + E(f.ed) + ")" : "") + ". " + (f.pub ? E(apaEnd(f.pub)) + " " : "") + E(apaDoi(f.doi)) : f.ty === "web" ? html = auH + "(" + E(date) + "). <i>" + E(apaEnd(f.ti || "T\xEDtulo de la p\xE1gina")) + "</i> " + (f.jo ? E(apaEnd(f.jo)) + " " : "") + E(f.doi || "") : html = auH + "(" + E(date) + "). " + E(apaEnd(f.ti || "T\xEDtulo del art\xEDculo")) + " <i>" + E(f.jo || "Nombre de la Revista") + (f.vo ? ", " + E(f.vo) : "") + "</i>" + (f.nu ? "(" + E(f.nu) + ")" : "") + (f.pg ? ", " + E(f.pg) : "") + ". " + E(apaDoi(f.doi));
-    const it = apaInText(L);
-    return { ref: html.trim(), par: "(" + it + ", " + yr + ")", nar: it + " (" + yr + ")", quote: "(" + it + ", " + yr + ", p. 15)" };
-  }
-  function srTool(kind) {
-    return kind === "apa" ? '<details class="sr-tool" open><summary>Generador APA 7 \xB7 vista previa din\xE1mica</summary><div class="apa-tool" data-apa><div class="apa-types" role="group" aria-label="Tipo de fuente"><button type="button" class="on" data-apa-ty="articulo">Art\xEDculo</button><button type="button" data-apa-ty="libro">Libro</button><button type="button" data-apa-ty="web">P\xE1gina web</button><button type="button" class="apa-sample" data-apa-sample>Ver ejemplo</button></div><div class="apa-grid"><label class="apa-wide">Autores <small>Apellidos, Nombres; separa cada autor con punto y coma</small><input data-f="au" placeholder="Malas-Tolsa, Olga; Garc\xEDa L\xF3pez, Ana Mar\xEDa"></label><label>A\xF1o<input data-f="yr" placeholder="2023" inputmode="numeric"></label><label class="apa-web">D\xEDa y mes<input data-f="day" placeholder="15 de marzo"></label><label class="apa-wide">T\xEDtulo<input data-f="ti" placeholder="T\xEDtulo exacto de la fuente"></label><label class="apa-art apa-web apa-wide"><span class="apa-lbl-jo">Revista</span><input data-f="jo" placeholder="Nombre de la revista"></label><label class="apa-art">Volumen<input data-f="vo" placeholder="41"></label><label class="apa-art">N\xFAmero<input data-f="nu" placeholder="1"></label><label class="apa-art">P\xE1ginas<input data-f="pg" placeholder="121\u2013128"></label><label class="apa-book">Edici\xF3n<input data-f="ed" placeholder="2.\xAA ed."></label><label class="apa-book">Editorial<input data-f="pub" placeholder="Editorial"></label><label class="apa-wide"><span class="apa-lbl-doi">DOI o URL</span><input data-f="doi" placeholder="10.51698/aloma.2023.41.1.121-128"></label></div><div class="apa-out"><b>Referencia</b><p class="apa-ref" data-apa-ref></p><div class="apa-cites"><span><b>Parent\xE9tica</b><code data-apa-par></code></span><span><b>Narrativa</b><code data-apa-nar></code></span><span><b>Textual</b><code data-apa-q></code></span></div><button type="button" class="sr-btn" data-apa-copy>Copiar referencia</button></div><p class="apa-hint">En trabajos en espa\xF1ol se usa \xABy\xBB entre autores; algunas instituciones aceptan \xAB&\xBB. Consulta la gu\xEDa de tu programa.</p></div></details>' : kind === "pomo" ? '<details class="sr-tool" open><summary>Temporizador Pomodoro \xB7 pru\xE9balo ahora</summary><div class="pomo-tool" data-pomo><div class="pomo-face"><span class="pomo-mode" data-pomo-mode>Concentraci\xF3n</span><b data-pomo-time>25:00</b><small data-pomo-count>Bloque 1 de 4</small></div><div class="pomo-ctrl"><button type="button" class="sr-btn sr-primary" data-pomo-start>Iniciar</button><button type="button" class="sr-btn" data-pomo-reset>Reiniciar</button><button type="button" class="sr-btn" data-pomo-skip>Saltar a pausa</button></div><div class="pomo-bar"><i data-pomo-bar></i></div></div></details>' : kind === "smart" ? '<details class="sr-tool" open><summary>Constructor de metas SMART \xB7 vista previa</summary><div class="smart-tool" data-smart><div class="apa-grid"><label class="apa-wide">\xBFQu\xE9 quiero lograr? (espec\xEDfica)<input data-s="q" placeholder="mejorar mi nota de estad\xEDstica"></label><label class="apa-wide">\xBFC\xF3mo lo medir\xE9? (medible)<input data-s="m" placeholder="pasar de 3,2 a 3,8 en el segundo corte"></label><label>\xBFPara cu\xE1ndo? (temporal)<input data-s="t" placeholder="30 de noviembre"></label><label>\xBFQu\xE9 har\xE9 cada semana? (alcanzable)<input data-s="a" placeholder="4 horas de ejercicios"></label><label class="apa-wide">\xBFPor qu\xE9 es importante para m\xED? (relevante)<input data-s="r" placeholder="es requisito para mi pr\xE1ctica"></label></div><div class="apa-out"><b>Tu meta</b><p class="smart-out" data-smart-out></p><button type="button" class="sr-btn" data-smart-copy>Copiar meta</button></div></div></details>' : "";
-  }
-  const APA_SAMPLE = { articulo: { au: "Malas-Tolsa, Olga", yr: "2023", ti: "Ansiedad relacionada con los ex\xE1menes online y en remoto en estudiantes universitarios espa\xF1oles", jo: "Aloma: Revista de Psicologia, Ci\xE8ncies de l\u2019Educaci\xF3 i de l\u2019Esport", vo: "41", nu: "1", pg: "121\u2013128", doi: "10.51698/aloma.2023.41.1.121-128" }, libro: { au: "Lazarus, Richard S.; Folkman, Susan", yr: "1986", ti: "Estr\xE9s y procesos cognitivos", ed: "", pub: "Mart\xEDnez Roca", doi: "" }, web: { au: "Ministerio de Salud y Protecci\xF3n Social", yr: "s. f.", day: "", ti: "L\xEDnea 106", jo: "Minsalud", doi: "https://minsalud.gov.co/salud/publica/salud-mental/Paginas/linea-106.aspx" } };
-  function apaUpdate(box) {
-    const ty = (box.querySelector("[data-apa-ty].on") || {}).getAttribute ? box.querySelector("[data-apa-ty].on").getAttribute("data-apa-ty") : "articulo";
-    box.setAttribute("data-ty", ty);
-    const f = { ty };
-    box.querySelectorAll("[data-f]").forEach((i) => {
-      f[i.getAttribute("data-f")] = i.value;
-    });
-    const lj = box.querySelector(".apa-lbl-jo");
-    lj && (lj.textContent = ty === "web" ? "Nombre del sitio" : "Revista");
-    const r = apaBuild(f);
-    box.querySelector("[data-apa-ref]").innerHTML = r.ref, box.querySelector("[data-apa-par]").textContent = r.par, box.querySelector("[data-apa-nar]").textContent = r.nar, box.querySelector("[data-apa-q]").textContent = r.quote;
-  }
-  function smartUpdate(box) {
-    const v = (k) => {
-      const i = box.querySelector('[data-s="' + k + '"]');
-      return i && i.value.trim();
-    }, q = v("q") || "[lo que quiero lograr]", m = v("m") || "[c\xF3mo lo medir\xE9]", t = v("t") || "[fecha]", a = v("a") || "[acci\xF3n semanal]", r = v("r");
-    box.querySelector("[data-smart-out]").innerHTML = "Voy a <b>" + srEsc(q) + "</b>, logrando <b>" + srEsc(m) + "</b> antes del <b>" + srEsc(t) + "</b>, dedicando <b>" + srEsc(a) + "</b>" + (r ? ", porque " + srEsc(r) : "") + ".";
-  }
-  function srCopy(text, btn) {
-    const done = () => {
-      const o = btn.textContent;
-      btn.textContent = "\xA1Copiado!", setTimeout(() => {
-        btn.textContent = o;
-      }, 1400);
-    };
-    try {
-      navigator.clipboard.writeText(text).then(done, () => {
-        fallback();
-      });
-    } catch (e) {
-      fallback();
-    }
-    function fallback() {
-      const ta = document.createElement("textarea");
-      ta.value = text, ta.style.position = "fixed", ta.style.opacity = "0", document.body.appendChild(ta), ta.select();
-      try {
-        document.execCommand("copy"), done();
-      } catch (e) {
-      }
-      document.body.removeChild(ta);
-    }
-  }
-  let pomoT = null, pomoLeft = 1500, pomoWork = !0, pomoN = 1;
-  function pomoPaint() {
-    const b = document.querySelector("[data-pomo]");
-    if (!b) {
-      clearInterval(pomoT), pomoT = null;
-      return;
-    }
-    const m = Math.floor(pomoLeft / 60), sec = pomoLeft % 60;
-    b.querySelector("[data-pomo-time]").textContent = String(m).padStart(2, "0") + ":" + String(sec).padStart(2, "0"), b.querySelector("[data-pomo-mode]").textContent = pomoWork ? "Concentraci\xF3n" : pomoN % 4 === 0 ? "Pausa larga" : "Pausa corta", b.querySelector("[data-pomo-count]").textContent = "Bloque " + ((pomoN - 1) % 4 + 1) + " de 4";
-    const tot = pomoWork ? 1500 : pomoN % 4 === 0 ? 900 : 300;
-    b.querySelector("[data-pomo-bar]").style.width = 100 - 100 * pomoLeft / tot + "%", b.classList.toggle("rest", !pomoWork), b.querySelector("[data-pomo-start]").textContent = pomoT ? "Pausar" : "Iniciar";
-  }
-  function pomoNext() {
-    pomoWork ? (pomoWork = !1, pomoLeft = pomoN % 4 === 0 ? 900 : 300) : (pomoWork = !0, pomoN++, pomoLeft = 1500);
-    try {
-      notify(pomoWork ? "\xA1A concentrarte! Nuevo bloque de 25 minutos." : "Buen trabajo. Toma una pausa.");
-    } catch (e) {
-    }
-  }
-  document.addEventListener("input", (e) => {
-    const a = e.target.closest && e.target.closest("[data-apa]");
-    if (a) {
-      apaUpdate(a);
-      return;
-    }
-    const sm = e.target.closest && e.target.closest("[data-smart]");
-    sm && smartUpdate(sm);
-  }), document.addEventListener("click", (e) => {
-    const t = e.target;
-    if (!t.closest)
-      return;
-    const a = t.closest("[data-apa]");
-    if (a) {
-      const ty = t.closest("[data-apa-ty]");
-      if (ty) {
-        a.querySelectorAll("[data-apa-ty]").forEach((b) => b.classList.toggle("on", b === ty)), apaUpdate(a);
-        return;
-      }
-      if (t.closest("[data-apa-sample]")) {
-        const cur = a.querySelector("[data-apa-ty].on").getAttribute("data-apa-ty"), smp = APA_SAMPLE[cur];
-        a.querySelectorAll("[data-f]").forEach((i) => {
-          i.value = smp[i.getAttribute("data-f")] || "";
-        }), apaUpdate(a);
-        return;
-      }
-      if (t.closest("[data-apa-copy]")) {
-        srCopy(a.querySelector("[data-apa-ref]").textContent, t.closest("[data-apa-copy]"));
-        return;
-      }
-    }
-    const sm = t.closest("[data-smart]");
-    if (sm && t.closest("[data-smart-copy]")) {
-      srCopy(sm.querySelector("[data-smart-out]").textContent, t.closest("[data-smart-copy]"));
-      return;
-    }
-    if (t.closest("[data-pomo-start]")) {
-      pomoT ? (clearInterval(pomoT), pomoT = null) : pomoT = setInterval(() => {
-        pomoLeft--, pomoLeft <= 0 && pomoNext(), pomoPaint();
-      }, 1e3), pomoPaint();
-      return;
-    }
-    if (t.closest("[data-pomo-reset]")) {
-      clearInterval(pomoT), pomoT = null, pomoWork = !0, pomoN = 1, pomoLeft = 1500, pomoPaint();
-      return;
-    }
-    if (t.closest("[data-pomo-skip]")) {
-      pomoNext(), pomoPaint();
-      return;
-    }
-  });
   let srWebSeq = 0;
   function srWeb(q, top) {
     const box = $("#srResults");
@@ -2657,7 +2567,7 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
   const VIZ = { "Normas APA 7: lista de referencias": "apa-ref", "Normas APA 7: citas en el texto": "apa-cite", "Normas APA 7: formato del documento": "apa-format", "Tablas y figuras en APA 7": "apa-table", "Parafrasear y evitar el plagio": "para", "T\xE9cnica Pomodoro": "pomodoro", "M\xE9todo Cornell para tomar apuntes": "cornell", "Mapas mentales y conceptuales": "mapa", "Motivaci\xF3n y metas SMART": "smart", "Entrevista de trabajo": "star", "Ansiedad ante los ex\xE1menes": "resp", "Gesti\xF3n del tiempo y planificaci\xF3n semanal": "week", "Repetici\xF3n espaciada": "spaced", "Hoja de vida efectiva": "cv", "Comunicaci\xF3n asertiva": "asert", "Vencer la procrastinaci\xF3n": "impl", "Pr\xE1ctica de recuperaci\xF3n (autoevaluaci\xF3n)": "flash", "Escritura acad\xE9mica: planear, redactar y revisar": "write" }, vf = (n, l, v, ph, w) => '<label class="vz-f"' + (w ? ' style="grid-column:span ' + w + '"' : "") + "><span>" + l + '</span><input data-vz-in="' + n + '" value="' + srEsc(v || "") + '" placeholder="' + srEsc(ph || "") + '"></label>';
   function vzHTML(k) {
     if (k === "apa-ref")
-      return '<div class="vz-form">' + vf("au", "Autores", "L\xF3pez-Aguilar, D., y Garc\xEDa-Prieto, F. J.", "", 2) + vf("y", "A\xF1o", "2026") + vf("t", "T\xEDtulo del art\xEDculo", "Procrastinaci\xF3n y rendimiento acad\xE9mico en estudiantes universitarios", "", 3) + vf("j", "Revista", "Revista de Investigaci\xF3n Educativa", "", 2) + vf("v", "Volumen", "44") + vf("n", "N\xFAmero", "") + vf("p", "P\xE1ginas", "") + vf("d", "DOI", "10.6018/rie.680631") + '</div><div class="vz-doc"><div class="vz-doc-h">Referencias</div><p class="vz-hang" data-vz-out></p><span class="vz-tag">Sangr\xEDa francesa 1,27 cm \xB7 Interlineado doble</span> <span class="vz-tag">En espa\xF1ol se une con \xABy\xBB; algunas instituciones aceptan \xAB&amp;\xBB</span></div><button type="button" class="vz-btn" data-vz-copy>Copiar referencia</button>';
+      return apaHTML();
     if (k === "apa-cite")
       return '<div class="vz-form">' + vf("a1", "Apellido autor 1", "Garc\xEDa") + vf("a2", "Apellido autor 2", "L\xF3pez") + vf("y", "A\xF1o", "2023") + vf("pg", "P\xE1gina (textual)", "15") + '</div><div class="vz-seg" data-vz-g="n"><button type="button" data-v="1">1 autor</button><button type="button" data-v="2" class="on">2 autores</button><button type="button" data-v="3">3 o m\xE1s</button></div><div class="vz-seg" data-vz-g="t"><button type="button" data-v="par" class="on">Parent\xE9tica</button><button type="button" data-v="nar">Narrativa</button><button type="button" data-v="tex">Textual</button></div><div class="vz-doc"><p class="vz-para" data-vz-out></p></div>';
     if (k === "apa-format")
@@ -2703,10 +2613,9 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
   }
   function vzUpdate(box) {
     const k = box.getAttribute("data-viz"), v = vzVals(box), out = box.querySelector("[data-vz-out]");
-    if (k === "apa-ref" && out) {
-      const parts = [(v.au || "Apellido, A. A.") + " (" + (v.y || "s. f.") + "). " + (v.t || "T\xEDtulo del art\xEDculo") + ". ", ["i", (v.j || "Nombre de la Revista") + (v.v ? ", " + v.v : "")]];
-      let tail = (v.n ? "(" + v.n + ")" : "") + (v.p ? ", " + v.p : "") + ".";
-      v.d && (tail += " https://doi.org/" + v.d.replace(/^https?:\/\/(dx\.)?doi\.org\//, "")), parts.push(tail), vzSet(out, parts);
+    if (k === "apa-ref") {
+      apaUpdateBox(box);
+      return;
     }
     if (k === "apa-cite" && out) {
       const a1 = v.a1 || "Garc\xEDa", a2 = v.a2 || "L\xF3pez", y = v.y || "2023", n = v.g_n, t = v.g_t, au = n === "1" ? a1 : n === "2" ? a1 + " y " + a2 : a1 + " et al.";
@@ -2759,15 +2668,10 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
       sg.parentNode.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === sg)), sg.parentNode.getAttribute("data-vz-g") === "cv" && b.querySelectorAll("[data-vz-cv]").forEach((p) => p.hidden = p.getAttribute("data-vz-cv") !== sg.getAttribute("data-v")), vzUpdate(b);
       return;
     }
-    if (e.target.closest("[data-vz-copy]")) {
-      const o = b.querySelector("[data-vz-out]"), txt = o ? o.textContent : "", done = () => notify("Referencia copiada.");
+    if (0)
       try {
-        navigator.clipboard.writeText(txt).then(done, () => notify("Selecciona y copia el texto de la vista previa."));
       } catch (x) {
-        notify("Selecciona y copia el texto de la vista previa.");
       }
-      return;
-    }
     const fl = e.target.closest("[data-vz-flip]");
     if (fl) {
       fl.classList.toggle("on");
@@ -2856,7 +2760,284 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
     setupAppSearch();
   } catch (e) {
   }
-  window.__papReady = !0;
+  const APA_ORG = /^(universidad|ministerio|organizaci|asociaci|instituto|fundaci|corporaci|american|world|national|departamento|secretar|alcald|gobernaci|unesco|unicef|oms|ops|dane|icfes|minsalud|mineducaci)/i, APA_PART = /* @__PURE__ */ new Set(["de", "del", "la", "las", "los", "da", "das", "do", "dos", "van", "von", "der", "den", "y", "e", "di", "le", "du"]);
+  function apaInitials(given) {
+    return String(given || "").trim().split(/\s+/).filter(Boolean).filter((w) => !APA_PART.has(w.toLowerCase())).map((w) => w.split("-").map((p) => p.charAt(0).toUpperCase() + ".").join("-")).join(" ");
+  }
+  function apaParseAuthors(raw) {
+    const txt = String(raw || "").trim();
+    if (!txt)
+      return [];
+    let parts = txt.split(/\s*(?:;|\n)\s*/).filter(Boolean);
+    if (parts.length === 1 && !/,/.test(parts[0]) && !APA_ORG.test(parts[0]) && /\s(?:y|&|and)\s/i.test(parts[0]) && (parts = parts[0].split(/\s+(?:y|&|and)\s+/i)), parts.length === 1 && /[A-ZÁÉÍÓÚÑ]\./.test(parts[0]) && (parts[0].match(/,/g) || []).length >= 2) {
+      const tk = parts[0].replace(/,?\s+(?:&|y)\s+/g, ", ").split(/\s*,\s*/).filter(Boolean), out = [];
+      for (let i = 0; i < tk.length; i++)
+        i + 1 < tk.length && /^([A-ZÁÉÍÓÚÑ]\.[\s-]?)+$/.test(tk[i + 1].replace(/\s/g, "")) ? (out.push(tk[i] + ", " + tk[i + 1]), i++) : out.push(tk[i]);
+      parts = out;
+    }
+    return parts.map((p) => {
+      if (p = p.replace(/\s+/g, " ").replace(/^(?:y|&)\s+/i, "").trim(), APA_ORG.test(p) && !/,/.test(p))
+        return { org: p };
+      if (/,/.test(p)) {
+        const k = p.indexOf(","), fam = p.slice(0, k).trim(), giv = p.slice(k + 1).trim();
+        return /^([A-ZÁÉÍÓÚÑ]\.\s?-?)+$/.test(giv.replace(/\s/g, "")) ? { family: fam, given: giv, init: giv.replace(/\s+/g, " ").trim() } : { family: fam, given: giv };
+      }
+      const w = p.split(" ");
+      if (w.length === 1)
+        return { family: w[0], given: "" };
+      let famStart = w.length >= 3 ? w.length - 2 : w.length - 1;
+      for (; famStart > 1 && APA_PART.has(w[famStart - 1].toLowerCase()); )
+        famStart--;
+      return { family: w.slice(famStart).join(" "), given: w.slice(0, famStart).join(" ") };
+    });
+  }
+  function apaName(a) {
+    if (a.org)
+      return a.org;
+    const ini = a.init || apaInitials(a.given);
+    return a.family + (ini ? ", " + ini : "");
+  }
+  function apaRefAuthors(L, amp) {
+    if (!L.length)
+      return "";
+    const n = L.map(apaName), join = amp ? "& " : "y ";
+    return n.length === 1 ? n[0] : n.length === 2 ? n[0] + ", " + join + n[1] : n.length <= 20 ? n.slice(0, -1).join(", ") + ", " + join + n[n.length - 1] : n.slice(0, 19).join(", ") + ", . . . " + n[n.length - 1];
+  }
+  function apaCiteAuthors(L) {
+    if (!L.length)
+      return null;
+    const f = (a) => a.org || a.family;
+    return L.length === 1 ? f(L[0]) : L.length === 2 ? f(L[0]) + " y " + f(L[1]) : f(L[0]) + " et al.";
+  }
+  function apaEnd(t) {
+    return t = String(t || "").trim(), t ? /[.?!]$/.test(t) ? t : t + "." : "";
+  }
+  function apaSentence(t) {
+    if (t = String(t || "").trim(), !t)
+      return t;
+    const letters = t.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ]/g, ""), caps = letters && letters === letters.toUpperCase(), words = t.split(" "), titleCase = words.length > 3 && words.filter((w) => /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]/.test(w)).length / words.length > 0.6;
+    if (!caps && !titleCase)
+      return t;
+    let first = !0;
+    return words.map((w) => {
+      let o = !caps && /^[A-ZÁÉÍÓÚÑ0-9]{2,}$/.test(w) ? w : w.toLowerCase();
+      return first && o && (o = o.charAt(0).toUpperCase() + o.slice(1), first = !1), /[:?¿!¡.]$/.test(w) && (first = !0), o;
+    }).join(" ");
+  }
+  function apaDoiOf(s) {
+    const m = String(s || "").match(/10\.\d{4,9}\/[^\s"<>]+/i);
+    return m ? m[0].replace(/[.,;)\]]+$/, "") : "";
+  }
+  function apaPages(p) {
+    return String(p || "").trim().replace(/\s*[-‐‑–—]+\s*/g, "\u2013");
+  }
+  function apaBuild(v) {
+    const ty = v.ty || "art", L = apaParseAuthors(v.au), amp = v.amp === "1", yr = String(v.y || "").trim() || "s. f.", au = apaRefAuthors(L, amp), T = apaSentence(v.t), doi = apaDoiOf(v.d), url = doi ? "https://doi.org/" + doi : /^https?:\/\//.test(v.d || "") ? v.d.trim() : "", warn = [], parts = [], head = au ? au + (/\.$/.test(au) ? " " : ". ") + "(" + yr + "). " : "";
+    if (L.length || warn.push("Sin autor: la referencia inicia con el t\xEDtulo."), yr === "s. f." && warn.push("Sin a\xF1o: se usa \xABs. f.\xBB (sin fecha)."), T && T !== String(v.t || "").trim() && warn.push("T\xEDtulo ajustado a formato oraci\xF3n (APA). Revisa nombres propios."), ty === "art") {
+      const pre = head || apaEnd(T || "T\xEDtulo del art\xEDculo") + " (" + yr + "). ";
+      parts.push(pre + (head ? apaEnd(T || "T\xEDtulo del art\xEDculo") + " " : "")), parts.push(["i", (v.j || "Nombre de la revista") + (v.vo ? ", " + v.vo : "")]);
+      let tail = (v.n ? "(" + v.n + ")" : "") + (v.p ? ", " + apaPages(v.p) : "") + ".";
+      url && (tail += " " + url), parts.push(tail), v.j || warn.push("Falta el nombre de la revista."), v.vo || warn.push("Falta el volumen."), v.p || warn.push("Sin p\xE1ginas: si es art\xEDculo electr\xF3nico, usa su n\xFAmero (p. ej., e1234)."), doi || warn.push(url ? "Sin DOI: se usa la URL. Busca el DOI en la p\xE1gina de la revista o en Crossref." : "Sin DOI ni URL: agr\xE9galo si el art\xEDculo lo tiene.");
+    } else
+      ty === "book" ? (parts.push(head), parts.push(["i", apaEnd(T || "T\xEDtulo del libro").replace(/\.$/, "")]), parts.push((v.ed ? " (" + v.ed + ")" : "") + ". " + (v.j ? apaEnd(v.j) + " " : "") + (url || "")), v.j || warn.push("Falta la editorial.")) : ty === "chap" ? (parts.push(head + apaEnd(T || "T\xEDtulo del cap\xEDtulo") + " En " + (v.ed ? /\(Eds?\.\)/.test(v.ed) ? v.ed + ", " : v.ed + (/,|\sy\s|&/.test(v.ed) ? " (Eds.), " : " (Ed.), ") : "")), parts.push(["i", v.bk || "T\xEDtulo del libro"]), parts.push((v.p ? " (pp. " + apaPages(v.p) + ")" : "") + ". " + (v.j ? apaEnd(v.j) + " " : "") + (url || "")), v.bk || warn.push("Falta el t\xEDtulo del libro.")) : (parts.push(head), parts.push(["i", apaEnd(T || "T\xEDtulo de la p\xE1gina").replace(/\.$/, "")]), parts.push(". " + (v.j ? apaEnd(v.j) + " " : "") + (url || "URL")), url || warn.push("Falta la URL de la p\xE1gina."));
+    const ca = apaCiteAuthors(L) || "\xAB" + (T || "T\xEDtulo").split(" ").slice(0, 4).join(" ") + "\xBB";
+    return { parts, warn, par: "(" + ca + ", " + yr + ")", nar: ca + " (" + yr + ")", tex: "(" + ca + ", " + yr + ", p. 15)" };
+  }
+  const APA_FIELDS = {
+    art: [["au", "Autores", "Uno por l\xEDnea o separados por \xAB;\xBB \u2014 p. ej.: Olga Malas Tolsa", 3, 1], ["y", "A\xF1o", "2023"], ["t", "T\xEDtulo del art\xEDculo", "", 2], ["j", "Revista", "", 2], ["vo", "Volumen", ""], ["n", "N\xFAmero", ""], ["p", "P\xE1ginas", "121-128"], ["d", "DOI o URL", "10.xxxx/xxxxx", 2]],
+    book: [["au", "Autores", "Uno por l\xEDnea o separados por \xAB;\xBB", 3, 1], ["y", "A\xF1o", ""], ["t", "T\xEDtulo del libro", "", 2], ["ed", "Edici\xF3n", "2.\xAA ed."], ["j", "Editorial", "", 2], ["d", "DOI o URL", "", 3]],
+    chap: [["au", "Autores del cap\xEDtulo", "", 3, 1], ["y", "A\xF1o", ""], ["t", "T\xEDtulo del cap\xEDtulo", "", 2], ["ed", "Editores", "A. P\xE9rez (Ed.)"], ["bk", "T\xEDtulo del libro", "", 2], ["p", "P\xE1ginas", "45-67"], ["j", "Editorial", ""], ["d", "DOI o URL", "", 3]],
+    web: [["au", "Autor u organizaci\xF3n", "Ministerio de Salud y Protecci\xF3n Social", 3, 1], ["y", "Fecha", "2024, 12 de marzo"], ["t", "T\xEDtulo de la p\xE1gina", "", 2], ["j", "Nombre del sitio", "", 2], ["d", "URL", "https://\u2026", 2]]
+  };
+  function apaFormHTML(ty, vals) {
+    return vals = vals || {}, APA_FIELDS[ty].map((f) => {
+      const big = f[4], val = srEsc(vals[f[0]] || ""), ph = srEsc(f[2] || "");
+      return '<label class="vz-f"' + (f[3] ? ' style="grid-column:span ' + f[3] + '"' : "") + "><span>" + f[1] + "</span>" + (big ? '<textarea data-vz-in="' + f[0] + '" rows="2" placeholder="' + ph + '">' + val + "</textarea>" : '<input data-vz-in="' + f[0] + '" value="' + val + '" placeholder="' + ph + '">') + "</label>";
+    }).join("");
+  }
+  function apaHTML() {
+    return '<div class="ap-import"><b>\u26A1 Autocompletar</b><p>Pega un <b>DOI</b>, un <b>enlace</b> (SciELO, Redalyc, Dialnet, revista) o el <b>t\xEDtulo</b> copiado de Google Acad\xE9mico, o sube el <b>PDF</b> del documento.</p><div class="ap-row"><input data-ap-q placeholder="Ej.: 10.35575/rvucn.n67a7 \xB7 https://www.scielo\u2026 \xB7 t\xEDtulo del art\xEDculo"><button type="button" class="vz-btn" data-ap-find>Buscar datos</button><label class="vz-btn ghost ap-file">\u{1F4C4} Subir PDF<input type="file" accept="application/pdf,.pdf" data-ap-pdf hidden></label></div><div class="ap-status" data-ap-status aria-live="polite"></div><div class="ap-choices" data-ap-choices></div></div><div class="vz-seg" data-vz-g="ty"><button type="button" data-v="art" class="on">Art\xEDculo</button><button type="button" data-v="book">Libro</button><button type="button" data-v="chap">Cap\xEDtulo</button><button type="button" data-v="web">P\xE1gina web</button></div><div class="vz-seg" data-vz-g="amp"><button type="button" data-v="0" class="on">Unir con \xABy\xBB</button><button type="button" data-v="1">Unir con \xAB&\xBB</button></div><button type="button" class="vz-btn ghost ap-ex" data-ap-sample>Ver ejemplo</button><div class="vz-form" data-ap-form>' + apaFormHTML("art") + '</div><div class="vz-doc ap-out"><div class="vz-doc-h">Referencias</div><p class="vz-hang" data-vz-out></p><div class="ap-cites"><span><b>Parent\xE9tica</b><code data-ap-par></code></span><span><b>Narrativa</b><code data-ap-nar></code></span><span><b>Textual</b><code data-ap-tex></code></span></div></div><ul class="ap-warn" data-ap-warn></ul><div class="ap-actions"><button type="button" class="vz-btn" data-ap-copy>Copiar referencia</button><button type="button" class="vz-btn ghost" data-ap-copyc>Copiar cita parent\xE9tica</button></div>';
+  }
+  const APA_EX = {
+    art: { au: "Malas-Tolsa, Olga", y: "2023", t: "Ansiedad relacionada con los ex\xE1menes online y en remoto en estudiantes universitarios espa\xF1oles", j: "Aloma: Revista de Psicologia, Ci\xE8ncies de l\u2019Educaci\xF3 i de l\u2019Esport", vo: "41", n: "1", p: "121-128", d: "10.51698/aloma.2023.41.1.121-128" },
+    book: { au: "American Psychological Association", y: "2021", t: "Manual de publicaciones de la American Psychological Association", ed: "4.\xAA ed.", j: "El Manual Moderno" },
+    chap: { au: "Beatriz Rodr\xEDguez Romero; Iria Raposo Vidal; Sonia Vi\xF1as Diz", y: "2020", t: "Aplicaci\xF3n de la t\xE9cnica del Pomodoro durante las sesiones magistrales", ed: "E. de la Torre Fern\xE1ndez (Ed.)", bk: "Contextos universitarios transformadores", p: "579-582", j: "Universidade da Coru\xF1a" },
+    web: { au: "Ministerio de Salud y Protecci\xF3n Social", y: "s. f.", t: "L\xEDnea 106", j: "Minsalud", d: "https://minsalud.gov.co/salud/publica/salud-mental/Paginas/linea-106.aspx" }
+  };
+  function apaFill(box, data, ty) {
+    ty ? (box.querySelectorAll('[data-vz-g="ty"] button').forEach((b) => b.classList.toggle("on", b.getAttribute("data-v") === ty)), box.querySelector("[data-ap-form]").innerHTML = apaFormHTML(ty, data)) : Object.keys(data).forEach((k) => {
+      const i = box.querySelector('[data-vz-in="' + k + '"]');
+      i && (i.value = data[k]);
+    }), vzUpdate(box);
+  }
+  function apaUpdateBox(box) {
+    const v = vzVals(box);
+    v.ty = v.g_ty || "art", v.amp = v.g_amp;
+    const r = apaBuild(v);
+    vzSet(box.querySelector("[data-vz-out]"), r.parts), box.querySelector("[data-ap-par]").textContent = r.par, box.querySelector("[data-ap-nar]").textContent = r.nar, box.querySelector("[data-ap-tex]").textContent = r.tex;
+    const w = box.querySelector("[data-ap-warn]");
+    w.textContent = "", r.warn.forEach((x) => {
+      const li = document.createElement("li");
+      li.textContent = x, w.appendChild(li);
+    });
+  }
+  function apaStatus(box, msg, kind) {
+    const s = box.querySelector("[data-ap-status]");
+    s.className = "ap-status " + (kind || ""), s.textContent = msg;
+  }
+  function apaStrip(h) {
+    const ta = document.createElement("textarea");
+    return ta.innerHTML = String(h || "").replace(/<[^>]*>/g, ""), ta.value.replace(/\s+/g, " ").trim();
+  }
+  function apaFromCrossref(m) {
+    const ty = /book-chapter/.test(m.type) ? "chap" : /^book|monograph/.test(m.type) ? "book" : "art", yr = ((m.issued || m.published || m["published-print"] || m["published-online"] || {})["date-parts"] || [[]])[0][0] || "", au = (m.author || []).map((a) => a.family ? (a.family + ", " + (a.given || "")).replace(/,\s*$/, "") : a.name || "").filter(Boolean).join("; "), ed = (m.editor || []).map((a) => (apaInitials(a.given || "") + " " + (a.family || a.name || "")).trim()).join(", "), t = apaStrip((m.title || [])[0]), ct = apaStrip((m["container-title"] || [])[0]), d = { au, y: String(yr), t, d: m.DOI || "" };
+    return ty === "art" ? (d.j = ct, d.vo = m.volume || "", d.n = m.issue || "", d.p = m.page || m["article-number"] || "") : (ty === "chap" && (d.bk = ct, d.ed = ed ? ed + (m.editor && m.editor.length > 1 ? " (Eds.)" : " (Ed.)") : "", d.p = m.page || ""), d.j = m.publisher || ""), { ty, d };
+  }
+  function apaCrossDoi(doi) {
+    return fetch("https://api.crossref.org/works/" + encodeURIComponent(doi)).then((r) => {
+      if (!r.ok)
+        throw new Error(r.status === 404 ? "nf" : "net");
+      return r.json();
+    }).then((j) => j.message);
+  }
+  function apaCrossTitle(q) {
+    return fetch("https://api.crossref.org/works?rows=4&select=DOI,title,author,container-title,issued,type,volume,issue,page,publisher,editor&query.bibliographic=" + encodeURIComponent(q)).then((r) => {
+      if (!r.ok)
+        throw new Error("net");
+      return r.json();
+    }).then((j) => j.message && j.message.items || []);
+  }
+  function apaLookup(box, q) {
+    if (q = String(q || "").trim(), !q) {
+      apaStatus(box, "Escribe un DOI, un enlace o un t\xEDtulo.", "err");
+      return;
+    }
+    if (navigator.onLine === !1) {
+      apaStatus(box, "Sin conexi\xF3n: completa los campos manualmente.", "err");
+      return;
+    }
+    const ch = box.querySelector("[data-ap-choices]");
+    ch.textContent = "";
+    const doi = apaDoiOf(decodeURIComponent(q));
+    if (doi) {
+      apaStatus(box, "Consultando el DOI " + doi + " en Crossref\u2026", "busy"), apaCrossDoi(doi).then((m) => {
+        const r = apaFromCrossref(m);
+        apaFill(box, r.d, r.ty), apaStatus(box, "\u2713 Datos importados desde Crossref (DOI). Revisa y ajusta si hace falta.", "ok");
+      }).catch((e) => apaStatus(box, e.message === "nf" ? "No encontramos ese DOI en Crossref. Verifica que est\xE9 completo." : "No fue posible conectar con Crossref. Intenta de nuevo o completa manualmente.", "err"));
+      return;
+    }
+    if (/^https?:\/\//i.test(q)) {
+      const p = box.querySelector('[data-vz-in="d"]');
+      p && (p.value = q, vzUpdate(box)), apaStatus(box, "Este enlace no incluye DOI (com\xFAn en SciELO y Redalyc). Copia y pega aqu\xED el t\xEDtulo del art\xEDculo para buscar sus datos; la URL ya qued\xF3 en el campo.", "warn");
+      return;
+    }
+    apaStatus(box, "Buscando \xAB" + q.slice(0, 60) + "\xBB en Crossref\u2026", "busy"), apaCrossTitle(q).then((items) => {
+      if (!items.length) {
+        apaStatus(box, "Sin coincidencias. Revisa el t\xEDtulo o completa manualmente.", "err");
+        return;
+      }
+      apaStatus(box, "Elige el documento correcto:", "ok"), items.forEach((m) => {
+        const b = document.createElement("button");
+        b.type = "button", b.className = "ap-choice";
+        const yr = ((m.issued || {})["date-parts"] || [[]])[0][0] || "s. f.", au = (m.author || []).slice(0, 3).map((a) => a.family || a.name).join(", ") + ((m.author || []).length > 3 ? " et al." : "");
+        vzSet(b, [["b", apaStrip((m.title || [])[0]) || "Sin t\xEDtulo"], ["small", (au || "Sin autor") + " \xB7 " + yr + " \xB7 " + (apaStrip((m["container-title"] || [])[0]) || m.publisher || "")]]), b.__m = m, ch.appendChild(b);
+      });
+    }).catch(() => apaStatus(box, "No fue posible conectar con Crossref. Intenta de nuevo o completa manualmente.", "err"));
+  }
+  let pdfjsP = null;
+  function loadPdfjs() {
+    return window.pdfjsLib ? Promise.resolve(window.pdfjsLib) : pdfjsP || (pdfjsP = new Promise((res, rej) => {
+      const s = document.createElement("script");
+      s.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js", s.onload = () => {
+        try {
+          window.pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js", res(window.pdfjsLib);
+        } catch (e) {
+          rej(e);
+        }
+      }, s.onerror = () => {
+        pdfjsP = null, rej(new Error("cdn"));
+      }, document.head.appendChild(s);
+    }), pdfjsP);
+  }
+  function apaPdf(box, file) {
+    if (file) {
+      if (!/pdf$/i.test(file.type) && !/\.pdf$/i.test(file.name)) {
+        apaStatus(box, "El archivo debe ser un PDF.", "err");
+        return;
+      }
+      apaStatus(box, "Leyendo \xAB" + file.name + "\xBB\u2026", "busy"), Promise.all([loadPdfjs(), file.arrayBuffer()]).then(([lib, buf]) => lib.getDocument({ data: new Uint8Array(buf) }).promise).then(async (pdf) => {
+        let text = "";
+        const n = Math.min(pdf.numPages, 3);
+        for (let i = 1; i <= n; i++) {
+          const tc = await (await pdf.getPage(i)).getTextContent();
+          text += tc.items.map((x) => x.str).join(" ") + "\n";
+        }
+        let meta = {};
+        try {
+          meta = (await pdf.getMetadata()).info || {};
+        } catch (e) {
+        }
+        const doi = apaDoiOf(text.replace(/\s+(?=[\w.\/-]*\/)/g, "")) || apaDoiOf(text) || apaDoiOf(meta.Subject || "") || apaDoiOf(meta.Keywords || "");
+        if (doi) {
+          apaStatus(box, "DOI detectado en el PDF: " + doi + ". Consultando Crossref\u2026", "busy"), box.querySelector("[data-ap-q]").value = doi, apaLookup(box, doi);
+          return;
+        }
+        const title = meta.Title && meta.Title.length > 12 && !/microsoft|untitled|documento/i.test(meta.Title) ? meta.Title : text.split(/\n|\s{3,}/).map((x) => x.trim()).find((x) => x.length > 25 && x.length < 220) || "";
+        title ? (box.querySelector("[data-ap-q]").value = title, apaStatus(box, "El PDF no tiene DOI; buscando por su t\xEDtulo\u2026", "busy"), apaLookup(box, title)) : apaStatus(box, "No encontramos DOI ni t\xEDtulo en el PDF. Completa los campos manualmente.", "err");
+      }).catch((e) => apaStatus(box, e && e.message === "cdn" ? "Para leer PDF se necesita conexi\xF3n a internet. Completa manualmente." : "No fue posible leer el PDF (\xBFest\xE1 protegido o escaneado?).", "err"));
+    }
+  }
+  document.addEventListener("click", (e) => {
+    const box = e.target.closest && e.target.closest('.sr-viz[data-viz="apa-ref"]');
+    if (!box)
+      return;
+    if (e.target.closest("[data-ap-find]")) {
+      apaLookup(box, box.querySelector("[data-ap-q]").value);
+      return;
+    }
+    const c = e.target.closest(".ap-choice");
+    if (c && c.__m) {
+      const r = apaFromCrossref(c.__m);
+      apaFill(box, r.d, r.ty), box.querySelector("[data-ap-choices]").textContent = "", apaStatus(box, "\u2713 Datos importados desde Crossref. Revisa y ajusta si hace falta.", "ok");
+      return;
+    }
+    if (e.target.closest("[data-ap-sample]")) {
+      const ty = (box.querySelector('[data-vz-g="ty"] .on') || {}).getAttribute("data-v") || "art";
+      apaFill(box, APA_EX[ty], ty);
+      return;
+    }
+    const tb = e.target.closest('[data-vz-g="ty"] button');
+    if (tb) {
+      setTimeout(() => {
+        box.querySelector("[data-ap-form]").innerHTML = apaFormHTML(tb.getAttribute("data-v"), vzVals(box)), vzUpdate(box);
+      }, 0);
+      return;
+    }
+    const cp = e.target.closest("[data-ap-copy],[data-ap-copyc]");
+    if (cp) {
+      const txt = cp.hasAttribute("data-ap-copy") ? box.querySelector("[data-vz-out]").textContent : box.querySelector("[data-ap-par]").textContent, ok = () => {
+        const o = cp.textContent;
+        cp.textContent = "\xA1Copiado!", setTimeout(() => cp.textContent = o, 1400);
+      }, fb = () => {
+        const ta = document.createElement("textarea");
+        ta.value = txt, ta.style.position = "fixed", ta.style.opacity = "0", document.body.appendChild(ta), ta.select();
+        try {
+          document.execCommand("copy"), ok();
+        } catch (x) {
+        }
+        ta.remove();
+      };
+      try {
+        navigator.clipboard.writeText(txt).then(ok, fb);
+      } catch (x) {
+        fb();
+      }
+    }
+  }), document.addEventListener("keydown", (e) => {
+    e.key === "Enter" && e.target.matches && e.target.matches("[data-ap-q]") && (e.preventDefault(), apaLookup(e.target.closest(".sr-viz"), e.target.value));
+  }), document.addEventListener("change", (e) => {
+    e.target.matches && e.target.matches("[data-ap-pdf]") && (apaPdf(e.target.closest(".sr-viz"), e.target.files[0]), e.target.value = "");
+  }), window.__papApa = { parse: apaParseAuthors, build: apaBuild, sentence: apaSentence, doi: apaDoiOf }, window.__papReady = !0;
 })();
 
 </script>
