@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PAP · Revista digital interactiva">
 
-<meta name="pap-version" content="1793916504497">
+<meta name="pap-version" content="1793916750148"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="dns-prefetch" href="https://i.ytimg.com"><link rel="dns-prefetch" href="https://www.youtube-nocookie.com"><link rel="dns-prefetch" href="https://www.youtube.com"><link rel="dns-prefetch" href="https://api.crossref.org"><link rel="dns-prefetch" href="https://api.openalex.org"><link rel="dns-prefetch" href="https://es.wikipedia.org"><link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 <style>
 :root{--navy:#072d5b;--deep:#041b3a;--blue:#0d4784;--cyan:#25cbef;--orange:#ff6a18;--paper:#fffefa;--ink:#163452;--muted:#67788e;--line:#dce6f2;--shadow:0 28px 80px rgba(2,16,42,.27);--ease:cubic-bezier(.2,.76,.19,.99)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 2% 10%,#194e87 0,transparent 32%),radial-gradient(circle at 100% 90%,#10537d 0,transparent 34%),#061e3d;color:#152e4d;font:15px/1.47 'Segoe UI',Arial,Helvetica,sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c85022;outline-offset:3px}a{color:inherit}::selection{background:#baf3ff;color:#032348}
@@ -947,6 +947,15 @@ html.as-open .controlbar,html.as-open #offlineBar,html.as-open .edge-nav{display
 @media (max-width:760px){.sr-kicker{display:none!important}.search-card h2{font-size:17px!important;margin-bottom:8px!important}.sr-field{border-width:1.5px}.sr-field input{padding:10px 0!important}.sr-cats{margin-top:8px!important}.sr-cat{padding:5px 11px!important}.sr-status{margin-top:6px!important}.vz-seg button{padding:6px 6px!important}}
 
 @media (max-width:1179px){html.as-open .appbar{z-index:96!important}html.as-open .appbar .toolgroup,html.as-open .appbar .brand-mini{visibility:hidden}}
+/* Videos: miniaturas livianas y carga */
+.yt-th,.as-fth{overflow:hidden}
+.yt-th picture,.as-fth picture{position:absolute;inset:0;display:block}
+.yt-th img,.as-fth img{width:100%;height:100%;object-fit:cover;display:block}
+.yt-play,.yt-th em,.as-fth i,.as-fth em{z-index:1}
+.yt-frame{position:relative}
+.yt-load{position:absolute;left:0;right:0;top:0;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;gap:10px;background:#0b1726;color:#cfe3ef;font-size:13px;font-weight:700;border-radius:12px;z-index:2;pointer-events:none}
+.yt-load span{width:18px;height:18px;border-radius:50%;border:2.5px solid #ffffff33;border-top-color:#ff0033;animation:sr-spin .8s linear infinite}
+@media (max-width:760px){.yt-card .yt-th{position:relative}}
 
 </style>
 <script>document.documentElement.className+=' js';</script>
@@ -2435,7 +2444,7 @@ html.as-open .controlbar,html.as-open #offlineBar,html.as-open .edge-nav{display
       return;
     }
     const top = kb[0] ? kb[0].sc : 0, kbs = kb.filter((r) => r.sc >= top * 0.35).slice(0, 8);
-    box.innerHTML = (kbs.length ? '<div class="sr-section">Recursos de apoyo</div>' + kbs.map((r, i) => srCard(r, out.hits, i === 0)).join("") : "") + (pg.length ? '<div class="sr-section">En esta revista</div>' + pg.map((r) => srPageRow(r, out.hits)).join("") : ""), srWeb(q, kbs[0] ? kbs[0].d.t : ""), vzInit(box), st.textContent = kbs.length + (kbs.length === 1 ? " recurso" : " recursos") + (pg.length ? " \xB7 " + pg.length + (pg.length === 1 ? " p\xE1gina" : " p\xE1ginas") + " de la revista" : "");
+    box.innerHTML = (kbs.length ? '<div class="sr-section">Recursos de apoyo</div>' + kbs.map((r, i) => srCard(r, out.hits, i === 0)).join("") : "") + (pg.length ? '<div class="sr-section">En esta revista</div>' + pg.map((r) => srPageRow(r, out.hits)).join("") : ""), srWeb(q, kbs[0] ? kbs[0].d.t : ""), box.querySelector("[data-yt]") && typeof ytWarmup == "function" && setTimeout(ytWarmup, 300), vzInit(box), st.textContent = kbs.length + (kbs.length === 1 ? " recurso" : " recursos") + (pg.length ? " \xB7 " + pg.length + (pg.length === 1 ? " p\xE1gina" : " p\xE1ginas") + " de la revista" : "");
   }
   let srWebSeq = 0;
   function srWeb(q, top) {
@@ -2587,7 +2596,7 @@ html.as-open .controlbar,html.as-open #offlineBar,html.as-open .edge-nav{display
       }, trend = Object.keys(VID).map((t) => [t, VID[t].reduce((a, v) => a + (VIEWS[v[0]] || 0), 0)]).filter((x) => x[1] > 0).sort((a, b) => b[1] - a[1]).slice(0, 6), fmtV = (n) => n >= 1e6 ? (n / 1e6).toFixed(1).replace(".", ",") + " M" : Math.round(n / 1e3) + " mil";
       panel.innerHTML = '<div class="as-hero"><div><span class="as-clock" data-as-clock>\u{1F554} ' + fmt() + "</span><b>" + c.greet + ' \u{1F44B}</b><span>\xBFEn qu\xE9 te apoyamos hoy? Escribe con tus palabras o elige una opci\xF3n.</span></div><span class="as-stats"><b>' + KB.length + "</b> fichas<b>" + Object.keys(VID).reduce((a, k) => a + VID[k].length, 0) + "</b> videos<b>" + Object.keys(VIZ).length + '</b> herramientas</span></div><div class="as-home"><div class="as-col"><div class="as-sec">Para ti ahora</div>' + c.list.map(card).join("") + '<div class="as-sec">Temas m\xE1s importantes \xB7 con video y gu\xEDa</div><div class="as-feat">' + ["Normas APA 7: citas en el texto", "T\xE9cnica Pomodoro", "Ansiedad ante los ex\xE1menes", "Vencer la procrastinaci\xF3n", "Gesti\xF3n del tiempo y planificaci\xF3n semanal", "Hoja de vida efectiva"].map((t, k) => {
         const v = (VID[t] || [])[0], r = KB.find((x) => x.t === t);
-        return !v || !r ? "" : '<div class="as-fc as-' + r.c + '" style="animation-delay:' + (90 + k * 40) + 'ms"><button type="button" class="as-fth" data-as-play="' + srEsc(t) + '" aria-label="Ver video: ' + srEsc(v[1]) + '" style="background-image:url(https://i.ytimg.com/vi/' + v[0] + '/mqdefault.jpg)"><i>\u25B6</i><em>' + v[3] + '</em></button><button type="button" class="as-fg" data-as-open="' + srEsc(t) + '"><b>' + srEsc(t.replace("Normas APA 7: ", "APA 7: ").replace(" y planificaci\xF3n semanal", "")) + "</b><small>Gu\xEDa" + (VIZ[t] ? " + herramienta" : "") + " \xB7 " + (VID[t] || []).length + " videos</small></button></div>";
+        return !v || !r ? "" : '<div class="as-fc as-' + r.c + '" style="animation-delay:' + (90 + k * 40) + 'ms"><button type="button" class="as-fth" data-as-play="' + srEsc(t) + '" aria-label="Ver video: ' + srEsc(v[1]) + '" >' + ytPic(v[0]) + "<i>\u25B6</i><em>" + v[3] + '</em></button><button type="button" class="as-fg" data-as-open="' + srEsc(t) + '"><b>' + srEsc(t.replace("Normas APA 7: ", "APA 7: ").replace(" y planificaci\xF3n semanal", "")) + "</b><small>Gu\xEDa" + (VIZ[t] ? " + herramienta" : "") + " \xB7 " + (VID[t] || []).length + " videos</small></button></div>";
       }).join("") + "</div>" + (rec.length > 1 ? '<div class="as-sec">Visto recientemente</div><div class="as-chips">' + rec.slice(0, 4).map((t) => '<button type="button" class="as-chip rec" data-as-open="' + srEsc(t) + '">\u21BA ' + srEsc(t.split(":")[0]) + "</button>").join("") + "</div>" : "") + '</div><div class="as-col"><div class="as-sec">Explora por dimensi\xF3n</div><div class="as-dims">' + dims + '</div><div class="as-sec">\u{1F525} Tendencias en YouTube</div><div class="as-trend">' + trend.map((x, k) => {
         const r = KB.find((y) => y.t === x[0]);
         return '<button type="button" class="as-tr" data-as-open="' + srEsc(x[0]) + '"><span class="as-rank">' + (k + 1) + '</span><span class="as-tt"><b>' + srEsc(/^Normas APA 7: /.test(x[0]) ? x[0].replace("Normas APA 7: ", "APA 7: ") : x[0].split(":")[0].replace(/\s*\(.*\)/, "")) + "</b><small>" + (r ? SR_CATS[r.c][0] : "") + '</small></span><span class="as-views">' + fmtV(x[1]) + " vistas</span></button>";
@@ -2945,9 +2954,21 @@ html.as-open .controlbar,html.as-open #offlineBar,html.as-open .edge-nav{display
   }, VQ = { "Concentraci\xF3n y espacio de estudio": "c\xF3mo concentrarse para estudiar", "C\xF3mo solicitar acompa\xF1amiento PAP": "asesor\xEDa acad\xE9mica universitaria" };
   function vidHTML(t) {
     const L = VID[t] || [], q = WQ[t] || VQ[t] || t, more = '<a class="yt-more" href="https://www.youtube.com/results?search_query=' + encodeURIComponent(q) + '" target="_blank" rel="noopener">Ver m\xE1s videos en YouTube \u2197</a>';
-    return L.length ? '<div class="yt-box"><b class="sr-viz-t">Videos para seguir la gu\xEDa</b><div class="yt-grid">' + L.map((v) => '<button type="button" class="yt-card" data-yt="' + v[0] + '" aria-label="Reproducir: ' + srEsc(v[1]) + '"><span class="yt-th" style="background-image:url(https://i.ytimg.com/vi/' + v[0] + '/mqdefault.jpg)"><i class="yt-play">\u25B6</i><em>' + v[3] + '</em></span><span class="yt-meta"><b>' + srEsc(v[1]) + "</b><small>" + srEsc(v[2]) + "</small></span></button>").join("") + "</div>" + more + '<p class="yt-note">Videos p\xFAblicos de YouTube seleccionados por su relaci\xF3n con la ficha. Requieren conexi\xF3n a internet.</p></div>' : '<div class="yt-box"><b class="sr-viz-t">Videos para seguir la gu\xEDa</b>' + more + "</div>";
+    return L.length ? '<div class="yt-box"><b class="sr-viz-t">Videos para seguir la gu\xEDa</b><div class="yt-grid">' + L.map((v) => '<button type="button" class="yt-card" data-yt="' + v[0] + '" aria-label="Reproducir: ' + srEsc(v[1]) + '"><span class="yt-th">' + ytPic(v[0]) + '<i class="yt-play">\u25B6</i><em>' + v[3] + '</em></span><span class="yt-meta"><b>' + srEsc(v[1]) + "</b><small>" + srEsc(v[2]) + "</small></span></button>").join("") + "</div>" + more + '<p class="yt-note">Videos p\xFAblicos de YouTube seleccionados por su relaci\xF3n con la ficha. Requieren conexi\xF3n a internet.</p></div>' : '<div class="yt-box"><b class="sr-viz-t">Videos para seguir la gu\xEDa</b>' + more + "</div>";
   }
-  document.addEventListener("click", (e) => {
+  function ytPic(id) {
+    return '<picture><source type="image/webp" srcset="https://i.ytimg.com/vi_webp/' + id + '/mqdefault.webp"><img src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async"></picture>';
+  }
+  let ytWarm = !1;
+  function ytWarmup() {
+    ytWarm || (ytWarm = !0, ["https://www.youtube-nocookie.com", "https://www.youtube.com", "https://www.google.com", "https://i.ytimg.com", "https://yt3.ggpht.com", "https://static.doubleclick.net", "https://jnn-pa.googleapis.com"].forEach((u) => {
+      const l = document.createElement("link");
+      l.rel = "preconnect", l.href = u, l.crossOrigin = "", document.head.appendChild(l);
+    }));
+  }
+  ["pointerover", "touchstart", "focusin"].forEach((ev) => document.addEventListener(ev, (e) => {
+    e.target.closest && e.target.closest("[data-yt],[data-as-play],.yt-box") && ytWarmup();
+  }, { passive: !0, capture: !0 })), document.addEventListener("click", (e) => {
     const c = e.target.closest && e.target.closest("[data-yt]");
     if (!c)
       return;
@@ -2958,7 +2979,13 @@ html.as-open .controlbar,html.as-open #offlineBar,html.as-open .edge-nav{display
       return;
     }
     const f = document.createElement("div");
-    f.className = "yt-frame", f.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&hl=es" title="Video de YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><a href="https://www.youtube.com/watch?v=' + id + '" target="_blank" rel="noopener">Abrir en YouTube \u2197</a>', c.replaceWith(f);
+    f.className = "yt-frame", ytWarmup(), f.innerHTML = '<div class="yt-load"><span></span>Cargando video\u2026</div><iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&playsinline=1&rel=0&modestbranding=1&hl=es&cc_lang_pref=es" title="Video de YouTube" loading="eager" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><a href="https://www.youtube.com/watch?v=' + id + '" target="_blank" rel="noopener">Abrir en YouTube \u2197</a>', c.replaceWith(f), f.querySelector("iframe").addEventListener("load", () => {
+      const l = f.querySelector(".yt-load");
+      l && l.remove();
+    }), setTimeout(() => {
+      const l = f.querySelector(".yt-load");
+      l && l.remove();
+    }, 6e3);
   });
   try {
     setupAppSearch();
