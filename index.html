@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PAP · Revista digital interactiva">
 
-<meta name="pap-version" content="1793912073596">
+<meta name="pap-version" content="1793912336037">
 <style>
 :root{--navy:#072d5b;--deep:#041b3a;--blue:#0d4784;--cyan:#25cbef;--orange:#ff6a18;--paper:#fffefa;--ink:#163452;--muted:#67788e;--line:#dce6f2;--shadow:0 28px 80px rgba(2,16,42,.27);--ease:cubic-bezier(.2,.76,.19,.99)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 2% 10%,#194e87 0,transparent 32%),radial-gradient(circle at 100% 90%,#10537d 0,transparent 34%),#061e3d;color:#152e4d;font:15px/1.47 'Segoe UI',Arial,Helvetica,sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c85022;outline-offset:3px}a{color:inherit}::selection{background:#baf3ff;color:#032348}
@@ -510,6 +510,40 @@ html:not(.js) .cs-box{display:none!important}
 .cs-reflist b{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#7559b5;margin-bottom:6px}
 .cs-reflist p{margin:0 0 5px!important;font-size:10px!important;line-height:1.45!important;color:#3f4f63!important;padding-left:16px;text-indent:-16px}
 .cs-online{margin-top:10px!important;font-size:10.5px!important;color:#24435d!important;background:#f3f8fc;border-radius:9px;padding:8px 11px}
+/* Barra de avance al centro de la franja superior */
+.viewer-eyebrow{display:flex!important;align-items:center!important;gap:16px}
+.viewer-eyebrow #chapterLabel,.viewer-eyebrow #pagesCounter{flex:1 1 0;min-width:0}
+.viewer-eyebrow #pagesCounter{justify-content:flex-end}
+.eb-progress{flex:0 1 300px;display:flex;align-items:center;gap:9px;min-width:150px}
+.eb-progress span{font-size:9.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#7a8e9e;white-space:nowrap}
+.eb-track{flex:1;height:6px;border-radius:99px;background:#dde7ef;overflow:hidden}
+.eb-track i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#f3a9c6,#f6d577,#93d3ac,#8fb9e6);transition:width .5s ease}
+.eb-progress b{font-size:11px;font-weight:900;color:#1d3b55;white-space:nowrap;min-width:34px;text-align:right}
+@media (max-width:700px){.eb-progress{flex:0 1 120px;min-width:80px}.eb-progress span{display:none}}
+@media print{.eb-progress{display:none!important}}
+.viewer-eyebrow .eb-dots{display:none!important}
+.viewer-eyebrow #chapterLabel{flex:1 1 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.viewer-eyebrow #chapterLabel .eb-brand{white-space:nowrap}
+.viewer-eyebrow #pagesCounter{flex:0 0 auto;white-space:nowrap}
+.eb-progress{flex:0 1 280px;min-width:120px}
+@media (max-width:1100px){.eb-progress span{display:none}}
+.viewer-eyebrow{display:grid!important;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:18px}
+.viewer-eyebrow #chapterLabel{justify-self:start;max-width:100%}
+.viewer-eyebrow #pagesCounter{justify-self:end}
+.viewer-eyebrow .eb-progress{width:300px;min-width:0}
+@media (max-width:1100px){.viewer-eyebrow .eb-progress{width:150px}}
+@media (max-width:700px){.viewer-eyebrow{gap:10px}.viewer-eyebrow .eb-progress{width:90px}}
+.viewer-eyebrow #chapterLabel{overflow:hidden!important;min-width:0!important;display:flex}
+.viewer-eyebrow .eb-brand,.viewer-eyebrow .eb-sep{display:none!important}
+.viewer-eyebrow .eb-chapter{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.viewer-eyebrow .eb-progress{width:260px}
+@media (max-width:700px){
+.viewer-eyebrow{grid-template-columns:minmax(0,1fr) auto!important;row-gap:7px!important}
+.viewer-eyebrow #chapterLabel{grid-column:1;grid-row:1}
+.viewer-eyebrow #pagesCounter{grid-column:2;grid-row:1}
+.viewer-eyebrow .eb-progress{grid-column:1/-1;grid-row:2;width:100%!important;flex:none}
+.viewer-eyebrow .eb-progress span{display:inline!important}
+}
 
 </style>
 <script>document.documentElement.className+=' js';</script>
@@ -646,6 +680,8 @@ html:not(.js) .cs-box{display:none!important}
     }
     const pct = Math.round(100 * last / pages.length), tb = $("#tocBar"), tp = $("#tocPct");
     tb && (tb.style.width = pct + "%"), tp && (tp.textContent = pct + " %");
+    const ebp = document.getElementById("ebProgress");
+    ebp && ebp.setAttribute("aria-valuenow", String(pct));
     const cur = document.querySelector(".sidebar .toc-item.current");
     if (cur && cur.scrollIntoView) {
       const sb = document.querySelector(".sidebar");
@@ -730,7 +766,13 @@ html:not(.js) .cs-box{display:none!important}
     ["Cap. 04 \xB7 Nuestro equipo", [[7, "En qu\xE9 te acompa\xF1amos", "Temas que puedes trabajar", "users"]]],
     ["Recursos", [[8, "Preguntas frecuentes", "Resolvemos tus dudas", "check"], [9, "Mi plan de acci\xF3n", "Tu compromiso personal", "pen"], [10, "Centro de apoyo", "T\xE9cnicas basadas en autores", "search"], [11, "Formulario y contacto", "Solicita tu acompa\xF1amiento", "star"]]]
   ];
-  $("#toc").innerHTML = '<div class="toc-progress" aria-hidden="true"><div class="toc-progress-row"><span>Tu avance</span><b id="tocPct">0 %</b></div><div class="toc-progress-bar"><i id="tocBar"></i></div></div>' + TOC.map(([g, items]) => '<div class="toc-group"><div class="toc-group-label">'.concat(g, "</div>") + items.map(([n, t, d, ic]) => '<button class="toc-item" data-jump="'.concat(n, '" title="').concat(t, '"><span class="toc-ic"><svg width="17" height="17" class="icon sm" aria-hidden="true"><use href="#ic-').concat(ic, '"></use></svg></span><span class="toc-text"><span class="toc-title">').concat(t, '</span><span class="toc-sub">').concat(d, '</span></span><span class="toc-num">').concat(String(n + 1).padStart(2, "0"), "</span></button>")).join("") + "</div>").join("");
+  (function() {
+    const eb = document.querySelector(".viewer-eyebrow"), pc = document.getElementById("pagesCounter");
+    if (eb && pc && !document.getElementById("ebProgress")) {
+      const d = document.createElement("div");
+      d.className = "eb-progress", d.id = "ebProgress", d.setAttribute("role", "progressbar"), d.setAttribute("aria-label", "Tu avance en la revista"), d.innerHTML = '<span>Tu avance</span><div class="eb-track"><i id="tocBar"></i></div><b id="tocPct">0 %</b>', eb.insertBefore(d, pc);
+    }
+  })(), $("#toc").innerHTML = "" + TOC.map(([g, items]) => '<div class="toc-group"><div class="toc-group-label">'.concat(g, "</div>") + items.map(([n, t, d, ic]) => '<button class="toc-item" data-jump="'.concat(n, '" title="').concat(t, '"><span class="toc-ic"><svg width="17" height="17" class="icon sm" aria-hidden="true"><use href="#ic-').concat(ic, '"></use></svg></span><span class="toc-text"><span class="toc-title">').concat(t, '</span><span class="toc-sub">').concat(d, '</span></span><span class="toc-num">').concat(String(n + 1).padStart(2, "0"), "</span></button>")).join("") + "</div>").join("");
   function notify(msg) {
     const t = $("#toast");
     t.textContent = msg, t.classList.add("visible"), clearTimeout(toastTimer), toastTimer = setTimeout(() => t.classList.remove("visible"), 3e3);
