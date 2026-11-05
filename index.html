@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PAP · Revista digital interactiva">
 
-<meta name="pap-version" content="1793913466500">
+<meta name="pap-version" content="1793913741136">
 <style>
 :root{--navy:#072d5b;--deep:#041b3a;--blue:#0d4784;--cyan:#25cbef;--orange:#ff6a18;--paper:#fffefa;--ink:#163452;--muted:#67788e;--line:#dce6f2;--shadow:0 28px 80px rgba(2,16,42,.27);--ease:cubic-bezier(.2,.76,.19,.99)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 2% 10%,#194e87 0,transparent 32%),radial-gradient(circle at 100% 90%,#10537d 0,transparent 34%),#061e3d;color:#152e4d;font:15px/1.47 'Segoe UI',Arial,Helvetica,sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c85022;outline-offset:3px}a{color:inherit}::selection{background:#baf3ff;color:#032348}
@@ -597,6 +597,118 @@ html:not(.js) .cs-box{display:none!important}
 .pomo-tool.rest .pomo-bar i{background:linear-gradient(90deg,#93d3ac,#8fb9e6)}
 button.sr-btn{font:inherit;font-size:12px;font-weight:700;cursor:pointer}
 @media (max-width:700px){.apa-grid{grid-template-columns:1fr 1fr}.apa-types .apa-sample{margin-left:0}}
+
+/* ===== Profundización y vistas previas interactivas ===== */
+.sr-deep{display:grid;gap:8px;margin-top:10px}
+.sr-deep>div{background:#f4f8fb;border-radius:10px;padding:9px 12px}
+.sr-deep b{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#2a7a93;margin-bottom:3px}
+.sr-deep p{margin:0!important;font-size:12.5px!important;line-height:1.5!important;color:#2d4a60!important}
+.sr-deep .sr-err{background:#fff5ef}.sr-deep .sr-err b{color:#c4683c}
+.sr-viz{margin:10px 0 4px;border:1px solid #dfe9f1;border-radius:14px;padding:12px;background:linear-gradient(180deg,#fbfdff,#f3f8fc)}
+.sr-viz-t{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7559b5;margin-bottom:9px}
+.vz-form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-bottom:9px}
+.vz-f{display:flex;flex-direction:column;gap:3px;min-width:0}
+.vz-f span{font-size:10.5px;font-weight:800;color:#4d6a80}
+.vz-f input{font:inherit;font-size:12.5px;color:#173a55;border:1px solid #d4e3ee;border-radius:8px;padding:6px 8px;background:#fff;min-width:0;outline:0}
+.vz-f input:focus{border-color:#2f6ea8;box-shadow:0 0 0 3px #dbe9f6}
+.vz-doc{background:#fff;border:1px solid #e3ebf2;border-radius:10px;padding:14px 16px;box-shadow:0 2px 10px #1d3b550d;font-family:'Times New Roman',Georgia,serif;color:#1d1d1d;position:relative}
+.vz-doc-h{text-align:center;font-weight:700;font-size:14px;margin-bottom:8px}
+.vz-hang{margin:0!important;padding-left:28px;text-indent:-28px;font-size:14px!important;line-height:2!important;color:#1d1d1d!important;word-break:break-word}
+.vz-para{margin:0!important;font-size:14px!important;line-height:1.9!important;color:#1d1d1d!important;text-indent:28px}
+.vz-tag{display:inline-block;margin-top:6px;font-family:Inter,system-ui,sans-serif;font-size:10px;font-weight:800;color:#7559b5;background:#f1ecfa;border-radius:999px;padding:2px 8px}
+.vz-btn{margin-top:8px;border:0;background:#1f4f78;color:#fff;font:inherit;font-size:12px;font-weight:800;padding:7px 12px;border-radius:9px;cursor:pointer}
+.vz-btn.ghost{background:#eef4fa;color:#1f4f78}
+.vz-seg{display:inline-flex;background:#eaf1f7;border-radius:10px;padding:3px;margin:0 6px 8px 0;gap:2px;flex-wrap:wrap}
+.vz-seg button{border:0;background:transparent;font:inherit;font-size:11.5px;font-weight:700;color:#3c6a86;padding:5px 10px;border-radius:8px;cursor:pointer}
+.vz-seg button.on{background:#fff;color:#123653;box-shadow:0 1px 3px #1d3b5526}
+.vz-page{position:relative;background:#fff;border:1px solid #dde7ef;border-radius:6px;aspect-ratio:8.5/7;max-width:360px;margin:0 auto;box-shadow:0 6px 20px #1d3b5514;font-family:'Times New Roman',Georgia,serif}
+.vz-inner{position:absolute;inset:14% 13% 8%;border:1px dashed #b9cfe0;padding:6px;overflow:hidden}
+.vz-m{position:absolute;font:800 9px Inter,sans-serif;color:#2f6ea8}.vz-m.t{top:3%;left:50%;transform:translateX(-50%)}.vz-m.l{left:1%;top:50%;transform:rotate(-90deg)}
+.vz-num{position:absolute;top:6%;right:9%;font-size:10px}
+.vz-h1{text-align:center;font-weight:700;font-size:11px}
+.vz-meta{text-align:center;font-size:8.5px;line-height:1.6;margin:3px 0 7px;color:#333}
+.vz-h2{font-weight:700;font-size:9.5px;margin:4px 0}
+.vz-h3{font-weight:700;font-style:italic;font-size:9.5px;margin:4px 0}
+.vz-lines i{display:block;height:4px;background:#d9e2ea;border-radius:2px;margin:6px 0}
+.vz-lines i.ind{margin-left:14%}.vz-lines i.s{width:62%}
+.vz-page .vz-tag{position:absolute}.vz-page .vz-tag.a{right:4px;bottom:4px}.vz-page .vz-tag.b{left:4px;bottom:4px}
+.vz-tn{font-weight:700;font-size:13px}.vz-tt{font-style:italic;font-size:13px;margin-bottom:6px}
+.vz-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.vz-table th{border-top:1.5px solid #222;border-bottom:1px solid #222;padding:4px 6px;text-align:left}
+.vz-table td{padding:3px 6px}.vz-table tbody tr:last-child td{border-bottom:1.5px solid #222}
+.vz-table td:not(:first-child),.vz-table th:not(:first-child){text-align:center}
+.vz-note{font-size:11.5px;margin-top:5px}
+.vz-two{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.vz-col{border-radius:10px;padding:9px 10px;font-size:12px;line-height:1.45;background:#fff;border:1px solid #e3ebf2}
+.vz-col b{display:block;font-size:11px;margin-bottom:4px}
+.vz-col p{margin:0!important;font-size:12px!important;color:#2d4a60!important}
+.vz-col.warn{border-color:#f3c9b3;background:#fff7f2}.vz-col.warn b{color:#c4683c}.vz-col.warn u{text-decoration-color:#e07a45;text-decoration-thickness:2px}
+.vz-col.good{border-color:#bfe3cc;background:#f2fbf5}.vz-col.good b{color:#2f8a55}
+.vz-pomo{position:relative;width:150px;height:150px;margin:0 auto}
+.vz-pomo svg{width:100%;height:100%;transform:rotate(-90deg)}
+.vz-pomo circle{fill:none;stroke-width:9}.vz-pomo .bg{stroke:#e5edf3}.vz-pomo .fg{stroke:#e2621f;stroke-linecap:round;transition:stroke-dashoffset 1s linear}
+.vz-pomo.brk .fg{stroke:#3c9460}
+.vz-pomo-t{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.vz-pomo-t b{font-size:28px;color:#123653;font-variant-numeric:tabular-nums}.vz-pomo-t span{font-size:11px;color:#6a8091;font-weight:700}
+.vz-pomo-ctl{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.vz-dots{font-size:14px;color:#e2621f;letter-spacing:2px;margin-top:8px}
+.vz-cornell{display:grid;grid-template-columns:1fr 2fr;grid-template-rows:auto auto;background:#fff;border:1px solid #d9e4ec;border-radius:8px;overflow:hidden;font-size:12px}
+.vz-cornell>div{padding:9px 10px}.vz-cornell b{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px}
+.vz-cornell p{margin:0 0 5px!important;font-size:12px!important;color:#2d4a60!important;line-height:1.45!important}
+.vz-cornell .q{background:#f1ecfa;border-right:2px solid #c9bde9}.vz-cornell .q b{color:#7559b5}
+.vz-cornell .n b{color:#2a7a93}
+.vz-cornell .r{grid-column:1/-1;background:#fdf6e3;border-top:2px solid #ecd9a3}.vz-cornell .r b{color:#a87f14}
+.vz-map{width:100%;max-width:420px;display:block;margin:0 auto}
+.vz-map .ln path{stroke:#9db7cb;stroke-width:2;fill:none}
+.vz-map .lk{font:italic 9px Inter,sans-serif;fill:#7a8e9e}
+.vz-map .nd text{font:800 11px Inter,sans-serif;text-anchor:middle}
+.vz-map .nd.c rect{fill:#123653}.vz-map .nd.c text{fill:#fff}
+.vz-map .nd.a rect{fill:#e5f4f9;stroke:#9fd0e2}.vz-map .nd.a text{fill:#1f6f8b}
+.vz-map .nd.b rect{fill:#fdecf3;stroke:#f0b9cf}.vz-map .nd.b text{fill:#c24f80}
+.vz-bubble{background:#fff;border:1px solid #e3ebf2;border-left:4px solid #7559b5;border-radius:12px;padding:10px 13px}
+.vz-k{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7559b5}
+.vz-bubble p{margin:4px 0 0!important;font-size:13.5px!important;line-height:1.6!important;color:#1d3b55!important}
+.vz-bubble b{font-weight:700;border-radius:4px;padding:0 3px}
+.m-s{background:#e5f4f9}.m-m{background:#fdecf3}.m-a{background:#e7f5ec}.m-r{background:#fcf4dc}.m-t{background:#f1ecfa}
+.vz-breath{display:flex;flex-direction:column;align-items:center;gap:8px;padding:6px 0}
+.vz-circle{width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#cfe7f7,#8fb9e6);box-shadow:0 0 0 10px #8fb9e622;animation:vz-breath 10s ease-in-out infinite}
+@keyframes vz-breath{0%{transform:scale(.62)}40%{transform:scale(1)}100%{transform:scale(.62)}}
+.vz-bl{position:relative;height:18px;width:160px;text-align:center;font-weight:800;font-size:13px;color:#1f4f78}
+.vz-bl span{position:absolute;inset:0}
+.vz-bl .in{animation:vz-in 10s infinite}.vz-bl .out{animation:vz-out 10s infinite}
+@keyframes vz-in{0%,38%{opacity:1}40%,100%{opacity:0}}@keyframes vz-out{0%,38%{opacity:0}40%,98%{opacity:1}100%{opacity:0}}
+.vz-cap{font-size:11.5px!important;color:#6a8091!important;text-align:center;margin:6px 0 0!important}
+.vz-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.vz-week>div{display:flex;flex-direction:column;gap:3px}.vz-week b{text-align:center;font-size:11px;color:#4d6a80}
+.vz-week i{font-style:normal;font-size:9.5px;font-weight:700;border-radius:5px;padding:5px 2px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vz-week .c,.vz-legend .c:before{background:#e5f4f9;color:#1f6f8b}.vz-week .e,.vz-legend .e:before{background:#fdecf3;color:#c24f80}.vz-week .w,.vz-legend .w:before{background:#fcf4dc;color:#8a6a10}.vz-week .f,.vz-legend .f:before{background:#e7f5ec;color:#2f8a55}.vz-week .p,.vz-legend .p:before{background:#f1ecfa;color:#7559b5}
+.vz-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;font-size:10.5px;color:#4d6a80}
+.vz-legend span:before{content:'';display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.vz-curve{width:100%;max-width:380px;display:block;margin:0 auto 6px}
+.vz-curve .fo{stroke:#e5a0b8;stroke-width:2;fill:none;stroke-dasharray:4 4}.vz-curve .re{stroke:#2f6ea8;stroke-width:2.2;fill:none}
+.vz-curve text{font:700 9px Inter,sans-serif;fill:#6a8091}
+.vz-plan{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.vz-plan li{background:#fff;border:1px solid #e3ebf2;border-radius:8px;padding:6px 10px;font-size:12.5px;color:#2d4a60}
+.vz-plan li b{color:#123653;margin-right:6px}.vz-plan li.ex{border-color:#f3c9b3;background:#fff7f2}
+.vz-cv{background:#fff;border:1px solid #e3ebf2;border-radius:10px;overflow:hidden}
+.vz-cv-h{background:#123653;color:#fff;padding:10px 13px}.vz-cv-h b{display:block;font-size:14px}.vz-cv-h span{font-size:11px;color:#b9d3e4}
+.vz-cv-s{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#2a7a93;padding:9px 13px 0}
+.vz-cv p{margin:4px 0 0!important;padding:0 13px 12px;font-size:12.5px!important;line-height:1.6!important;color:#2d4a60!important}
+.vz-chat{background:#eef4f9;border-radius:12px;padding:12px}
+.vz-msg{max-width:85%;margin-left:auto;background:#dcf2e5;color:#1d3b55;border-radius:14px 14px 4px 14px;padding:9px 12px;font-size:13px;line-height:1.5;box-shadow:0 1px 2px #1d3b5514}
+.vz-flash{display:grid;width:100%;max-width:420px;margin:0 auto;border:0;background:transparent;padding:0;cursor:pointer;perspective:800px;font:inherit}
+.vz-flash span{grid-area:1/1;display:flex;flex-direction:column;justify-content:center;min-height:110px;border-radius:14px;padding:14px 16px;font-size:14px;font-weight:700;text-align:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;transition:transform .5s}
+.vz-flash small{font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;opacity:.75}
+.vz-flash .fr{background:#123653;color:#fff}.vz-flash .bk{background:#e7f5ec;color:#1f5f3c;transform:rotateY(180deg);font-weight:600}
+.vz-flash.on .fr{transform:rotateY(180deg)}.vz-flash.on .bk{transform:rotateY(360deg)}
+.vz-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;counter-reset:s}
+.vz-steps div{background:#fff;border:1px solid #e3ebf2;border-radius:10px;padding:9px 6px;text-align:center;position:relative}
+.vz-steps b{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#1f4f78;color:#fff;font-size:12px}
+.vz-steps span{display:block;font-weight:800;font-size:12.5px;color:#173a55;margin-top:4px}.vz-steps small{font-size:10.5px;color:#6a8091}
+.vz-steps div:not(:last-child):after{content:'→';position:absolute;right:-9px;top:50%;transform:translateY(-50%);color:#c4683c;font-weight:800;z-index:1}
+@media (max-width:600px){.vz-form{grid-template-columns:1fr 1fr}.vz-form .vz-f{grid-column:auto!important}.vz-two{grid-template-columns:1fr}.vz-steps{grid-template-columns:1fr 1fr}.vz-steps div:after{display:none}}
+body.no-motion .vz-circle,body.no-motion .vz-bl span{animation:none}
+@media (prefers-reduced-motion:reduce){.vz-circle,.vz-bl span{animation:none}.vz-flash span{transition:none}}
 
 </style>
 <script>document.documentElement.className+=' js';</script>
@@ -2034,7 +2146,7 @@ button.sr-btn{font:inherit;font-size:12px;font-weight:700;cursor:pointer}
   }
   function srCard(r, hits, first) {
     const d = r.d, cat = SR_CATS[d.c];
-    return '<article class="sr-card sr-c-' + d.c + '"><div class="sr-head"><span class="sr-ic">' + srIcon(cat[1]) + '</span><div><span class="sr-tag">' + cat[0] + "</span><h3>" + srMark(d.t, hits) + '</h3></div></div><p class="sr-sum">' + srMark(d.s, hits) + "</p>" + (d.a ? '<p class="sr-auth"><span>Basado en</span> ' + srMark(d.a, hits) + "</p>" : "") + (TOOLS[d.t] ? srTool(TOOLS[d.t]) : "") + "<details" + (first ? " open" : "") + "><summary>C\xF3mo aplicarlo</summary><ol>" + d.p.map((x) => "<li>" + srMark(x, hits) + "</li>").join("") + "</ol>" + (d.why ? '<div class="sr-deep"><div><b>\xBFPor qu\xE9 funciona?</b><p>' + srMark(d.why, hits) + "</p></div><div><b>Ejemplo pr\xE1ctico</b><p>" + srMark(d.ex, hits) + '</p></div><div class="sr-err"><b>Errores comunes</b><p>' + srMark(d.err, hits) + "</p></div></div>" : "") + (d.r ? '<div class="sr-refs"><b>Referencias recientes</b>' + d.r.map((x) => "<p>" + srEsc(x.c) + '<span class="sr-reflinks"><a href="' + srEsc(x.l) + '" target="_blank" rel="noopener">Ver en la revista \u2197</a><a href="https://scholar.google.com/scholar?hl=es&amp;q=' + encodeURIComponent('"' + x.t + '"') + '" target="_blank" rel="noopener">Google Acad\xE9mico \u2197</a></span></p>').join("") + "</div>" : "") + '</details><div class="sr-foot">' + (d.form ? '<a class="sr-btn sr-primary" href="' + srEsc(FORM_URL) + '" target="_blank" rel="noopener">Abrir formulario \u2192</a>' : "") + '<a class="sr-btn" href="#pag-' + (d.pg + 1) + '" data-jump="' + d.pg + '">Ver en la revista \xB7 p\xE1g. ' + String(d.pg + 1).padStart(2, "0") + "</a></div></article>";
+    return '<article class="sr-card sr-c-' + d.c + '"><div class="sr-head"><span class="sr-ic">' + srIcon(cat[1]) + '</span><div><span class="sr-tag">' + cat[0] + "</span><h3>" + srMark(d.t, hits) + '</h3></div></div><p class="sr-sum">' + srMark(d.s, hits) + "</p>" + (d.a ? '<p class="sr-auth"><span>Basado en</span> ' + srMark(d.a, hits) + "</p>" : "") + (TOOLS[d.t] ? srTool(TOOLS[d.t]) : "") + "<details" + (first ? " open" : "") + "><summary>C\xF3mo aplicarlo</summary><ol>" + d.p.map((x) => "<li>" + srMark(x, hits) + "</li>").join("") + "</ol>" + (VIZ[d.t] ? '<div class="sr-viz" data-viz="' + VIZ[d.t] + '"><b class="sr-viz-t">Vista previa interactiva</b>' + vzHTML(VIZ[d.t]) + "</div>" : "") + (d.why ? '<div class="sr-deep"><div><b>\xBFPor qu\xE9 funciona?</b><p>' + srMark(d.why, hits) + "</p></div><div><b>Ejemplo pr\xE1ctico</b><p>" + srMark(d.ex, hits) + '</p></div><div class="sr-err"><b>Errores comunes</b><p>' + srMark(d.err, hits) + "</p></div></div>" : "") + (d.r ? '<div class="sr-refs"><b>Referencias recientes</b>' + d.r.map((x) => "<p>" + srEsc(x.c) + '<span class="sr-reflinks"><a href="' + srEsc(x.l) + '" target="_blank" rel="noopener">Ver en la revista \u2197</a><a href="https://scholar.google.com/scholar?hl=es&amp;q=' + encodeURIComponent('"' + x.t + '"') + '" target="_blank" rel="noopener">Google Acad\xE9mico \u2197</a></span></p>').join("") + "</div>" : "") + '</details><div class="sr-foot">' + (d.form ? '<a class="sr-btn sr-primary" href="' + srEsc(FORM_URL) + '" target="_blank" rel="noopener">Abrir formulario \u2192</a>' : "") + '<a class="sr-btn" href="#pag-' + (d.pg + 1) + '" data-jump="' + d.pg + '">Ver en la revista \xB7 p\xE1g. ' + String(d.pg + 1).padStart(2, "0") + "</a></div></article>";
   }
   function srPageRow(r, hits) {
     const d = r.d;
@@ -2061,7 +2173,7 @@ button.sr-btn{font:inherit;font-size:12px;font-weight:700;cursor:pointer}
       return;
     }
     const top = kb[0] ? kb[0].sc : 0, kbs = kb.filter((r) => r.sc >= top * 0.35).slice(0, 8);
-    box.innerHTML = (kbs.length ? '<div class="sr-section">Recursos de apoyo</div>' + kbs.map((r, i) => srCard(r, out.hits, i === 0)).join("") : "") + (pg.length ? '<div class="sr-section">En esta revista</div>' + pg.map((r) => srPageRow(r, out.hits)).join("") : ""), srWeb(q, kbs[0] ? kbs[0].d.t : ""), box.querySelectorAll("[data-apa]").forEach(apaUpdate), box.querySelectorAll("[data-smart]").forEach(smartUpdate), box.querySelector("[data-pomo]") && pomoPaint(), st.textContent = kbs.length + (kbs.length === 1 ? " recurso" : " recursos") + (pg.length ? " \xB7 " + pg.length + (pg.length === 1 ? " p\xE1gina" : " p\xE1ginas") + " de la revista" : "");
+    box.innerHTML = (kbs.length ? '<div class="sr-section">Recursos de apoyo</div>' + kbs.map((r, i) => srCard(r, out.hits, i === 0)).join("") : "") + (pg.length ? '<div class="sr-section">En esta revista</div>' + pg.map((r) => srPageRow(r, out.hits)).join("") : ""), srWeb(q, kbs[0] ? kbs[0].d.t : ""), box.querySelectorAll("[data-apa]").forEach(apaUpdate), box.querySelectorAll("[data-smart]").forEach(smartUpdate), box.querySelector("[data-pomo]") && pomoPaint(), vzInit(box), st.textContent = kbs.length + (kbs.length === 1 ? " recurso" : " recursos") + (pg.length ? " \xB7 " + pg.length + (pg.length === 1 ? " p\xE1gina" : " p\xE1ginas") + " de la revista" : "");
   }
   const TOOLS = { "Normas APA 7: lista de referencias": "apa", "Normas APA 7: citas en el texto": "apa", "T\xE9cnica Pomodoro": "pomo", "Motivaci\xF3n y metas SMART": "smart", "Tablas y figuras en APA 7": "apa" };
   function apaInit(n) {
@@ -2377,7 +2489,155 @@ button.sr-btn{font:inherit;font-size:12px;font-weight:700;cursor:pointer}
     }
     location.replace(location.pathname + "?v=" + j.v + location.hash);
   }).catch(() => {
-  }), window.__papReady = !0;
+  });
+  const VIZ = { "Normas APA 7: lista de referencias": "apa-ref", "Normas APA 7: citas en el texto": "apa-cite", "Normas APA 7: formato del documento": "apa-format", "Tablas y figuras en APA 7": "apa-table", "Parafrasear y evitar el plagio": "para", "T\xE9cnica Pomodoro": "pomodoro", "M\xE9todo Cornell para tomar apuntes": "cornell", "Mapas mentales y conceptuales": "mapa", "Motivaci\xF3n y metas SMART": "smart", "Entrevista de trabajo": "star", "Ansiedad ante los ex\xE1menes": "resp", "Gesti\xF3n del tiempo y planificaci\xF3n semanal": "week", "Repetici\xF3n espaciada": "spaced", "Hoja de vida efectiva": "cv", "Comunicaci\xF3n asertiva": "asert", "Vencer la procrastinaci\xF3n": "impl", "Pr\xE1ctica de recuperaci\xF3n (autoevaluaci\xF3n)": "flash", "Escritura acad\xE9mica: planear, redactar y revisar": "write" }, vf = (n, l, v, ph, w) => '<label class="vz-f"' + (w ? ' style="grid-column:span ' + w + '"' : "") + "><span>" + l + '</span><input data-vz-in="' + n + '" value="' + srEsc(v || "") + '" placeholder="' + srEsc(ph || "") + '"></label>';
+  function vzHTML(k) {
+    if (k === "apa-ref")
+      return '<div class="vz-form">' + vf("au", "Autores", "L\xF3pez-Aguilar, D., y Garc\xEDa-Prieto, F. J.", "", 2) + vf("y", "A\xF1o", "2026") + vf("t", "T\xEDtulo del art\xEDculo", "Procrastinaci\xF3n y rendimiento acad\xE9mico en estudiantes universitarios", "", 3) + vf("j", "Revista", "Revista de Investigaci\xF3n Educativa", "", 2) + vf("v", "Volumen", "44") + vf("n", "N\xFAmero", "") + vf("p", "P\xE1ginas", "") + vf("d", "DOI", "10.6018/rie.680631") + '</div><div class="vz-doc"><div class="vz-doc-h">Referencias</div><p class="vz-hang" data-vz-out></p><span class="vz-tag">Sangr\xEDa francesa 1,27 cm \xB7 Interlineado doble</span> <span class="vz-tag">En espa\xF1ol se une con \xABy\xBB; algunas instituciones aceptan \xAB&amp;\xBB</span></div><button type="button" class="vz-btn" data-vz-copy>Copiar referencia</button>';
+    if (k === "apa-cite")
+      return '<div class="vz-form">' + vf("a1", "Apellido autor 1", "Garc\xEDa") + vf("a2", "Apellido autor 2", "L\xF3pez") + vf("y", "A\xF1o", "2023") + vf("pg", "P\xE1gina (textual)", "15") + '</div><div class="vz-seg" data-vz-g="n"><button type="button" data-v="1">1 autor</button><button type="button" data-v="2" class="on">2 autores</button><button type="button" data-v="3">3 o m\xE1s</button></div><div class="vz-seg" data-vz-g="t"><button type="button" data-v="par" class="on">Parent\xE9tica</button><button type="button" data-v="nar">Narrativa</button><button type="button" data-v="tex">Textual</button></div><div class="vz-doc"><p class="vz-para" data-vz-out></p></div>';
+    if (k === "apa-format")
+      return '<div class="vz-page"><span class="vz-m t">2,54 cm</span><span class="vz-m l">2,54 cm</span><span class="vz-num">1</span><div class="vz-inner"><div class="vz-h1">T\xEDtulo del trabajo en negrita</div><div class="vz-meta">Nombre del estudiante<br>Programa de Psicolog\xEDa, Corporaci\xF3n Universitaria Reformada<br>Asignatura \xB7 Docente \xB7 Fecha</div><div class="vz-h2">Nivel 2: a la izquierda en negrita</div><div class="vz-lines"><i class="ind"></i><i></i><i></i><i class="s"></i></div><div class="vz-h3">Nivel 3: negrita y cursiva</div><div class="vz-lines"><i class="ind"></i><i></i><i class="s"></i></div></div><span class="vz-tag a">Interlineado doble</span><span class="vz-tag b">Sangr\xEDa 1,27 cm</span></div>';
+    if (k === "apa-table")
+      return '<div class="vz-doc"><div class="vz-tn">Tabla 1</div><div class="vz-tt">Estrategias de estudio m\xE1s usadas por estudiantes de primer semestre</div><table class="vz-table"><thead><tr><th>Estrategia</th><th>n</th><th>%</th></tr></thead><tbody><tr><td>Relectura</td><td>48</td><td>40,0</td></tr><tr><td>Res\xFAmenes</td><td>36</td><td>30,0</td></tr><tr><td>Autoevaluaci\xF3n</td><td>24</td><td>20,0</td></tr><tr><td>Mapas conceptuales</td><td>12</td><td>10,0</td></tr></tbody></table><div class="vz-note"><i>Nota.</i> Datos ilustrativos. N = 120.</div></div>';
+    if (k === "para")
+      return '<div class="vz-two"><div class="vz-col bad"><b>Original</b><p>\u201CLa ansiedad elevada ante las evaluaciones interfiere con la recuperaci\xF3n de la informaci\xF3n aprendida.\u201D</p></div><div class="vz-col warn"><b>\u2717 Par\xE1frasis superficial</b><p>La ansiedad <u>alta</u> ante las <u>pruebas</u> interfiere con la recuperaci\xF3n de la informaci\xF3n <u>estudiada</u>.</p></div><div class="vz-col good"><b>\u2713 Par\xE1frasis adecuada</b><p>Cuando un estudiante siente mucha ansiedad en un examen, le cuesta m\xE1s recordar lo que aprendi\xF3 (Malas-Tolsa, 2023).</p></div></div>';
+    if (k === "pomodoro")
+      return '<div class="vz-pomo" data-vz-pomo><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="bg"/><circle cx="60" cy="60" r="52" class="fg" stroke-dasharray="326.7" stroke-dashoffset="0"/></svg><div class="vz-pomo-t"><b data-vz-time>25:00</b><span data-vz-mode>Concentraci\xF3n</span></div></div><div class="vz-pomo-ctl"><button type="button" class="vz-btn" data-vz-pomo-go>Iniciar</button><button type="button" class="vz-btn ghost" data-vz-pomo-reset>Reiniciar</button><span class="vz-dots" data-vz-cycles>\u25CB \u25CB \u25CB \u25CB</span></div>';
+    if (k === "cornell")
+      return '<div class="vz-cornell"><div class="q"><b>Preguntas clave</b><p>\xBFQu\xE9 es la homeostasis?</p><p>\xBFQu\xE9 sistemas la regulan?</p></div><div class="n"><b>Notas de clase</b><p>Equilibrio interno del organismo frente a cambios externos.</p><p>Sistema nervioso y endocrino: retroalimentaci\xF3n negativa.</p><p>Ej.: sudar cuando sube la temperatura.</p></div><div class="r"><b>Resumen</b><p>La homeostasis mantiene estable el medio interno mediante mecanismos de retroalimentaci\xF3n.</p></div></div>';
+    if (k === "mapa")
+      return '<svg class="vz-map" viewBox="0 0 320 170" role="img" aria-label="Mapa conceptual sobre la memoria"><g class="ln"><path d="M160 85 L60 35"/><path d="M160 85 L60 135"/><path d="M160 85 L262 85"/></g><text class="lk" x="98" y="52">incluye</text><text class="lk" x="98" y="124">incluye</text><text class="lk" x="200" y="78">se fortalece con</text><g class="nd c"><rect x="115" y="68" width="90" height="34" rx="10"/><text x="160" y="90">Memoria</text></g><g class="nd a"><rect x="12" y="20" width="96" height="30" rx="9"/><text x="60" y="40">Corto plazo</text></g><g class="nd a"><rect x="12" y="120" width="96" height="30" rx="9"/><text x="60" y="140">Largo plazo</text></g><g class="nd b"><rect x="222" y="70" width="88" height="30" rx="9"/><text x="266" y="90">Repaso</text></g></svg>';
+    if (k === "smart")
+      return '<div class="vz-form">' + vf("s", "S \xB7 Espec\xEDfica", "subir mi nota de bioqu\xEDmica", "", 2) + vf("m", "M \xB7 Medible", "de 3,2 a 3,8") + vf("a", "A \xB7 Acci\xF3n alcanzable", "estudiando 4 horas semanales con ejercicios", "", 2) + vf("r", "R \xB7 Relevante (para qu\xE9)", "aprobar la materia con seguridad") + vf("t", "T \xB7 Tiempo", "el segundo corte", "", 3) + '</div><div class="vz-bubble"><span class="vz-k">Mi meta</span><p data-vz-out></p></div>';
+    if (k === "star")
+      return '<div class="vz-form">' + vf("s", "Situaci\xF3n", "el equipo del proyecto estaba desorganizado", "", 3) + vf("t", "Tarea", "entregar el informe a tiempo", "", 3) + vf("a", "Acci\xF3n", "propuse un cronograma y repart\xED responsabilidades", "", 3) + vf("r", "Resultado", "entregamos dos d\xEDas antes y obtuvimos 4,7", "", 3) + '</div><div class="vz-bubble"><span class="vz-k">Tu respuesta en la entrevista</span><p data-vz-out></p></div>';
+    if (k === "resp")
+      return '<div class="vz-breath"><div class="vz-circle"></div><div class="vz-bl"><span class="in">Inhala \xB7 4 s</span><span class="out">Exhala \xB7 6 s</span></div></div><p class="vz-cap">Sigue el c\xEDrculo durante 2 minutos: inhala mientras crece y exhala mientras se reduce.</p>';
+    if (k === "week") {
+      const d = ["L", "M", "X", "J", "V", "S", "D"], bl = [[["c", "Clases"], ["e", "Estudio"], ["f", "Libre"]], [["c", "Clases"], ["w", "Trabajo"], ["e", "Estudio"]], [["c", "Clases"], ["e", "Estudio"], ["f", "Libre"]], [["c", "Clases"], ["w", "Trabajo"], ["e", "Repaso"]], [["c", "Clases"], ["e", "Entrega"], ["f", "Libre"]], [["e", "Estudio"], ["f", "Familia"], ["f", "Libre"]], [["f", "Descanso"], ["p", "Plan semana"], ["f", "Libre"]]];
+      return '<div class="vz-week">' + d.map((x, i) => "<div><b>" + x + "</b>" + bl[i].map((b) => '<i class="' + b[0] + '">' + b[1] + "</i>").join("") + "</div>").join("") + '</div><div class="vz-legend"><span class="c">Clases</span><span class="e">Estudio</span><span class="w">Trabajo</span><span class="f">Descanso</span><span class="p">Planear</span></div>';
+    }
+    return k === "spaced" ? '<div class="vz-form"><label class="vz-f"><span>Fecha de la clase</span><input type="date" data-vz-in="d"></label><label class="vz-f"><span>Fecha del parcial</span><input type="date" data-vz-in="x"></label></div><svg class="vz-curve" viewBox="0 0 300 90"><path class="fo" d="M10 15 C60 70 120 80 290 85"/><path class="re" d="M10 15 C30 45 40 50 55 52 L55 18 C80 40 95 44 115 46 L115 16 C150 32 175 36 200 38 L200 15 C240 25 265 28 290 30"/><text x="200" y="80">sin repasar</text><text x="228" y="12">con repasos</text></svg><ul class="vz-plan" data-vz-out></ul>' : k === "cv" ? '<div class="vz-seg" data-vz-g="cv"><button type="button" data-v="a">Antes</button><button type="button" data-v="b" class="on">Despu\xE9s</button></div><div class="vz-cv"><div class="vz-cv-h"><b>Mar\xEDa P\xE9rez</b><span>Estudiante de Psicolog\xEDa \xB7 Barranquilla</span></div><div class="vz-cv-s">Experiencia</div><p data-vz-cv="a" hidden>\u2022 Apoyo en eventos de Bienestar.<br>\u2022 Trabajo en equipo.</p><p data-vz-cv="b">\u2022 Coordin\xE9 la log\xEDstica de 3 eventos de Bienestar con m\xE1s de 200 asistentes.<br>\u2022 Dise\xF1\xE9 una encuesta de satisfacci\xF3n aplicada a 150 estudiantes.</p></div>' : k === "asert" ? '<div class="vz-form">' + vf("s", "Yo siento\u2026", "preocupaci\xF3n", "") + vf("c", "cuando\u2026", "no recibo tu parte del trabajo a tiempo", "", 2) + vf("g", "me gustar\xEDa\u2026", "acordar entregarla el jueves", "", 3) + '</div><div class="vz-chat"><div class="vz-msg" data-vz-out></div></div>' : k === "impl" ? '<div class="vz-form">' + vf("w", "Cuando\u2026", "termine de almorzar") + vf("l", "en\u2026", "la biblioteca") + vf("a", "voy a\u2026", "abrir el documento y escribir 3 ideas", "", 3) + '</div><div class="vz-bubble"><span class="vz-k">Mi intenci\xF3n de implementaci\xF3n</span><p data-vz-out></p></div>' : k === "flash" ? '<button type="button" class="vz-flash" data-vz-flip><span class="fr"><small>Pregunta</small>\xBFQu\xE9 es el condicionamiento operante?</span><span class="bk"><small>Respuesta</small>Aprendizaje en el que la conducta cambia seg\xFAn sus consecuencias (refuerzos o castigos).</span></button><p class="vz-cap">Toca la tarjeta para comprobar tu respuesta.</p>' : k === "write" ? '<div class="vz-steps"><div><b>1</b><span>Planear</span><small>Tesis y esquema</small></div><div><b>2</b><span>Redactar</span><small>Borrador sin juzgar</small></div><div><b>3</b><span>Revisar</span><small>Contenido y forma</small></div><div><b>4</b><span>Entregar</span><small>APA y ortograf\xEDa</small></div></div>' : "";
+  }
+  function vzVals(box) {
+    const o = {};
+    return box.querySelectorAll("[data-vz-in]").forEach((i) => o[i.getAttribute("data-vz-in")] = i.value.trim()), box.querySelectorAll("[data-vz-g]").forEach((g) => {
+      const b = g.querySelector(".on");
+      o["g_" + g.getAttribute("data-vz-g")] = b ? b.getAttribute("data-v") : "";
+    }), o;
+  }
+  function vzSet(el, parts) {
+    el.textContent = "", parts.forEach((p) => {
+      if (typeof p == "string")
+        el.appendChild(document.createTextNode(p));
+      else {
+        const e = document.createElement(p[0]);
+        e.textContent = p[1], p[2] && (e.className = p[2]), el.appendChild(e);
+      }
+    });
+  }
+  function vzUpdate(box) {
+    const k = box.getAttribute("data-viz"), v = vzVals(box), out = box.querySelector("[data-vz-out]");
+    if (k === "apa-ref" && out) {
+      const parts = [(v.au || "Apellido, A. A.") + " (" + (v.y || "s. f.") + "). " + (v.t || "T\xEDtulo del art\xEDculo") + ". ", ["i", (v.j || "Nombre de la Revista") + (v.v ? ", " + v.v : "")]];
+      let tail = (v.n ? "(" + v.n + ")" : "") + (v.p ? ", " + v.p : "") + ".";
+      v.d && (tail += " https://doi.org/" + v.d.replace(/^https?:\/\/(dx\.)?doi\.org\//, "")), parts.push(tail), vzSet(out, parts);
+    }
+    if (k === "apa-cite" && out) {
+      const a1 = v.a1 || "Garc\xEDa", a2 = v.a2 || "L\xF3pez", y = v.y || "2023", n = v.g_n, t = v.g_t, au = n === "1" ? a1 : n === "2" ? a1 + " y " + a2 : a1 + " et al.";
+      let s;
+      t === "par" ? s = "Las estrategias de autoevaluaci\xF3n mejoran el aprendizaje (" + au + ", " + y + ")." : t === "nar" ? s = au + " (" + y + ") encontr\xF3 que la autoevaluaci\xF3n mejora el aprendizaje." : s = "Seg\xFAn " + au + " (" + y + "), \u201Cla autoevaluaci\xF3n favorece la retenci\xF3n\u201D (p. " + (v.pg || "15") + ").", out.textContent = s;
+    }
+    if (k === "smart" && out && vzSet(out, ["Voy a ", ["b", v.s || "\u2026", "m-s"], " ", ["b", v.m || "\u2026", "m-m"], ", ", ["b", v.a || "\u2026", "m-a"], ", para ", ["b", v.r || "\u2026", "m-r"], ", antes de ", ["b", v.t || "\u2026", "m-t"], "."]), k === "star" && out && vzSet(out, ["\u201CEn una ocasi\xF3n ", ["b", v.s || "\u2026", "m-s"], ". Mi objetivo era ", ["b", v.t || "\u2026", "m-m"], ". Por eso ", ["b", v.a || "\u2026", "m-a"], ". Como resultado, ", ["b", v.r || "\u2026", "m-r"], ".\u201D"]), k === "asert" && out && (out.textContent = "Siento " + (v.s || "\u2026") + " cuando " + (v.c || "\u2026") + ". Me gustar\xEDa " + (v.g || "\u2026") + ". \xBFQu\xE9 opinas?"), k === "impl" && out && vzSet(out, ["Cuando ", ["b", v.w || "\u2026", "m-s"], ", en ", ["b", v.l || "\u2026", "m-m"], ", voy a ", ["b", v.a || "\u2026", "m-a"], "."]), k === "spaced" && out) {
+      const ip = box.querySelector('[data-vz-in="d"]');
+      if (ip && !ip.value) {
+        const t = /* @__PURE__ */ new Date();
+        ip.value = t.toISOString().slice(0, 10);
+      }
+      const d = /* @__PURE__ */ new Date((ip ? ip.value : "") + "T12:00:00");
+      if (isNaN(d)) {
+        out.textContent = "";
+        return;
+      }
+      const fmt = (x) => x.toLocaleDateString("es-CO", { weekday: "short", day: "numeric", month: "short" }), ex = v.x ? /* @__PURE__ */ new Date(v.x + "T12:00:00") : null, steps = [[0, "Repaso 1 \xB7 mismo d\xEDa (10 min)"], [2, "Repaso 2 \xB7 autoevaluaci\xF3n"], [7, "Repaso 3 \xB7 ejercicios mezclados"], [14, "Repaso 4 \xB7 simulacro"]];
+      if (out.textContent = "", steps.forEach((st) => {
+        const x = new Date(d);
+        if (x.setDate(x.getDate() + st[0]), ex && x > ex)
+          return;
+        const li = document.createElement("li");
+        vzSet(li, [["b", fmt(x)], " " + st[1]]), out.appendChild(li);
+      }), ex && !isNaN(ex)) {
+        const x = new Date(ex);
+        x.setDate(x.getDate() - 1);
+        const li = document.createElement("li");
+        li.className = "ex", vzSet(li, [["b", fmt(x)], " Repaso final de errores \xB7 duerme bien"]), out.appendChild(li);
+      }
+    }
+  }
+  function vzInit(root) {
+    (root || document).querySelectorAll(".sr-viz[data-viz]").forEach((b) => {
+      b.__init || (b.__init = 1, vzUpdate(b));
+    });
+  }
+  document.addEventListener("input", (e) => {
+    const b = e.target.closest && e.target.closest(".sr-viz[data-viz]");
+    b && vzUpdate(b);
+  }), document.addEventListener("change", (e) => {
+    const b = e.target.closest && e.target.closest(".sr-viz[data-viz]");
+    b && vzUpdate(b);
+  }), document.addEventListener("click", (e) => {
+    const b = e.target.closest && e.target.closest(".sr-viz[data-viz]");
+    if (!b)
+      return;
+    const sg = e.target.closest(".vz-seg button");
+    if (sg) {
+      sg.parentNode.querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === sg)), sg.parentNode.getAttribute("data-vz-g") === "cv" && b.querySelectorAll("[data-vz-cv]").forEach((p) => p.hidden = p.getAttribute("data-vz-cv") !== sg.getAttribute("data-v")), vzUpdate(b);
+      return;
+    }
+    if (e.target.closest("[data-vz-copy]")) {
+      const o = b.querySelector("[data-vz-out]"), txt = o ? o.textContent : "", done = () => notify("Referencia copiada.");
+      try {
+        navigator.clipboard.writeText(txt).then(done, () => notify("Selecciona y copia el texto de la vista previa."));
+      } catch (x) {
+        notify("Selecciona y copia el texto de la vista previa.");
+      }
+      return;
+    }
+    const fl = e.target.closest("[data-vz-flip]");
+    if (fl) {
+      fl.classList.toggle("on");
+      return;
+    }
+    const P = b.querySelector("[data-vz-pomo]");
+    if (!P)
+      return;
+    if (e.target.closest("[data-vz-pomo-reset]")) {
+      clearInterval(P.__t), P.__t = 0, P.__left = 1500, P.__mode = "f", P.__cyc = 0, vzPomo(P, b), b.querySelector("[data-vz-pomo-go]").textContent = "Iniciar";
+      return;
+    }
+    const go = e.target.closest("[data-vz-pomo-go]");
+    if (go) {
+      if (P.__t) {
+        clearInterval(P.__t), P.__t = 0, go.textContent = "Continuar";
+        return;
+      }
+      P.__left == null && (P.__left = 1500, P.__mode = "f", P.__cyc = 0), go.textContent = "Pausar", P.__t = setInterval(() => {
+        if (!P.isConnected) {
+          clearInterval(P.__t);
+          return;
+        }
+        P.__left--, P.__left <= 0 && (P.__mode === "f" ? (P.__cyc = (P.__cyc || 0) + 1, P.__mode = "b", P.__left = P.__cyc % 4 === 0 ? 1200 : 300, notify("\xA1Bloque completado! Toma un descanso.")) : (P.__mode = "f", P.__left = 1500, notify("Descanso terminado: siguiente bloque de concentraci\xF3n."))), vzPomo(P, b);
+      }, 1e3);
+    }
+  });
+  function vzPomo(P, b) {
+    const tot = P.__mode === "b" ? P.__cyc % 4 === 0 ? 1200 : 300 : 1500, l = P.__left == null ? 1500 : P.__left, m = Math.floor(l / 60), s = l % 60;
+    b.querySelector("[data-vz-time]").textContent = String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0"), b.querySelector("[data-vz-mode]").textContent = P.__mode === "b" ? "Descanso" : "Concentraci\xF3n", P.querySelector(".fg").setAttribute("stroke-dashoffset", String(326.7 * (1 - l / tot))), P.classList.toggle("brk", P.__mode === "b");
+    const c = P.__cyc || 0;
+    b.querySelector("[data-vz-cycles]").textContent = [0, 1, 2, 3].map((i) => i < c % 4 || c > 0 && c % 4 === 0 && P.__mode === "b" ? "\u25CF" : "\u25CB").join(" ");
+  }
+  window.__papReady = !0;
 })();
 
 </script>
