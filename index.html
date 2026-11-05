@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PAP · Revista digital interactiva">
 
-<meta name="pap-version" content="1793915867150">
+<meta name="pap-version" content="1793916056696">
 <style>
 :root{--navy:#072d5b;--deep:#041b3a;--blue:#0d4784;--cyan:#25cbef;--orange:#ff6a18;--paper:#fffefa;--ink:#163452;--muted:#67788e;--line:#dce6f2;--shadow:0 28px 80px rgba(2,16,42,.27);--ease:cubic-bezier(.2,.76,.19,.99)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 2% 10%,#194e87 0,transparent 32%),radial-gradient(circle at 100% 90%,#10537d 0,transparent 34%),#061e3d;color:#152e4d;font:15px/1.47 'Segoe UI',Arial,Helvetica,sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c85022;outline-offset:3px}a{color:inherit}::selection{background:#baf3ff;color:#032348}
@@ -816,6 +816,57 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
 @media (max-width:600px){.ap-cites{grid-template-columns:1fr}.ap-ex{float:none}}
 @media (min-width:1180px){.as-badge{background:#1d4a6e!important;border:1px solid #3d6f93;color:#e6f4fb!important;letter-spacing:.08em;text-transform:uppercase;font-size:9.5px!important;padding:5px 10px!important}.as-badge i{background:#5fd0e0!important;box-shadow:0 0 0 0 #5fd0e088;animation-name:as-pulse2!important}}
 @keyframes as-pulse2{0%{box-shadow:0 0 0 0 #5fd0e088}70%{box-shadow:0 0 0 6px #5fd0e000}100%{box-shadow:0 0 0 0 #5fd0e000}}
+/* ===== Panel inteligente del Centro de apoyo ===== */
+@media (min-width:1180px){
+.app-search.open{max-width:760px!important}
+.as-panel{padding:0!important;overflow:hidden auto;border-radius:18px!important}
+.as-hero{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;background:linear-gradient(120deg,#123653 0%,#1d4a6e 60%,#245a7f 100%);color:#fff}
+.as-hero b{display:block;font-size:16px}.as-hero span{font-size:12px;color:#cfe3ef}
+.as-stats{display:flex;gap:10px;align-items:baseline;flex:0 0 auto;font-size:11px;color:#b9d3e4;white-space:nowrap}
+.as-stats b{display:inline;font-size:16px;color:#fff;margin-left:8px;margin-right:3px}
+.as-home{display:grid;grid-template-columns:1.05fr 1fr;gap:16px;padding:14px 16px 6px}
+.as-col{min-width:0}
+.as-rec{display:grid;grid-template-columns:32px minmax(0,1fr) 16px;gap:10px;align-items:center;width:100%;text-align:left;border:1px solid #e6edf3;background:#fff;border-radius:12px;padding:9px 10px;margin-bottom:7px;font:inherit;cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s;animation:as-up .3s ease both}
+.as-rec:hover,.as-rec.on{transform:translateX(3px);border-color:#c9dbe8;box-shadow:0 6px 16px #1d3b5514}
+.as-rec em{display:block;font-style:normal;font-size:10.5px;font-weight:800;color:#c4683c;margin-bottom:1px}
+.as-rec b{display:block;font-size:13px;color:#173a55;line-height:1.25}
+.as-rec small{display:block;font-size:11px;color:#7a8e9e;margin-top:2px}
+.as-rec i{font-style:normal;color:#a0b0bd;font-weight:800}
+.as-rec.as-a{border-left:3px solid #2a87a5}.as-rec.as-p{border-left:3px solid #c24f80}.as-rec.as-f{border-left:3px solid #3c9460}.as-rec.as-b{border-left:3px solid #7559b5}
+.as-dims{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.as-dim{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;border:0;border-radius:12px;padding:10px;font:inherit;cursor:pointer;animation:as-up .3s ease both;transition:transform .18s,box-shadow .18s}
+.as-dim:hover{transform:translateY(-2px);box-shadow:0 8px 18px #1d3b551a}
+.as-dim b{font-size:12.5px;color:#173a55;margin-top:4px}.as-dim small{font-size:10.5px;color:#5b7689;font-weight:700}
+.as-dim .as-ex{font-size:10px;color:#6a8091;line-height:1.35;margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.as-dim.as-a{background:linear-gradient(135deg,#e6f5fa,#f4fbfd)}.as-dim.as-p{background:linear-gradient(135deg,#fdecf3,#fff6fa)}.as-dim.as-f{background:linear-gradient(135deg,#e7f5ec,#f5fbf7)}.as-dim.as-b{background:linear-gradient(135deg,#f1ecfa,#f9f7fd)}
+.as-dim .as-ic{background:#fff}
+.as-chip.rec{background:#eef4f9;border-color:#d9e6f0;color:#1f4f78}
+.as-tip{margin-top:12px!important}
+.as-keys{display:flex;flex-wrap:wrap;gap:14px;padding:9px 18px 12px;border-top:1px solid #eef2f6;font-size:10.5px;color:#8094a5}
+.as-keys kbd{font:inherit;font-size:10px;font-weight:800;border:1px solid #dbe6ee;border-bottom-width:2px;border-radius:5px;padding:0 5px;margin-right:3px;color:#4d6a80;background:#fbfdfe}
+.as-panel>.as-sec,.as-panel>.as-opt,.as-panel>.as-all,.as-panel>.as-empty{margin-left:14px;margin-right:14px}
+.as-panel>.as-sec:first-child{margin-top:14px}
+.as-panel>.as-all{width:calc(100% - 28px);margin-bottom:14px}
+@keyframes as-up{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+}
+body.no-motion .as-rec,body.no-motion .as-dim{animation:none}
+@media (prefers-reduced-motion:reduce){.as-rec,.as-dim{animation:none}}
+@media (min-width:1180px){
+.as-feat{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
+.as-fc{display:flex;flex-direction:column;border:1px solid #e6edf3;border-radius:12px;overflow:hidden;background:#fff;animation:as-up .3s ease both;transition:transform .18s,box-shadow .18s}
+.as-fc:hover{transform:translateY(-2px);box-shadow:0 8px 18px #1d3b551a}
+.as-fth{position:relative;display:block;aspect-ratio:16/8;border:0;padding:0;cursor:pointer;background:#1d2b3a center/cover no-repeat}
+.as-fth i{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:34px;height:24px;border-radius:7px;background:#ff0033;color:#fff;display:grid;place-items:center;font-style:normal;font-size:10px;box-shadow:0 3px 10px #0006;transition:transform .18s}
+.as-fth:hover i{transform:translate(-50%,-50%) scale(1.12)}
+.as-fth em{position:absolute;right:5px;bottom:5px;background:#000c;color:#fff;font-style:normal;font-size:9.5px;font-weight:700;padding:0 4px;border-radius:3px}
+.as-fg{border:0;background:#fff;text-align:left;padding:7px 9px 8px;font:inherit;cursor:pointer;border-top:3px solid #2a87a5}
+.as-fc.as-p .as-fg{border-top-color:#c24f80}.as-fc.as-f .as-fg{border-top-color:#3c9460}.as-fc.as-b .as-fg{border-top-color:#7559b5}
+.as-fg b{display:block;font-size:11.5px;color:#173a55;line-height:1.25}
+.as-fg small{display:block;font-size:10px;color:#7a8e9e;margin-top:2px}
+.as-fg:hover b{color:#c4683c}
+}
+
+@media (min-width:1180px){.as-panel{max-height:calc(100vh - 80px)!important}}
 
 </style>
 <script>document.documentElement.className+=' js';</script>
@@ -2416,8 +2467,43 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
     function catCount(c) {
       return KB.filter((r) => r.c === c).length;
     }
+    function recent() {
+      try {
+        return JSON.parse(localStorage.getItem("pap-recent") || "[]").filter((t) => KB.some((r) => r.t === t));
+      } catch (e) {
+        return [];
+      }
+    }
+    function ctx() {
+      const h = (/* @__PURE__ */ new Date()).getHours(), greet = h < 12 && h >= 5 ? "Buenos d\xEDas" : h < 19 && h >= 12 ? "Buenas tardes" : "Buenas noches", byPage = { 3: ["a", "Est\xE1s leyendo la dimensi\xF3n acad\xE9mica"], 4: ["p", "Est\xE1s leyendo la dimensi\xF3n personal"], 5: ["f", "Est\xE1s leyendo la dimensi\xF3n profesional"], 6: ["b", "Est\xE1s conociendo la ruta PAP"], 7: ["b", "Est\xE1s conociendo al equipo PAP"], 8: ["a", "Est\xE1s en preguntas frecuentes"], 9: ["p", "Est\xE1s creando tu plan de acci\xF3n"], 10: ["a", "Est\xE1s en el Centro de apoyo"] };
+      let pc = null;
+      try {
+        pc = byPage[current] || byPage[current + 1] || null;
+      } catch (e) {
+      }
+      const timePick = h >= 21 || h < 5 ? ["Higiene del sue\xF1o", "Es de noche: cuida tu descanso"] : h < 10 ? ["Gesti\xF3n del tiempo y planificaci\xF3n semanal", "Empieza el d\xEDa con un plan"] : h < 14 ? ["T\xE9cnica Pomodoro", "Ideal para tu pr\xF3ximo bloque de estudio"] : h < 18 ? ["Pr\xE1ctica de recuperaci\xF3n (autoevaluaci\xF3n)", "Repasa lo visto hoy en clase"] : ["Vencer la procrastinaci\xF3n", "Para cerrar pendientes del d\xEDa"], out = [], seen = {}, add = (t, why, ic) => {
+        const r = KB.find((x) => x.t === t);
+        r && !seen[t] && out.length < 3 && (seen[t] = 1, out.push([r, why, ic]));
+      };
+      return recent().slice(0, 1).forEach((t) => add(t, "Contin\xFAa donde ibas", "\u21BA")), pc && KB.filter((r) => r.c === pc[0] && !seen[r.t]).slice(0, 2).forEach((r) => add(r.t, pc[1], "\u{1F4D6}")), add(timePick[0], timePick[1], h >= 21 || h < 5 ? "\u{1F319}" : h < 12 ? "\u2600\uFE0F" : "\u23F1"), ["Normas APA 7: citas en el texto", "Ansiedad ante los ex\xE1menes", "T\xE9cnica Pomodoro", "Hoja de vida efectiva"].forEach((t) => add(t, "Lo m\xE1s consultado", "\u2605")), { greet, list: out };
+    }
     function home() {
-      items = [], sel = -1, panel.innerHTML = '<div class="as-sec">Explora por dimensi\xF3n</div><div class="as-cats">' + Object.keys(SR_CATS).map((c) => '<button type="button" class="as-cat as-' + c + '" data-as-cat="' + c + '"><span class="as-ic">' + srIcon(SR_CATS[c][1]) + "</span><b>" + SR_CATS[c][0] + "</b><small>" + catCount(c) + " fichas</small></button>").join("") + '</div><div class="as-sec">B\xFAsquedas frecuentes</div><div class="as-chips">' + SR_POPULAR.slice(0, 8).map((p) => '<button type="button" class="as-chip" data-as-q="' + srEsc(p) + '">' + srEsc(p) + "</button>").join("") + "</div>" + (tip ? '<button type="button" class="as-tip" data-as-open="' + srEsc(tip.t) + '"><span class="as-tip-k">\u{1F4A1} Tip del d\xEDa \xB7 ' + srEsc(tip.t) + "</span><span>" + srEsc(tip.ex) + "</span><em>Ver la ficha \u2192</em></button>" : "");
+      const c = ctx();
+      items = c.list.map((x) => x[0].t), sel = -1;
+      const rec = recent(), card = (x, k) => {
+        const r = x[0], cc = SR_CATS[r.c];
+        return '<button type="button" class="as-rec as-' + r.c + '" role="option" data-as-open="' + srEsc(r.t) + '" style="animation-delay:' + k * 45 + 'ms"><span class="as-ic">' + srIcon(cc[1]) + '</span><span class="as-txt"><em>' + x[2] + " " + srEsc(x[1]) + "</em><b>" + srEsc(r.t) + "</b><small>" + cc[0] + (VID[r.t] ? " \xB7 \u25B6 " + VID[r.t].length + " videos" : "") + (VIZ[r.t] ? " \xB7 herramienta" : "") + "</small></span><i>\u2192</i></button>";
+      }, dims = Object.keys(SR_CATS).map((cat, k) => {
+        const L = KB.filter((r) => r.c === cat);
+        return '<button type="button" class="as-dim as-' + cat + '" data-as-cat="' + cat + '" style="animation-delay:' + (120 + k * 45) + 'ms"><span class="as-ic">' + srIcon(SR_CATS[cat][1]) + "</span><b>" + SR_CATS[cat][0] + "</b><small>" + L.length + ' fichas</small><span class="as-ex">' + L.slice(0, 2).map((r) => srEsc(r.t.split(":")[0].replace(/\s*\(.*\)/, ""))).join(" \xB7 ") + "</span></button>";
+      }).join("");
+      panel.innerHTML = '<div class="as-hero"><div><b>' + c.greet + ' \u{1F44B}</b><span>\xBFEn qu\xE9 te apoyamos hoy? Escribe con tus palabras o elige una opci\xF3n.</span></div><span class="as-stats"><b>' + KB.length + "</b> fichas<b>" + Object.keys(VID).reduce((a, k) => a + VID[k].length, 0) + "</b> videos<b>" + Object.keys(VIZ).length + '</b> herramientas</span></div><div class="as-home"><div class="as-col"><div class="as-sec">Para ti ahora</div>' + c.list.map(card).join("") + '<div class="as-sec">Temas m\xE1s importantes \xB7 con video y gu\xEDa</div><div class="as-feat">' + ["Normas APA 7: citas en el texto", "T\xE9cnica Pomodoro", "Ansiedad ante los ex\xE1menes", "Vencer la procrastinaci\xF3n", "Gesti\xF3n del tiempo y planificaci\xF3n semanal", "Hoja de vida efectiva"].map((t, k) => {
+        const v = (VID[t] || [])[0], r = KB.find((x) => x.t === t);
+        return !v || !r ? "" : '<div class="as-fc as-' + r.c + '" style="animation-delay:' + (90 + k * 40) + 'ms"><button type="button" class="as-fth" data-as-play="' + srEsc(t) + '" aria-label="Ver video: ' + srEsc(v[1]) + '" style="background-image:url(https://i.ytimg.com/vi/' + v[0] + '/mqdefault.jpg)"><i>\u25B6</i><em>' + v[3] + '</em></button><button type="button" class="as-fg" data-as-open="' + srEsc(t) + '"><b>' + srEsc(t.replace("Normas APA 7: ", "APA 7: ").replace(" y planificaci\xF3n semanal", "")) + "</b><small>Gu\xEDa" + (VIZ[t] ? " + herramienta" : "") + " \xB7 " + (VID[t] || []).length + " videos</small></button></div>";
+      }).join("") + "</div>" + (rec.length > 1 ? '<div class="as-sec">Visto recientemente</div><div class="as-chips">' + rec.slice(0, 4).map((t) => '<button type="button" class="as-chip rec" data-as-open="' + srEsc(t) + '">\u21BA ' + srEsc(t.split(":")[0]) + "</button>").join("") + "</div>" : "") + '</div><div class="as-col"><div class="as-sec">Explora por dimensi\xF3n</div><div class="as-dims">' + dims + '</div><div class="as-sec">B\xFAsquedas frecuentes</div><div class="as-chips">' + SR_POPULAR.slice(0, 6).map((p) => '<button type="button" class="as-chip" data-as-q="' + srEsc(p) + '">' + srEsc(p) + "</button>").join("") + "</div>" + (tip ? '<button type="button" class="as-tip" data-as-open="' + srEsc(tip.t) + '"><span class="as-tip-k">\u{1F4A1} Tip del d\xEDa \xB7 ' + srEsc(tip.t) + "</span><span>" + srEsc(tip.ex) + "</span><em>Ver la ficha \u2192</em></button>" : "") + '</div></div><div class="as-keys"><span><kbd>\u2191</kbd><kbd>\u2193</kbd> navegar</span><span><kbd>Enter</kbd> abrir</span><span><kbd>Esc</kbd> cerrar</span><span><kbd>/</kbd> buscar desde cualquier p\xE1gina</span></div>';
+    }
+    function mark() {
+      panel.querySelectorAll(".as-opt,.as-rec").forEach((b, i) => b.classList.toggle("on", i === sel));
     }
     function suggest(q) {
       const out = srSearch(q, ""), kb = out.res.filter((r) => r.d.kind === "kb"), top = kb[0] ? kb[0].sc : 0, list = kb.filter((r) => r.sc >= top * 0.35).slice(0, 6);
@@ -2444,10 +2530,14 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
     function go(q) {
       close();
       const v = q;
+      try {
+        if (KB.some((r) => r.t === q)) {
+          const L = JSON.parse(localStorage.getItem("pap-recent") || "[]").filter((x) => x !== q);
+          L.unshift(q), localStorage.setItem("pap-recent", JSON.stringify(L.slice(0, 6)));
+        }
+      } catch (e) {
+      }
       ai.value = "", syncPh(), ai.blur(), openSearch(v);
-    }
-    function mark() {
-      panel.querySelectorAll(".as-opt").forEach((b, i) => b.classList.toggle("on", i === sel));
     }
     ai.addEventListener("focus", () => {
       open(), clearTimeout(tm), ph.classList.add("paused");
@@ -2477,6 +2567,15 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
       const q = e.target.closest("[data-as-q]");
       if (q) {
         ai.value = q.getAttribute("data-as-q"), syncPh(), render2(), ai.focus();
+        return;
+      }
+      const pl = e.target.closest("[data-as-play]");
+      if (pl) {
+        const t = pl.getAttribute("data-as-play");
+        go(t), setTimeout(() => {
+          const y = document.querySelector("#srResults .sr-card [data-yt]");
+          y && (y.scrollIntoView({ block: "center" }), y.click());
+        }, 450);
         return;
       }
       const fu = e.target.closest("[data-as-full]");
