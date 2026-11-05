@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PAP · Revista digital interactiva">
 
-<meta name="pap-version" content="1793916056696">
+<meta name="pap-version" content="1793916243348">
 <style>
 :root{--navy:#072d5b;--deep:#041b3a;--blue:#0d4784;--cyan:#25cbef;--orange:#ff6a18;--paper:#fffefa;--ink:#163452;--muted:#67788e;--line:#dce6f2;--shadow:0 28px 80px rgba(2,16,42,.27);--ease:cubic-bezier(.2,.76,.19,.99)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 2% 10%,#194e87 0,transparent 32%),radial-gradient(circle at 100% 90%,#10537d 0,transparent 34%),#061e3d;color:#152e4d;font:15px/1.47 'Segoe UI',Arial,Helvetica,sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c85022;outline-offset:3px}a{color:inherit}::selection{background:#baf3ff;color:#032348}
@@ -867,6 +867,18 @@ body.no-motion .as-rec,body.no-motion .as-dim{animation:none}
 }
 
 @media (min-width:1180px){.as-panel{max-height:calc(100vh - 80px)!important}}
+@media (min-width:1180px){
+.as-clock{display:inline-block;font-size:10.5px!important;font-weight:700;color:#9fd3ea!important;background:#ffffff14;border-radius:999px;padding:2px 9px;margin-bottom:5px;text-transform:capitalize}
+.as-trend{display:grid;gap:4px;margin-bottom:4px}
+.as-tr{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:8px;align-items:center;width:100%;border:0;background:#fbfcfe;border-radius:9px;padding:6px 8px;font:inherit;text-align:left;cursor:pointer;transition:background .15s}
+.as-tr:hover{background:#fff4ec}
+.as-rank{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;font-size:11px;font-weight:900;color:#fff;background:#c4683c}
+.as-tr:nth-child(n+4) .as-rank{background:#9fb3c3}
+.as-tt b{display:block;font-size:12px;color:#173a55;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.as-tt small{font-size:10px;color:#7a8e9e}
+.as-views{font-size:10.5px;font-weight:800;color:#c4302b;white-space:nowrap}
+}
+
+@media (min-width:1180px){.as-clock{text-transform:none!important}}
 
 </style>
 <script>document.documentElement.className+=' js';</script>
@@ -2116,6 +2128,8 @@ body.no-motion .as-rec,body.no-motion .as-dim{animation:none}
     asesoria: "solicitar acompa\xF1amiento",
     asesor: "solicitar acompa\xF1amiento",
     inscribirme: "solicitar formulario",
+    tendencias: "pomodoro apa ansiedad procrastinaci\xF3n",
+    tendencia: "pomodoro apa ansiedad procrastinaci\xF3n",
     "tecnicas de estudio": "pomodoro recuperaci\xF3n repetici\xF3n cornell mapas feynman lectura",
     "como estudiar": "pomodoro recuperaci\xF3n repetici\xF3n cornell feynman",
     "estudiar mejor": "pomodoro recuperaci\xF3n repetici\xF3n"
@@ -2430,6 +2444,7 @@ body.no-motion .as-rec,body.no-motion .as-dim{animation:none}
     const o = e.target.closest("[data-sr-open-q]");
     o && !o.closest("#dialog") && (e.preventDefault(), openSearch(o.getAttribute("data-sr-open-q")));
   });
+  const VIEWS = { gNTfdcMkKGk: 1316111, Ojm_AEFWtgY: 197e3, HZzIcjXoHjM: 3054512, jbl849iTNYA: 304999, XjG8QsTNBZw: 4582646, KP1eFZckHGc: 2359, "79ou5HPpThY": 37985, "7Qx5NenVJTY": 1103385, geBiUY2ix9I: 526943, jB862dE_6oM: 137008, FwgeiavmoiI: 2548588, "3vjCuURd03k": 90758, "3D0-l2O5k8Y": 290372, ytrCcvMESGI: 1343539, Hnezutoszpc: 211660, nrcGO_0l2JQ: 312238, n2UfP6dGOaw: 386543, BJS_QBn_GmY: 198533, inZe9kW5djI: 386637, "5JsTaboFGig": 167832, "QD-zwXc3dtQ": 1008890, hRRNA_C5TKM: 141150, hrGbwutALpA: 561430, fp_YbxuJJkQ: 372517, "lTPdC-TxhJM": 124298, wExgu4I0jQA: 2191649, "819bMbM3a1w": 47034, Z6H0SrAw4oY: 162486, ecb0OsEUjeA: 1245, ErwsvIqoRyI: 404008, "0noAwrWY78U": 3759606, WstCekxk9tY: 56040, c4gE5gBEleE: 347859, "9M-cA1aoEbY": 187327, xuU_cCFOFA0: 342435, mfzUazFbXyM: 111536, fPU1zEPR1yY: 276907, "4Dss-mavZHc": 302184, cibFlFeqSJ0: 702528, BwAtqPAnHu4: 1631070, FbJ4_bS98Ls: 732044, INRzFKTzmZs: 690060, Wl19KWE3_44: 14350, h6IlvjQkEQI: 21301, mJzOLghzUwA: 3232899, lDhOVbR_4Kg: 576966, SSyRzzuJpEs: 573026, f2GQPmPVEK0: 141730, d0ZYP2fNhtE: 41336, IZwQwIoB0M4: 32692, XRJFBFDoH68: 132652, QvdEulHTKr8: 1974924, bfp3vN2B5zo: 1798290, "jvxuQEe_0-w": 1115137, "ZgmSfdE2y-s": 1533806, "L2LXWX-awuQ": 204794, "LN9_KclH-fc": 64932, cjkmDOE5pm8: 441848, "JQr6Ld8d-f8": 6387136, mzWhMKl0z9w: 83591, kpPN8LpFybA: 8054, "Vdiv-eiO7gs": 17029, BdTtrczZMYo: 98986, VZZSQk5IKj4: 102174, "-8YazHRMcXk": 447797 };
   function setupAppSearch() {
     const brand = $(".appbar .brand-mini");
     if (!brand)
@@ -2481,11 +2496,13 @@ body.no-motion .as-rec,body.no-motion .as-dim{animation:none}
         pc = byPage[current] || byPage[current + 1] || null;
       } catch (e) {
       }
+      const now = /* @__PURE__ */ new Date(), dow = now.getDay(), mon = now.getMonth() + 1, day2 = now.getDate(), season = mon === 11 && day2 >= 10 || mon === 5 && day2 >= 15 || mon === 6 && day2 <= 10 ? ["Ansiedad ante los ex\xE1menes", "Temporada de finales", "\u{1F393}"] : mon === 9 && day2 >= 15 || mon === 10 && day2 <= 20 || mon === 3 && day2 >= 20 || mon === 4 && day2 <= 20 ? ["C\xF3mo prepararte para un parcial", "Temporada de parciales", "\u{1F4DD}"] : (mon === 2 || mon === 8) && day2 <= 25 ? ["Adaptaci\xF3n a la vida universitaria", "Inicio de semestre", "\u{1F331}"] : mon === 11 && day2 < 10 || mon === 5 && day2 < 15 ? ["Gesti\xF3n del tiempo y planificaci\xF3n semanal", "Recta final del semestre", "\u23F3"] : mon === 12 || mon === 1 || mon === 7 ? ["Proyecto de vida y orientaci\xF3n vocacional", "Vacaciones: tiempo para planear", "\u{1F9ED}"] : null, pre = [];
+      dow === 0 ? pre.push(["Gesti\xF3n del tiempo y planificaci\xF3n semanal", "Es domingo: planea tu semana", "\u{1F5D3}"]) : dow === 1 && h < 14 ? pre.push(["Motivaci\xF3n y metas SMART", "Lunes: define tu meta de la semana", "\u{1F3AF}"]) : dow === 5 && h >= 14 && pre.push(["Autocuidado y equilibrio", "Viernes: equilibra descanso y estudio", "\u{1F33F}"]), season && pre.push(season);
       const timePick = h >= 21 || h < 5 ? ["Higiene del sue\xF1o", "Es de noche: cuida tu descanso"] : h < 10 ? ["Gesti\xF3n del tiempo y planificaci\xF3n semanal", "Empieza el d\xEDa con un plan"] : h < 14 ? ["T\xE9cnica Pomodoro", "Ideal para tu pr\xF3ximo bloque de estudio"] : h < 18 ? ["Pr\xE1ctica de recuperaci\xF3n (autoevaluaci\xF3n)", "Repasa lo visto hoy en clase"] : ["Vencer la procrastinaci\xF3n", "Para cerrar pendientes del d\xEDa"], out = [], seen = {}, add = (t, why, ic) => {
         const r = KB.find((x) => x.t === t);
         r && !seen[t] && out.length < 3 && (seen[t] = 1, out.push([r, why, ic]));
       };
-      return recent().slice(0, 1).forEach((t) => add(t, "Contin\xFAa donde ibas", "\u21BA")), pc && KB.filter((r) => r.c === pc[0] && !seen[r.t]).slice(0, 2).forEach((r) => add(r.t, pc[1], "\u{1F4D6}")), add(timePick[0], timePick[1], h >= 21 || h < 5 ? "\u{1F319}" : h < 12 ? "\u2600\uFE0F" : "\u23F1"), ["Normas APA 7: citas en el texto", "Ansiedad ante los ex\xE1menes", "T\xE9cnica Pomodoro", "Hoja de vida efectiva"].forEach((t) => add(t, "Lo m\xE1s consultado", "\u2605")), { greet, list: out };
+      return recent().slice(0, 1).forEach((t) => add(t, "Contin\xFAa donde ibas", "\u21BA")), pre.forEach((x) => add(x[0], x[1], x[2])), pc && KB.filter((r) => r.c === pc[0] && !seen[r.t]).slice(0, 2).forEach((r) => add(r.t, pc[1], "\u{1F4D6}")), add(timePick[0], timePick[1], h >= 21 || h < 5 ? "\u{1F319}" : h < 12 ? "\u2600\uFE0F" : "\u23F1"), ["Normas APA 7: citas en el texto", "Ansiedad ante los ex\xE1menes", "T\xE9cnica Pomodoro", "Hoja de vida efectiva"].forEach((t) => add(t, "Lo m\xE1s consultado", "\u2605")), { greet, list: out };
     }
     function home() {
       const c = ctx();
@@ -2496,11 +2513,17 @@ body.no-motion .as-rec,body.no-motion .as-dim{animation:none}
       }, dims = Object.keys(SR_CATS).map((cat, k) => {
         const L = KB.filter((r) => r.c === cat);
         return '<button type="button" class="as-dim as-' + cat + '" data-as-cat="' + cat + '" style="animation-delay:' + (120 + k * 45) + 'ms"><span class="as-ic">' + srIcon(SR_CATS[cat][1]) + "</span><b>" + SR_CATS[cat][0] + "</b><small>" + L.length + ' fichas</small><span class="as-ex">' + L.slice(0, 2).map((r) => srEsc(r.t.split(":")[0].replace(/\s*\(.*\)/, ""))).join(" \xB7 ") + "</span></button>";
-      }).join("");
-      panel.innerHTML = '<div class="as-hero"><div><b>' + c.greet + ' \u{1F44B}</b><span>\xBFEn qu\xE9 te apoyamos hoy? Escribe con tus palabras o elige una opci\xF3n.</span></div><span class="as-stats"><b>' + KB.length + "</b> fichas<b>" + Object.keys(VID).reduce((a, k) => a + VID[k].length, 0) + "</b> videos<b>" + Object.keys(VIZ).length + '</b> herramientas</span></div><div class="as-home"><div class="as-col"><div class="as-sec">Para ti ahora</div>' + c.list.map(card).join("") + '<div class="as-sec">Temas m\xE1s importantes \xB7 con video y gu\xEDa</div><div class="as-feat">' + ["Normas APA 7: citas en el texto", "T\xE9cnica Pomodoro", "Ansiedad ante los ex\xE1menes", "Vencer la procrastinaci\xF3n", "Gesti\xF3n del tiempo y planificaci\xF3n semanal", "Hoja de vida efectiva"].map((t, k) => {
+      }).join(""), fmt = () => {
+        const d = /* @__PURE__ */ new Date();
+        return d.toLocaleTimeString("es-CO", { hour: "2-digit", minute: "2-digit" }) + " \xB7 " + d.toLocaleDateString("es-CO", { weekday: "long", day: "numeric", month: "long" });
+      }, trend = Object.keys(VID).map((t) => [t, VID[t].reduce((a, v) => a + (VIEWS[v[0]] || 0), 0)]).filter((x) => x[1] > 0).sort((a, b) => b[1] - a[1]).slice(0, 6), fmtV = (n) => n >= 1e6 ? (n / 1e6).toFixed(1).replace(".", ",") + " M" : Math.round(n / 1e3) + " mil";
+      panel.innerHTML = '<div class="as-hero"><div><span class="as-clock" data-as-clock>\u{1F554} ' + fmt() + "</span><b>" + c.greet + ' \u{1F44B}</b><span>\xBFEn qu\xE9 te apoyamos hoy? Escribe con tus palabras o elige una opci\xF3n.</span></div><span class="as-stats"><b>' + KB.length + "</b> fichas<b>" + Object.keys(VID).reduce((a, k) => a + VID[k].length, 0) + "</b> videos<b>" + Object.keys(VIZ).length + '</b> herramientas</span></div><div class="as-home"><div class="as-col"><div class="as-sec">Para ti ahora</div>' + c.list.map(card).join("") + '<div class="as-sec">Temas m\xE1s importantes \xB7 con video y gu\xEDa</div><div class="as-feat">' + ["Normas APA 7: citas en el texto", "T\xE9cnica Pomodoro", "Ansiedad ante los ex\xE1menes", "Vencer la procrastinaci\xF3n", "Gesti\xF3n del tiempo y planificaci\xF3n semanal", "Hoja de vida efectiva"].map((t, k) => {
         const v = (VID[t] || [])[0], r = KB.find((x) => x.t === t);
         return !v || !r ? "" : '<div class="as-fc as-' + r.c + '" style="animation-delay:' + (90 + k * 40) + 'ms"><button type="button" class="as-fth" data-as-play="' + srEsc(t) + '" aria-label="Ver video: ' + srEsc(v[1]) + '" style="background-image:url(https://i.ytimg.com/vi/' + v[0] + '/mqdefault.jpg)"><i>\u25B6</i><em>' + v[3] + '</em></button><button type="button" class="as-fg" data-as-open="' + srEsc(t) + '"><b>' + srEsc(t.replace("Normas APA 7: ", "APA 7: ").replace(" y planificaci\xF3n semanal", "")) + "</b><small>Gu\xEDa" + (VIZ[t] ? " + herramienta" : "") + " \xB7 " + (VID[t] || []).length + " videos</small></button></div>";
-      }).join("") + "</div>" + (rec.length > 1 ? '<div class="as-sec">Visto recientemente</div><div class="as-chips">' + rec.slice(0, 4).map((t) => '<button type="button" class="as-chip rec" data-as-open="' + srEsc(t) + '">\u21BA ' + srEsc(t.split(":")[0]) + "</button>").join("") + "</div>" : "") + '</div><div class="as-col"><div class="as-sec">Explora por dimensi\xF3n</div><div class="as-dims">' + dims + '</div><div class="as-sec">B\xFAsquedas frecuentes</div><div class="as-chips">' + SR_POPULAR.slice(0, 6).map((p) => '<button type="button" class="as-chip" data-as-q="' + srEsc(p) + '">' + srEsc(p) + "</button>").join("") + "</div>" + (tip ? '<button type="button" class="as-tip" data-as-open="' + srEsc(tip.t) + '"><span class="as-tip-k">\u{1F4A1} Tip del d\xEDa \xB7 ' + srEsc(tip.t) + "</span><span>" + srEsc(tip.ex) + "</span><em>Ver la ficha \u2192</em></button>" : "") + '</div></div><div class="as-keys"><span><kbd>\u2191</kbd><kbd>\u2193</kbd> navegar</span><span><kbd>Enter</kbd> abrir</span><span><kbd>Esc</kbd> cerrar</span><span><kbd>/</kbd> buscar desde cualquier p\xE1gina</span></div>';
+      }).join("") + "</div>" + (rec.length > 1 ? '<div class="as-sec">Visto recientemente</div><div class="as-chips">' + rec.slice(0, 4).map((t) => '<button type="button" class="as-chip rec" data-as-open="' + srEsc(t) + '">\u21BA ' + srEsc(t.split(":")[0]) + "</button>").join("") + "</div>" : "") + '</div><div class="as-col"><div class="as-sec">Explora por dimensi\xF3n</div><div class="as-dims">' + dims + '</div><div class="as-sec">\u{1F525} Tendencias en YouTube</div><div class="as-trend">' + trend.map((x, k) => {
+        const r = KB.find((y) => y.t === x[0]);
+        return '<button type="button" class="as-tr" data-as-open="' + srEsc(x[0]) + '"><span class="as-rank">' + (k + 1) + '</span><span class="as-tt"><b>' + srEsc(/^Normas APA 7: /.test(x[0]) ? x[0].replace("Normas APA 7: ", "APA 7: ") : x[0].split(":")[0].replace(/\s*\(.*\)/, "")) + "</b><small>" + (r ? SR_CATS[r.c][0] : "") + '</small></span><span class="as-views">' + fmtV(x[1]) + " vistas</span></button>";
+      }).join("") + '</div><div class="as-sec">B\xFAsquedas frecuentes</div><div class="as-chips">' + SR_POPULAR.slice(0, 6).map((p) => '<button type="button" class="as-chip" data-as-q="' + srEsc(p) + '">' + srEsc(p) + "</button>").join("") + "</div>" + (tip ? '<button type="button" class="as-tip" data-as-open="' + srEsc(tip.t) + '"><span class="as-tip-k">\u{1F4A1} Tip del d\xEDa \xB7 ' + srEsc(tip.t) + "</span><span>" + srEsc(tip.ex) + "</span><em>Ver la ficha \u2192</em></button>" : "") + '</div></div><div class="as-keys"><span><kbd>\u2191</kbd><kbd>\u2193</kbd> navegar</span><span><kbd>Enter</kbd> abrir</span><span><kbd>Esc</kbd> cerrar</span><span><kbd>/</kbd> buscar desde cualquier p\xE1gina</span></div>';
     }
     function mark() {
       panel.querySelectorAll(".as-opt,.as-rec").forEach((b, i) => b.classList.toggle("on", i === sel));
@@ -2521,8 +2544,18 @@ body.no-motion .as-rec,body.no-motion .as-dim{animation:none}
       const q = ai.value.trim();
       q.length < 2 ? home() : suggest(q);
     }
+    let clk;
+    function tickClock() {
+      const el = panel.querySelector("[data-as-clock]");
+      if (!el) {
+        clearInterval(clk);
+        return;
+      }
+      const d = /* @__PURE__ */ new Date();
+      el.textContent = "\u{1F554} " + d.toLocaleTimeString("es-CO", { hour: "2-digit", minute: "2-digit" }) + " \xB7 " + d.toLocaleDateString("es-CO", { weekday: "long", day: "numeric", month: "long" });
+    }
     function open() {
-      panel.hidden && (panel.hidden = !1, f.classList.add("open"), f.setAttribute("aria-expanded", "true"), render2());
+      panel.hidden && (clearInterval(clk), clk = setInterval(tickClock, 2e4), panel.hidden = !1, f.classList.add("open"), f.setAttribute("aria-expanded", "true"), render2());
     }
     function close() {
       panel.hidden = !0, f.classList.remove("open"), f.setAttribute("aria-expanded", "false");
