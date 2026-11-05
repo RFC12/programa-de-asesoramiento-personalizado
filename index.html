@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PAP · Revista digital interactiva">
 
-<meta name="pap-version" content="1793913741136">
+<meta name="pap-version" content="1793914167519">
 <style>
 :root{--navy:#072d5b;--deep:#041b3a;--blue:#0d4784;--cyan:#25cbef;--orange:#ff6a18;--paper:#fffefa;--ink:#163452;--muted:#67788e;--line:#dce6f2;--shadow:0 28px 80px rgba(2,16,42,.27);--ease:cubic-bezier(.2,.76,.19,.99)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 2% 10%,#194e87 0,transparent 32%),radial-gradient(circle at 100% 90%,#10537d 0,transparent 34%),#061e3d;color:#152e4d;font:15px/1.47 'Segoe UI',Arial,Helvetica,sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c85022;outline-offset:3px}a{color:inherit}::selection{background:#baf3ff;color:#032348}
@@ -709,6 +709,21 @@ button.sr-btn{font:inherit;font-size:12px;font-weight:700;cursor:pointer}
 @media (max-width:600px){.vz-form{grid-template-columns:1fr 1fr}.vz-form .vz-f{grid-column:auto!important}.vz-two{grid-template-columns:1fr}.vz-steps{grid-template-columns:1fr 1fr}.vz-steps div:after{display:none}}
 body.no-motion .vz-circle,body.no-motion .vz-bl span{animation:none}
 @media (prefers-reduced-motion:reduce){.vz-circle,.vz-bl span{animation:none}.vz-flash span{transition:none}}
+/* Videos de YouTube */
+.yt-box{margin-top:10px;border:1px solid #f2d6d6;border-radius:14px;padding:12px;background:#fffafa}
+.yt-box .sr-viz-t{color:#c4302b}
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:9px}
+.yt-card{display:flex;flex-direction:column;text-align:left;border:1px solid #eee3e3;background:#fff;border-radius:12px;overflow:hidden;padding:0;font:inherit;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.yt-card:hover{transform:translateY(-2px);box-shadow:0 8px 20px #1d3b551f}
+.yt-th{position:relative;display:block;aspect-ratio:16/9;background:#1d2b3a center/cover no-repeat}
+.yt-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:48px;height:34px;border-radius:10px;background:#ff0033;color:#fff;display:grid;place-items:center;font-style:normal;font-size:14px;box-shadow:0 4px 12px #0006}
+.yt-th em{position:absolute;right:6px;bottom:6px;background:#000c;color:#fff;font-style:normal;font-size:10.5px;font-weight:700;padding:1px 5px;border-radius:4px}
+.yt-meta{padding:8px 10px 10px}.yt-meta b{display:block;font-size:12.5px;line-height:1.3;color:#173a55}.yt-meta small{display:block;font-size:11px;color:#7a8e9e;margin-top:3px}
+.yt-frame{grid-column:1/-1;display:flex;flex-direction:column;gap:5px}
+.yt-frame iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;background:#000}
+.yt-frame a,.yt-more{font-size:12px;font-weight:800;color:#c4302b;text-decoration:none}
+.yt-more{display:inline-block;margin-top:9px}
+.yt-note{font-size:10.5px!important;color:#8396a5!important;margin:6px 0 0!important}
 
 </style>
 <script>document.documentElement.className+=' js';</script>
@@ -2146,7 +2161,7 @@ body.no-motion .vz-circle,body.no-motion .vz-bl span{animation:none}
   }
   function srCard(r, hits, first) {
     const d = r.d, cat = SR_CATS[d.c];
-    return '<article class="sr-card sr-c-' + d.c + '"><div class="sr-head"><span class="sr-ic">' + srIcon(cat[1]) + '</span><div><span class="sr-tag">' + cat[0] + "</span><h3>" + srMark(d.t, hits) + '</h3></div></div><p class="sr-sum">' + srMark(d.s, hits) + "</p>" + (d.a ? '<p class="sr-auth"><span>Basado en</span> ' + srMark(d.a, hits) + "</p>" : "") + (TOOLS[d.t] ? srTool(TOOLS[d.t]) : "") + "<details" + (first ? " open" : "") + "><summary>C\xF3mo aplicarlo</summary><ol>" + d.p.map((x) => "<li>" + srMark(x, hits) + "</li>").join("") + "</ol>" + (VIZ[d.t] ? '<div class="sr-viz" data-viz="' + VIZ[d.t] + '"><b class="sr-viz-t">Vista previa interactiva</b>' + vzHTML(VIZ[d.t]) + "</div>" : "") + (d.why ? '<div class="sr-deep"><div><b>\xBFPor qu\xE9 funciona?</b><p>' + srMark(d.why, hits) + "</p></div><div><b>Ejemplo pr\xE1ctico</b><p>" + srMark(d.ex, hits) + '</p></div><div class="sr-err"><b>Errores comunes</b><p>' + srMark(d.err, hits) + "</p></div></div>" : "") + (d.r ? '<div class="sr-refs"><b>Referencias recientes</b>' + d.r.map((x) => "<p>" + srEsc(x.c) + '<span class="sr-reflinks"><a href="' + srEsc(x.l) + '" target="_blank" rel="noopener">Ver en la revista \u2197</a><a href="https://scholar.google.com/scholar?hl=es&amp;q=' + encodeURIComponent('"' + x.t + '"') + '" target="_blank" rel="noopener">Google Acad\xE9mico \u2197</a></span></p>').join("") + "</div>" : "") + '</details><div class="sr-foot">' + (d.form ? '<a class="sr-btn sr-primary" href="' + srEsc(FORM_URL) + '" target="_blank" rel="noopener">Abrir formulario \u2192</a>' : "") + '<a class="sr-btn" href="#pag-' + (d.pg + 1) + '" data-jump="' + d.pg + '">Ver en la revista \xB7 p\xE1g. ' + String(d.pg + 1).padStart(2, "0") + "</a></div></article>";
+    return '<article class="sr-card sr-c-' + d.c + '"><div class="sr-head"><span class="sr-ic">' + srIcon(cat[1]) + '</span><div><span class="sr-tag">' + cat[0] + "</span><h3>" + srMark(d.t, hits) + '</h3></div></div><p class="sr-sum">' + srMark(d.s, hits) + "</p>" + (d.a ? '<p class="sr-auth"><span>Basado en</span> ' + srMark(d.a, hits) + "</p>" : "") + (TOOLS[d.t] ? srTool(TOOLS[d.t]) : "") + "<details" + (first ? " open" : "") + "><summary>C\xF3mo aplicarlo</summary><ol>" + d.p.map((x) => "<li>" + srMark(x, hits) + "</li>").join("") + "</ol>" + (VIZ[d.t] ? '<div class="sr-viz" data-viz="' + VIZ[d.t] + '"><b class="sr-viz-t">Vista previa interactiva</b>' + vzHTML(VIZ[d.t]) + "</div>" : "") + (d.why ? '<div class="sr-deep"><div><b>\xBFPor qu\xE9 funciona?</b><p>' + srMark(d.why, hits) + "</p></div><div><b>Ejemplo pr\xE1ctico</b><p>" + srMark(d.ex, hits) + '</p></div><div class="sr-err"><b>Errores comunes</b><p>' + srMark(d.err, hits) + "</p></div></div>" : "") + vidHTML(d.t) + (d.r ? '<div class="sr-refs"><b>Referencias recientes</b>' + d.r.map((x) => "<p>" + srEsc(x.c) + '<span class="sr-reflinks"><a href="' + srEsc(x.l) + '" target="_blank" rel="noopener">Ver en la revista \u2197</a><a href="https://scholar.google.com/scholar?hl=es&amp;q=' + encodeURIComponent('"' + x.t + '"') + '" target="_blank" rel="noopener">Google Acad\xE9mico \u2197</a></span></p>').join("") + "</div>" : "") + '</details><div class="sr-foot">' + (d.form ? '<a class="sr-btn sr-primary" href="' + srEsc(FORM_URL) + '" target="_blank" rel="noopener">Abrir formulario \u2192</a>' : "") + '<a class="sr-btn" href="#pag-' + (d.pg + 1) + '" data-jump="' + d.pg + '">Ver en la revista \xB7 p\xE1g. ' + String(d.pg + 1).padStart(2, "0") + "</a></div></article>";
   }
   function srPageRow(r, hits) {
     const d = r.d;
@@ -2637,7 +2652,57 @@ body.no-motion .vz-circle,body.no-motion .vz-bl span{animation:none}
     const c = P.__cyc || 0;
     b.querySelector("[data-vz-cycles]").textContent = [0, 1, 2, 3].map((i) => i < c % 4 || c > 0 && c % 4 === 0 && P.__mode === "b" ? "\u25CF" : "\u25CB").join(" ");
   }
-  window.__papReady = !0;
+  const VID = {
+    "Normas APA 7: citas en el texto": [["gNTfdcMkKGk", "C\xF3mo hacer citas y referencias seg\xFAn Normas APA 7.\xAA edici\xF3n", "El T\xEDo Tech", "5:20"], ["Ojm_AEFWtgY", "C\xF3mo hacer una cita textual corta en Word paso a paso", "Massarik", "2:56"]],
+    "Normas APA 7: lista de referencias": [["HZzIcjXoHjM", "C\xF3mo hacer las referencias en Word seg\xFAn Normas APA 7.\xAA edici\xF3n", "Massarik", "13:51"], ["jbl849iTNYA", "C\xF3mo citar p\xE1ginas web en Word (APA 7.\xAA)", "Massarik", "4:21"]],
+    "Normas APA 7: formato del documento": [["XjG8QsTNBZw", "M\xE1rgenes, textos y paginado seg\xFAn Normas APA 7.\xAA en Word", "Saber Programas", "8:14"], ["alTPWdsOX7Y", "Tipo y tama\xF1o de letra, interlineado, m\xE1rgenes y sangr\xEDa", "Massarik", "3:25"]],
+    "Tablas y figuras en APA 7": [["79ou5HPpThY", "Tablas y figuras en Normas APA 7.\xAA edici\xF3n: paso a paso", "Mentur", "11:44"], ["7Qx5NenVJTY", "Tablas en Normas APA s\xE9ptima edici\xF3n", "Karen Zerpa", "10:18"]],
+    "Parafrasear y evitar el plagio": [["geBiUY2ix9I", "C\xF3mo parafrasear un texto seg\xFAn Normas APA 7.\xAA", "Massarik", "2:54"], ["jB862dE_6oM", "La par\xE1frasis: qu\xE9 es parafrasear un texto", "Investigar es f\xE1cil", "3:33"]],
+    "Escritura acad\xE9mica: planear, redactar y revisar": [["FwgeiavmoiI", "Redacta un ensayo en 3 sencillos pasos", "La Profe M\xF3nica", "5:27"], ["3vjCuURd03k", "\xBFQu\xE9 es un ensayo acad\xE9mico?", "\xC1VACO UI", "3:33"]],
+    "T\xE9cnica Pomodoro": [["3D0-l2O5k8Y", "T\xE9cnica Pomodoro (animado)", "Ser - Hacer Mejor", "3:58"], ["ytrCcvMESGI", "Temporizador Pomodoro 25/5 para estudiar", "StudyPlanet", "1:55:06"]],
+    "M\xE9todo Cornell para tomar apuntes": [["Hnezutoszpc", "C\xF3mo tomar apuntes con el m\xE9todo Cornell en 5 pasos", "Pablo Lomeli", "15:31"], ["nrcGO_0l2JQ", "Mi m\xE9todo favorito para tomar apuntes: m\xE9todo Cornell", "Esme Cevallos", "4:03"]],
+    "Mapas mentales y conceptuales": [["n2UfP6dGOaw", "C\xF3mo hacer un mapa conceptual", "UNIR M\xE9xico", "0:53"], ["BJS_QBn_GmY", "C\xF3mo hacer un mapa conceptual en 5 pasos", "Arte en el Cole", "3:40"]],
+    "T\xE9cnica Feynman: expl\xEDcalo con tus palabras": [["inZe9kW5djI", "La t\xE9cnica de Feynman", "Sprouts Espa\xF1ol", "2:06"], ["5JsTaboFGig", "C\xF3mo estudiar mejor con la t\xE9cnica Feynman (con ejemplos)", "Escuela de la Memoria", "7:41"]],
+    "Pr\xE1ctica de recuperaci\xF3n (autoevaluaci\xF3n)": [["QD-zwXc3dtQ", "C\xF3mo aplicar el active recall, seg\xFAn la ciencia", "Adri\xE0 Sol\xE0 Pastor", "14:54"], ["hRRNA_C5TKM", "Active recall: el mejor m\xE9todo de estudio seg\xFAn la ciencia", "Escuela de la Memoria", "7:17"]],
+    "Repetici\xF3n espaciada": [["hrGbwutALpA", "La curva del olvido: tips para planificar el estudio", "Academia Play", "2:31"], ["fp_YbxuJJkQ", "C\xF3mo aplicar la repetici\xF3n espaciada, seg\xFAn la ciencia", "Adri\xE0 Sol\xE0 Pastor", "12:21"]],
+    "C\xF3mo prepararte para un parcial": [["VZZSQk5IKj4", "C\xF3mo estudiar para un examen en una semana", "Pablo Lomeli", "14:20"], ["-8YazHRMcXk", "C\xF3mo estudiar de manera efectiva", "Carlos Hern\xE1ndez", "4:19"]],
+    "Vencer la procrastinaci\xF3n": [["lTPdC-TxhJM", "Procrastinaci\xF3n: causas psicol\xF3gicas y c\xF3mo superarla", "Psicolog\xEDa en Serio", "10:25"], ["wExgu4I0jQA", "As\xED funciona la mente de un procrastinador", "DR LA ROSA", "22:52"]],
+    "Ansiedad ante los ex\xE1menes": [["819bMbM3a1w", "Ansiedad y nervios por los ex\xE1menes", "Desansiedad", "13:40"], ["Z6H0SrAw4oY", "Respiraci\xF3n diafragm\xE1tica para el estr\xE9s o la ansiedad", "Psicoactiva", "5:54"], ["ecb0OsEUjeA", "Consejos para superar la ansiedad ante los ex\xE1menes", "Child Mind Institute en espa\xF1ol", "7:36"]],
+    "Manejo del estr\xE9s acad\xE9mico": [["ErwsvIqoRyI", "C\xF3mo afecta el estr\xE9s a tu cerebro", "TED-Ed en espa\xF1ol", "4:20"], ["0noAwrWY78U", "El cerebro, nuestro mejor aliado contra el estr\xE9s", "AprendemosJuntos", "5:59"]],
+    "Higiene del sue\xF1o": [["WstCekxk9tY", "Higiene del sue\xF1o", "Tu Salud Gu\xEDa", "4:41"], ["c4gE5gBEleE", "Tips para mejorar tu sue\xF1o basados en evidencia", "DR LA ROSA", "14:01"]],
+    "Gesti\xF3n de emociones": [["9M-cA1aoEbY", "Regulaci\xF3n emocional: c\xF3mo manejar las emociones", "P\xEDldoras de Psicolog\xEDa", "12:01"], ["xuU_cCFOFA0", "C\xF3mo regular tus emociones", "Sapiencia pr\xE1ctica", "8:01"]],
+    "Motivaci\xF3n y metas SMART": [["mfzUazFbXyM", "C\xF3mo hacer un objetivo SMART (con ejemplo)", "Study with Do", "5:34"], ["fPU1zEPR1yY", "Objetivos SMART: c\xF3mo fijar y alcanzar tus objetivos", "Full Perception", "8:37"]],
+    "Gesti\xF3n del tiempo y planificaci\xF3n semanal": [["4Dss-mavZHc", "C\xF3mo gestionar el tiempo", "Innovaci\xF3n Educativa UPC", "2:13"], ["cibFlFeqSJ0", "C\xF3mo gestionar tu tiempo si eres estudiante", "Adri\xE0 Sol\xE0 Pastor", "17:22"]],
+    "Exposiciones y hablar en p\xFAblico": [["BwAtqPAnHu4", "C\xF3mo exponer en clase f\xE1cilmente y sin nervios", "Pablo Lomeli", "13:49"], ["FbJ4_bS98Ls", "Ejercicio de respiraci\xF3n para hablar en p\xFAblico con seguridad", "Sebasti\xE1n Lora", "3:35"]],
+    "Trabajo en equipo acad\xE9mico": [["INRzFKTzmZs", "C\xF3mo trabajar en equipo con \xE9xito", "CuriosaMente", "9:55"], ["Wl19KWE3_44", "C\xF3mo trabajar en equipo sin morir en el intento", "Carlos Reyes", "9:17"]],
+    "Lectura acad\xE9mica: m\xE9todo EPL2R": [["h6IlvjQkEQI", "C\xF3mo leer un art\xEDculo acad\xE9mico r\xE1pido y sencillo", "Ph.D. Alejandro Medina Sand\xEDn", "6:09"], ["mJzOLghzUwA", "4 t\xE9cnicas para mejorar tu comprensi\xF3n de lectura", "Pablo Lomeli", "12:36"]],
+    "Hoja de vida efectiva": [["lDhOVbR_4Kg", "C\xF3mo hacer un curr\xEDculum si no tienes experiencia", "Business Insider Espa\xF1a", "3:40"], ["SSyRzzuJpEs", "C\xF3mo hacer una hoja de vida desde cero", "La Profe M\xF3nica", "10:44"]],
+    "Entrevista de trabajo": [["f2GQPmPVEK0", "C\xF3mo superar una entrevista de trabajo con el m\xE9todo STAR", "Michelle Engelmann", "7:36"], ["d0ZYP2fNhtE", "C\xF3mo hacer una entrevista STAR por competencias", "Pepool", "8:19"]],
+    "Perfil profesional y LinkedIn": [["IZwQwIoB0M4", "LinkedIn para estudiantes: consejos", "ESNED", "10:54"], ["XRJFBFDoH68", "C\xF3mo crear una cuenta en LinkedIn", "LearnFree en Espa\xF1ol", "2:47"]],
+    "Proyecto de vida y orientaci\xF3n vocacional": [["QvdEulHTKr8", "\xBFC\xF3mo elegir una carrera que te apasione?", "CuriosaMente", "10:06"], ["bfp3vN2B5zo", "Aprender a elegir: \xBFqu\xE9 carrera estudiar? | TEDx", "TEDx Talks", "11:40"]],
+    "Comunicaci\xF3n asertiva": [["jvxuQEe_0-w", "C\xF3mo comunicarnos con asertividad. Estrella Montol\xEDo", "AprendemosJuntos", "6:22"], ["ZgmSfdE2y-s", "\xBFQu\xE9 es la comunicaci\xF3n asertiva?", "Prepa en L\xEDnea-SEP", "1:53"]],
+    "Adaptaci\xF3n a la vida universitaria": [["L2LXWX-awuQ", "6 h\xE1bitos para ser un mejor estudiante universitario", "Isadora Vera", "13:08"], ["LN9_KclH-fc", "C\xF3mo afrontar un nuevo semestre: estudio y organizaci\xF3n", "Ximena Villag\xF3mez", "12:53"]],
+    "Autocuidado y equilibrio": [["cjkmDOE5pm8", "\xBFQu\xE9 es el autocuidado y por qu\xE9 es importante?", "Columbia Psychiatry", "4:48"], ["JQr6Ld8d-f8", "Un trip de salud mental", "CasiCreativo", "8:35"]],
+    "\xBFCu\xE1ndo y d\xF3nde pedir ayuda?": [["mzWhMKl0z9w", "Motivos para ir a terapia", "P\xEDldoras de Psicolog\xEDa", "7:56"], ["kpPN8LpFybA", "C\xF3mo saber si debo acudir al psic\xF3logo", "Psicoactiva", "4:57"]],
+    "Prep\xE1rate para tus pr\xE1cticas profesionales": [["Vdiv-eiO7gs", "5 consejos para tus pr\xE1cticas profesionales en Psicolog\xEDa", "Psic\xF3loga Nathalia D\xEDaz", "3:08"], ["BdTtrczZMYo", "5 grandes consejos para practicantes", "Sinergia Coaching & Consultor\xEDa", "2:23"]]
+  }, VQ = { "Concentraci\xF3n y espacio de estudio": "c\xF3mo concentrarse para estudiar", "C\xF3mo solicitar acompa\xF1amiento PAP": "asesor\xEDa acad\xE9mica universitaria" };
+  function vidHTML(t) {
+    const L = VID[t] || [], q = WQ[t] || VQ[t] || t, more = '<a class="yt-more" href="https://www.youtube.com/results?search_query=' + encodeURIComponent(q) + '" target="_blank" rel="noopener">Ver m\xE1s videos en YouTube \u2197</a>';
+    return L.length ? '<div class="yt-box"><b class="sr-viz-t">Videos para seguir la gu\xEDa</b><div class="yt-grid">' + L.map((v) => '<button type="button" class="yt-card" data-yt="' + v[0] + '" aria-label="Reproducir: ' + srEsc(v[1]) + '"><span class="yt-th" style="background-image:url(https://i.ytimg.com/vi/' + v[0] + '/mqdefault.jpg)"><i class="yt-play">\u25B6</i><em>' + v[3] + '</em></span><span class="yt-meta"><b>' + srEsc(v[1]) + "</b><small>" + srEsc(v[2]) + "</small></span></button>").join("") + "</div>" + more + '<p class="yt-note">Videos p\xFAblicos de YouTube seleccionados por su relaci\xF3n con la ficha. Requieren conexi\xF3n a internet.</p></div>' : '<div class="yt-box"><b class="sr-viz-t">Videos para seguir la gu\xEDa</b>' + more + "</div>";
+  }
+  document.addEventListener("click", (e) => {
+    const c = e.target.closest && e.target.closest("[data-yt]");
+    if (!c)
+      return;
+    e.preventDefault();
+    const id = c.getAttribute("data-yt");
+    if (!/^https?:$/.test(location.protocol) || navigator.onLine === !1) {
+      window.open("https://www.youtube.com/watch?v=" + id, "_blank", "noopener");
+      return;
+    }
+    const f = document.createElement("div");
+    f.className = "yt-frame", f.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&hl=es" title="Video de YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><a href="https://www.youtube.com/watch?v=' + id + '" target="_blank" rel="noopener">Abrir en YouTube \u2197</a>', c.replaceWith(f);
+  }), window.__papReady = !0;
 })();
 
 </script>
