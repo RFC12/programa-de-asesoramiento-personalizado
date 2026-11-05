@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PAP · Revista digital interactiva">
 
-<meta name="pap-version" content="1793916951307"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="dns-prefetch" href="https://i.ytimg.com"><link rel="dns-prefetch" href="https://www.youtube-nocookie.com"><link rel="dns-prefetch" href="https://www.youtube.com"><link rel="dns-prefetch" href="https://api.crossref.org"><link rel="dns-prefetch" href="https://api.openalex.org"><link rel="dns-prefetch" href="https://es.wikipedia.org"><link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+<meta name="pap-version" content="1793917364342"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="dns-prefetch" href="https://i.ytimg.com"><link rel="dns-prefetch" href="https://www.youtube-nocookie.com"><link rel="dns-prefetch" href="https://www.youtube.com"><link rel="dns-prefetch" href="https://api.crossref.org"><link rel="dns-prefetch" href="https://api.openalex.org"><link rel="dns-prefetch" href="https://es.wikipedia.org"><link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 <style>
 :root{--navy:#072d5b;--deep:#041b3a;--blue:#0d4784;--cyan:#25cbef;--orange:#ff6a18;--paper:#fffefa;--ink:#163452;--muted:#67788e;--line:#dce6f2;--shadow:0 28px 80px rgba(2,16,42,.27);--ease:cubic-bezier(.2,.76,.19,.99)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 2% 10%,#194e87 0,transparent 32%),radial-gradient(circle at 100% 90%,#10537d 0,transparent 34%),#061e3d;color:#152e4d;font:15px/1.47 'Segoe UI',Arial,Helvetica,sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c85022;outline-offset:3px}a{color:inherit}::selection{background:#baf3ff;color:#032348}
@@ -967,6 +967,62 @@ html.as-open .controlbar,html.as-open #offlineBar,html.as-open .edge-nav{display
 .cover-logos .logo-pap{width:24%!important;max-height:118px!important}
 .cover-logos .logo-vive{width:26%!important;max-height:118px!important}
 @media (max-width:600px){.cover-logos{padding-left:14px!important;padding-right:14px!important}.cover-logos .logo-ur{width:40%!important}.cover-logos .logo-pap{width:22%!important;max-height:86px!important}.cover-logos .logo-vive{width:24%!important;max-height:86px!important}}
+/* ===== Búsqueda móvil estilo YouTube ===== */
+.as-clear,.as-mic{flex:0 0 auto;border:0;background:transparent;color:#cfe6f2;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:20px;cursor:pointer;padding:0}
+.as-clear[hidden],.as-mic[hidden]{display:none!important}
+.as-mic:hover,.as-clear:hover{background:#ffffff1a}
+.as-mic.on{background:#ff0033;color:#fff;animation:as-pulse 1.4s infinite}
+.as-back{display:none}
+@media (max-width:760px){
+html.as-open .app-search{gap:6px!important;padding-left:6px!important;padding-right:8px!important}
+html.as-open .as-cancel{order:-1;width:40px;height:40px;border-radius:50%;padding:0!important;display:grid!important;place-items:center}
+html.as-open .as-cancel .as-ctext{display:none}html.as-open .as-cancel .as-back{display:block;font-size:24px;line-height:1;color:#fff}
+html.as-open .app-search>.icon{display:none}
+html.as-open .as-field{background:#ffffff1f;border-radius:999px;padding:0 14px;height:40px}
+html.as-open .as-mic{background:#ffffff1f}
+html.as-open .as-panel{top:60px!important;background:#fff}
+.ym-chips{position:sticky;top:0;z-index:2;display:flex;gap:8px;overflow-x:auto;padding:10px 12px;background:#fff;border-bottom:1px solid #eef2f6;scrollbar-width:none}
+.ym-chips::-webkit-scrollbar{display:none}
+.ym-chip{flex:0 0 auto;border:0;background:#f0f3f6;color:#173a55;font:inherit;font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:9px;cursor:pointer}
+.ym-chip.on{background:#123653;color:#fff}
+.ym-list{padding:4px 0;border-bottom:1px solid #f0f3f6}
+.ym-row{display:flex;align-items:center;min-height:52px}
+.ym-main{flex:1;min-width:0;display:flex;align-items:center;gap:14px;border:0;background:transparent;font:inherit;text-align:left;padding:8px 4px 8px 16px;cursor:pointer;color:#173a55}
+.ym-main:active{background:#f3f6f9}
+.ym-ic{flex:0 0 28px;display:grid;place-items:center;font-size:17px;color:#5b7689}
+.ym-ic .icon{width:19px;height:19px;color:#5b7689}
+.ym-tx{min-width:0;font-size:15px;line-height:1.3;color:#173a55}
+.ym-tx b{font-weight:700}.ym-typed{font-weight:400;color:#5b7689}
+.ym-tx small{display:block;font-size:12px;color:#7a8e9e;margin-top:1px}
+.ym-mini{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#e5f4f9;color:#2a87a5}.ym-mini .icon{width:14px;height:14px}
+.ym-mini.as-p{background:#fdecf3;color:#c24f80}.ym-mini.as-f{background:#e7f5ec;color:#3c9460}.ym-mini.as-b{background:#f1ecfa;color:#7559b5}
+.ym-fill,.ym-del{flex:0 0 44px;height:44px;border:0;background:transparent;color:#7a8e9e;font-size:18px;cursor:pointer;border-radius:50%}
+.ym-del{font-size:20px}
+.ym-feed{display:grid;gap:18px;padding:12px 0 calc(20px + env(safe-area-inset-bottom))}
+.ym-card{display:block}
+.ym-th{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;background:#1d2b3a;cursor:pointer;overflow:hidden}
+.ym-th picture{position:absolute;inset:0}.ym-th img{width:100%;height:100%;object-fit:cover;display:block}
+.ym-th em{position:absolute;right:8px;bottom:8px;z-index:1;background:#000d;color:#fff;font-style:normal;font-size:12px;font-weight:700;padding:2px 5px;border-radius:4px}
+.ym-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;width:58px;height:40px;border-radius:12px;background:#ff0033e6;color:#fff;display:grid;place-items:center;font-style:normal;font-size:16px;box-shadow:0 4px 14px #0007}
+.ym-meta{display:flex;gap:12px;padding:10px 14px 0}
+.ym-av{flex:0 0 36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#e5f4f9;color:#2a87a5}
+.ym-av.as-p{background:#fdecf3;color:#c24f80}.ym-av.as-f{background:#e7f5ec;color:#3c9460}.ym-av.as-b{background:#f1ecfa;color:#7559b5}
+.ym-info{flex:1;min-width:0;border:0;background:transparent;font:inherit;text-align:left;padding:0;cursor:pointer}
+.ym-info b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:15px;line-height:1.3;color:#0f2238}
+.ym-info small{display:block;font-size:12.5px;color:#6a8091;margin-top:3px;line-height:1.35}
+.ym-why{color:#c4683c;font-weight:700}
+.ym-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.ym-tags span{font-size:11px;font-weight:700;color:#3c6a86;background:#eef4f9;border-radius:6px;padding:2px 7px}
+.ym-voice{display:flex;flex-direction:column;align-items:center;gap:8px;padding:60px 20px;text-align:center}
+.ym-voice b{font-size:18px;color:#173a55}.ym-voice small{font-size:13px;color:#6a8091}
+.ym-wave{display:flex;gap:5px;height:40px;align-items:center}
+.ym-wave i{width:7px;height:16px;border-radius:4px;background:#ff0033;animation:ym-w 1s ease-in-out infinite}
+.ym-wave i:nth-child(2){animation-delay:.15s}.ym-wave i:nth-child(3){animation-delay:.3s}.ym-wave i:nth-child(4){animation-delay:.45s}
+@keyframes ym-w{0%,100%{height:12px}50%{height:38px}}
+.as-panel .as-empty{padding:14px 16px}
+}
+
+.ym-tx mark{background:#fff0c2;color:inherit;border-radius:3px;padding:0 2px}
 
 </style>
 <script>document.documentElement.className+=' js';</script>
@@ -2538,7 +2594,7 @@ html.as-open .controlbar,html.as-open #offlineBar,html.as-open .edge-nav{display
     if (!brand)
       return;
     const nV = Object.keys(VID).reduce((a, k) => a + VID[k].length, 0), f = document.createElement("div");
-    f.className = "app-search", f.setAttribute("role", "combobox"), f.setAttribute("aria-expanded", "false"), f.setAttribute("aria-haspopup", "listbox"), f.innerHTML = '<span class="as-badge"><i></i>Centro de apoyo</span><svg width="18" height="18" class="icon"><use href="#ic-search"></use></svg><span class="as-field"><input id="appSearch" type="search" autocomplete="off" spellcheck="false" aria-label="Buscar en el Centro de apoyo" aria-controls="asPanel" /><span class="as-ph" aria-hidden="true"><span class="as-ph-pre">Busca </span><span class="as-type"></span><span class="as-caret"></span></span></span><span class="as-count">' + KB.length + " fichas \xB7 " + nV + ' videos</span><kbd>/</kbd><button type="button" class="as-cancel" data-as-cancel>Cancelar</button><div class="as-panel" id="asPanel" role="listbox" hidden></div>', brand.parentNode.insertBefore(f, brand.nextSibling), document.documentElement.classList.add("has-app-search");
+    f.className = "app-search", f.setAttribute("role", "combobox"), f.setAttribute("aria-expanded", "false"), f.setAttribute("aria-haspopup", "listbox"), f.innerHTML = '<span class="as-badge"><i></i>Centro de apoyo</span><svg width="18" height="18" class="icon"><use href="#ic-search"></use></svg><span class="as-field"><input id="appSearch" type="search" autocomplete="off" spellcheck="false" aria-label="Buscar en el Centro de apoyo" aria-controls="asPanel" /><span class="as-ph" aria-hidden="true"><span class="as-ph-pre">Busca </span><span class="as-type"></span><span class="as-caret"></span></span></span><button type="button" class="as-clear" data-as-clear aria-label="Borrar texto" hidden>\xD7</button><button type="button" class="as-mic" data-as-mic aria-label="Buscar por voz" hidden><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button><span class="as-count">' + KB.length + " fichas \xB7 " + nV + ' videos</span><kbd>/</kbd><button type="button" class="as-cancel" data-as-cancel aria-label="Volver"><span class="as-back">\u2190</span><span class="as-ctext">Cancelar</span></button><div class="as-panel" id="asPanel" role="listbox" hidden></div>', brand.parentNode.insertBefore(f, brand.nextSibling), document.documentElement.classList.add("has-app-search");
     const ai = f.querySelector("input"), panel = f.querySelector(".as-panel"), ph = f.querySelector(".as-ph"), ty = f.querySelector(".as-type"), PH = ["t\xE9cnicas de estudio", "\u201Cno me concentro\u201D", "ansiedad en parciales", "citas en normas APA", "c\xF3mo organizar mi tiempo", "hoja de vida sin experiencia", "vencer la procrastinaci\xF3n", "c\xF3mo hablar en p\xFAblico"];
     let pi = 0, ci = 0, del = !1, tm;
     const reduce = (() => {
@@ -2628,8 +2684,64 @@ html.as-open .controlbar,html.as-open #offlineBar,html.as-open .edge-nav{display
         return '<button type="button" class="as-opt as-' + d.c + (i === sel ? " on" : "") + '" role="option" data-as-open="' + srEsc(d.t) + '"><span class="as-ic">' + srIcon(c[1]) + '</span><span class="as-txt"><b>' + srMark(d.t, out.hits) + "</b><small>" + c[0] + (d.a ? " \xB7 " + srEsc(d.a) : "") + (VID[d.t] ? " \xB7 \u25B6 " + VID[d.t].length + " videos" : "") + (VIZ[d.t] ? " \xB7 vista interactiva" : "") + "</small></span><i>\u21B5</i></button>";
       }).join("") + '<button type="button" class="as-all" data-as-full="' + srEsc(q) + '">Ver todos los resultados para \xAB' + srEsc(q) + "\xBB \u2192</button>";
     }
+    const isPhone2 = () => {
+      try {
+        return matchMedia("(max-width:760px)").matches;
+      } catch (e) {
+        return !1;
+      }
+    };
+    let ymCat = "";
+    function qhist() {
+      try {
+        return JSON.parse(localStorage.getItem("pap-qhist") || "[]");
+      } catch (e) {
+        return [];
+      }
+    }
+    function qsave(q) {
+      if (q = String(q || "").trim(), !(q.length < 2))
+        try {
+          const L = qhist().filter((x) => x.toLowerCase() !== q.toLowerCase());
+          L.unshift(q), localStorage.setItem("pap-qhist", JSON.stringify(L.slice(0, 8)));
+        } catch (e) {
+        }
+    }
+    function ymRow(ic, text, attrs, fill, extra) {
+      return '<div class="ym-row"><button type="button" class="ym-main" ' + attrs + '><span class="ym-ic">' + ic + '</span><span class="ym-tx">' + text + "</span></button>" + (extra || "") + (fill ? '<button type="button" class="ym-fill" data-as-fill="' + srEsc(fill) + '" aria-label="Completar b\xFAsqueda">\u2196</button>' : "") + "</div>";
+    }
+    function homeMobile() {
+      items = [], sel = -1;
+      const c = ctx(), H = qhist(), trend = Object.keys(VID).map((t) => [t, VID[t].reduce((a, v) => a + (VIEWS[v[0]] || 0), 0)]).sort((a, b) => b[1] - a[1]).slice(0, 4), fmtV = (n) => n >= 1e6 ? (n / 1e6).toFixed(1).replace(".", ",") + " M" : Math.round(n / 1e3) + " mil", pool = [];
+      c.list.forEach((x) => {
+        VID[x[0].t] && pool.push([x[0], x[1]]);
+      }), ["Normas APA 7: citas en el texto", "T\xE9cnica Pomodoro", "Ansiedad ante los ex\xE1menes", "Vencer la procrastinaci\xF3n", "Gesti\xF3n del tiempo y planificaci\xF3n semanal", "Hoja de vida efectiva", "Exposiciones y hablar en p\xFAblico", "Manejo del estr\xE9s acad\xE9mico", "Proyecto de vida y orientaci\xF3n vocacional", "Higiene del sue\xF1o"].forEach((t) => {
+        const r = KB.find((x) => x.t === t);
+        r && !pool.some((p) => p[0].t === t) && pool.push([r, ""]);
+      }), KB.forEach((r) => {
+        VID[r.t] && !pool.some((p) => p[0].t === r.t) && pool.push([r, ""]);
+      });
+      const feed = pool.filter((p) => !ymCat || p[0].c === ymCat).slice(0, ymCat ? 12 : 8);
+      panel.innerHTML = '<div class="ym-chips">' + [["", "Todos"]].concat(Object.keys(SR_CATS).map((k) => [k, SR_CATS[k][0]])).map((x) => '<button type="button" class="ym-chip' + (ymCat === x[0] ? " on" : "") + '" data-ym-cat="' + x[0] + '">' + x[1] + "</button>").join("") + "</div>" + (H.length && !ymCat ? '<div class="ym-list">' + H.slice(0, 4).map((q) => ymRow("\u{1F558}", srEsc(q), 'data-as-full="' + srEsc(q) + '"', q, '<button type="button" class="ym-del" data-ym-del="' + srEsc(q) + '" aria-label="Quitar del historial">\xD7</button>')).join("") + "</div>" : "") + (ymCat ? "" : '<div class="ym-list">' + trend.map((x) => ymRow("\u{1F525}", srEsc(x[0]) + "<small>" + fmtV(x[1]) + " vistas en YouTube</small>", 'data-as-open="' + srEsc(x[0]) + '"', x[0])).join("") + "</div>") + '<div class="ym-feed">' + feed.map((p) => {
+        const r = p[0], v = VID[r.t][0], cc = SR_CATS[r.c];
+        return '<article class="ym-card"><button type="button" class="ym-th" data-as-play="' + srEsc(r.t) + '" aria-label="Reproducir: ' + srEsc(v[1]) + '">' + ytPic(v[0]) + "<em>" + v[3] + '</em><i class="ym-play">\u25B6</i></button><div class="ym-meta"><span class="ym-av as-' + r.c + '">' + srIcon(cc[1]) + '</span><button type="button" class="ym-info" data-as-open="' + srEsc(r.t) + '"><b>' + srEsc(v[1]) + "</b><small>" + (p[1] ? '<span class="ym-why">' + srEsc(p[1]) + "</span> \xB7 " : "") + srEsc(v[2]) + " \xB7 " + srEsc(r.t) + '</small><span class="ym-tags"><span>' + cc[0] + "</span><span>Gu\xEDa</span>" + (VIZ[r.t] ? "<span>Herramienta</span>" : "") + "<span>\u25B6 " + VID[r.t].length + "</span></span></button></div></article>";
+      }).join("") + "</div>";
+    }
+    function suggestMobile(q) {
+      const out = srSearch(q, ""), kb = out.res.filter((r) => r.d.kind === "kb"), top = kb[0] ? kb[0].sc : 0, list = kb.filter((r) => r.sc >= top * 0.3).slice(0, 8);
+      items = list.map((r) => r.d.t), sel = -1;
+      const nq = srNorm(q), pops = SR_POPULAR.filter((p) => srNorm(p).indexOf(nq) === 0 && srNorm(p) !== nq).slice(0, 3), hl = (t) => srNorm(t).indexOf(nq) === 0 ? '<span class="ym-typed">' + srEsc(t.slice(0, q.length)) + "</span><b>" + srEsc(t.slice(q.length)) + "</b>" : "<b>" + srMark(t, out.hits) + "</b>";
+      panel.innerHTML = '<div class="ym-list">' + ymRow('<svg width="18" height="18" class="icon"><use href="#ic-search"></use></svg>', "<b>" + srEsc(q) + "</b><small>Buscar en el Centro de apoyo</small>", 'data-as-full="' + srEsc(q) + '"', null) + pops.map((p) => ymRow('<svg width="18" height="18" class="icon"><use href="#ic-search"></use></svg>', hl(p), 'data-as-full="' + srEsc(p) + '"', p)).join("") + list.map((r) => {
+        const d = r.d, cc = SR_CATS[d.c];
+        return ymRow('<span class="ym-mini as-' + d.c + '">' + srIcon(cc[1]) + "</span>", hl(d.t) + "<small>" + cc[0] + (VID[d.t] ? " \xB7 \u25B6 " + VID[d.t].length + " videos" : "") + (VIZ[d.t] ? " \xB7 herramienta" : "") + "</small>", 'data-as-open="' + srEsc(d.t) + '"', d.t);
+      }).join("") + "</div>" + (list.length ? "" : '<div class="as-empty">Sin coincidencias exactas. Toca la primera fila para buscar en todo el Centro de apoyo e internet.</div>');
+    }
     function render2() {
-      const q = ai.value.trim();
+      const q = ai.value.trim(), cl = f.querySelector("[data-as-clear]");
+      if (cl && (cl.hidden = !ai.value), isPhone2()) {
+        q.length < 1 ? homeMobile() : suggestMobile(q);
+        return;
+      }
       q.length < 2 ? home() : suggest(q);
     }
     let clk;
@@ -2649,7 +2761,7 @@ html.as-open .controlbar,html.as-open #offlineBar,html.as-open .edge-nav{display
       document.documentElement.classList.remove("as-open"), panel.hidden = !0, f.classList.remove("open"), f.setAttribute("aria-expanded", "false");
     }
     function go(q) {
-      close();
+      qsave(q), close();
       const v = q;
       try {
         if (KB.some((r) => r.t === q)) {
@@ -2679,7 +2791,29 @@ html.as-open .controlbar,html.as-open #offlineBar,html.as-open .edge-nav{display
         go(sel >= 0 && items[sel] ? items[sel] : q);
       } else
         e.key === "Escape" && (close(), ai.blur());
-    }), panel.addEventListener("mousedown", (e) => e.preventDefault()), f.querySelector("[data-as-cancel]").addEventListener("mousedown", (e) => e.preventDefault()), f.querySelector("[data-as-cancel]").addEventListener("click", () => {
+    }), panel.addEventListener("mousedown", (e) => e.preventDefault()), f.querySelector("[data-as-cancel]").addEventListener("mousedown", (e) => e.preventDefault());
+    const clr = f.querySelector("[data-as-clear]");
+    clr.addEventListener("mousedown", (e) => e.preventDefault()), clr.addEventListener("click", () => {
+      ai.value = "", syncPh(), render2(), ai.focus();
+    });
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition, mic = f.querySelector("[data-as-mic]");
+    SR && /^https:$/.test(location.protocol) && (mic.hidden = !1, mic.addEventListener("mousedown", (e) => e.preventDefault()), mic.addEventListener("click", () => {
+      try {
+        const rec = new SR();
+        rec.lang = "es-CO", rec.interimResults = !0, rec.maxAlternatives = 1, mic.classList.add("on"), open(), panel.innerHTML = '<div class="ym-voice"><span class="ym-wave"><i></i><i></i><i></i><i></i></span><b>Te escucho\u2026</b><small>Di, por ejemplo: \xABc\xF3mo dejar de procrastinar\xBB</small></div>', rec.onresult = (ev) => {
+          let t = "";
+          for (let i = 0; i < ev.results.length; i++)
+            t += ev.results[i][0].transcript;
+          ai.value = t, syncPh(), ev.results[ev.results.length - 1].isFinal && render2();
+        }, rec.onerror = () => {
+          mic.classList.remove("on"), panel.innerHTML = '<div class="ym-voice"><b>No pudimos escucharte</b><small>Revisa el permiso del micr\xF3fono o escribe tu b\xFAsqueda.</small></div>';
+        }, rec.onend = () => {
+          mic.classList.remove("on"), ai.value.trim() && render2();
+        }, rec.start();
+      } catch (x) {
+        mic.classList.remove("on");
+      }
+    })), f.querySelector("[data-as-cancel]").addEventListener("click", () => {
       ai.value = "", syncPh(), close(), ai.blur();
     }), panel.addEventListener("click", (e) => {
       const o = e.target.closest("[data-as-open]");
@@ -2690,6 +2824,25 @@ html.as-open .controlbar,html.as-open #offlineBar,html.as-open .edge-nav{display
       const q = e.target.closest("[data-as-q]");
       if (q) {
         ai.value = q.getAttribute("data-as-q"), syncPh(), render2(), ai.focus();
+        return;
+      }
+      const fl = e.target.closest("[data-as-fill]");
+      if (fl) {
+        ai.value = fl.getAttribute("data-as-fill") + " ", syncPh(), render2(), ai.focus();
+        return;
+      }
+      const yc = e.target.closest("[data-ym-cat]");
+      if (yc) {
+        ymCat = yc.getAttribute("data-ym-cat"), render2(), panel.scrollTop = 0;
+        return;
+      }
+      const yd = e.target.closest("[data-ym-del]");
+      if (yd) {
+        try {
+          localStorage.setItem("pap-qhist", JSON.stringify(qhist().filter((x) => x !== yd.getAttribute("data-ym-del"))));
+        } catch (x) {
+        }
+        render2();
         return;
       }
       const pl = e.target.closest("[data-as-play]");
@@ -2968,7 +3121,7 @@ html.as-open .controlbar,html.as-open #offlineBar,html.as-open .edge-nav{display
     return L.length ? '<div class="yt-box"><b class="sr-viz-t">Videos para seguir la gu\xEDa</b><div class="yt-grid">' + L.map((v) => '<button type="button" class="yt-card" data-yt="' + v[0] + '" aria-label="Reproducir: ' + srEsc(v[1]) + '"><span class="yt-th">' + ytPic(v[0]) + '<i class="yt-play">\u25B6</i><em>' + v[3] + '</em></span><span class="yt-meta"><b>' + srEsc(v[1]) + "</b><small>" + srEsc(v[2]) + "</small></span></button>").join("") + "</div>" + more + '<p class="yt-note">Videos p\xFAblicos de YouTube seleccionados por su relaci\xF3n con la ficha. Requieren conexi\xF3n a internet.</p></div>' : '<div class="yt-box"><b class="sr-viz-t">Videos para seguir la gu\xEDa</b>' + more + "</div>";
   }
   function ytPic(id) {
-    return '<picture><source type="image/webp" srcset="https://i.ytimg.com/vi_webp/' + id + '/mqdefault.webp"><img src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async"></picture>';
+    return '<picture><source type="image/webp" srcset="https://i.ytimg.com/vi_webp/' + id + '/mqdefault.webp"><img src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg" width="320" height="180" alt="" loading="lazy" decoding="async" onerror="this.style.visibility=\'hidden\'"></picture>';
   }
   let ytWarm = !1;
   function ytWarmup() {
