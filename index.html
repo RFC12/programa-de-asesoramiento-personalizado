@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PAP · Revista digital interactiva">
 
-<meta name="pap-version" content="1793915297685">
+<meta name="pap-version" content="1793915426738">
 <style>
 :root{--navy:#072d5b;--deep:#041b3a;--blue:#0d4784;--cyan:#25cbef;--orange:#ff6a18;--paper:#fffefa;--ink:#163452;--muted:#67788e;--line:#dce6f2;--shadow:0 28px 80px rgba(2,16,42,.27);--ease:cubic-bezier(.2,.76,.19,.99)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 2% 10%,#194e87 0,transparent 32%),radial-gradient(circle at 100% 90%,#10537d 0,transparent 34%),#061e3d;color:#152e4d;font:15px/1.47 'Segoe UI',Arial,Helvetica,sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c85022;outline-offset:3px}a{color:inherit}::selection{background:#baf3ff;color:#032348}
@@ -2815,7 +2815,7 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
   function apaSentence(t) {
     if (t = String(t || "").trim(), !t)
       return t;
-    const letters = t.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ]/g, ""), caps = letters && letters === letters.toUpperCase(), words = t.split(" "), titleCase = words.length > 3 && words.filter((w) => /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]/.test(w)).length / words.length > 0.6;
+    const letters = t.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ]/g, ""), caps = letters && letters === letters.toUpperCase(), words = t.split(" "), cw = words.filter((w) => w.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ]/g, "").length >= 4), titleCase = cw.length >= 3 && cw.filter((w) => /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]/.test(w)).length / cw.length >= 0.7;
     if (!caps && !titleCase)
       return t;
     let first = !0;
@@ -2836,7 +2836,7 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
     if (L.length || warn.push("Sin autor: la referencia inicia con el t\xEDtulo."), yr === "s. f." && warn.push("Sin a\xF1o: se usa \xABs. f.\xBB (sin fecha)."), T && T !== String(v.t || "").trim() && warn.push("T\xEDtulo ajustado a formato oraci\xF3n (APA). Revisa nombres propios."), ty === "art") {
       const pre = head || apaEnd(T || "T\xEDtulo del art\xEDculo") + " (" + yr + "). ";
       parts.push(pre + (head ? apaEnd(T || "T\xEDtulo del art\xEDculo") + " " : "")), parts.push(["i", (v.j || "Nombre de la revista") + (v.vo ? ", " + v.vo : "")]);
-      let tail = (v.n ? "(" + v.n + ")" : "") + (v.p ? ", " + apaPages(v.p) : "") + ".";
+      let tail = (v.n ? (v.vo ? "" : ", ") + "(" + v.n + ")" : "") + (v.p ? ", " + apaPages(v.p) : "") + ".";
       url && (tail += " " + url), parts.push(tail), v.j || warn.push("Falta el nombre de la revista."), v.vo || warn.push("Falta el volumen."), v.p || warn.push("Sin p\xE1ginas: si es art\xEDculo electr\xF3nico, usa su n\xFAmero (p. ej., e1234)."), doi || warn.push(url ? "Sin DOI: se usa la URL. Busca el DOI en la p\xE1gina de la revista o en Crossref." : "Sin DOI ni URL: agr\xE9galo si el art\xEDculo lo tiene.");
     } else
       ty === "book" ? (parts.push(head), parts.push(["i", apaEnd(T || "T\xEDtulo del libro").replace(/\.$/, "")]), parts.push((v.ed ? " (" + v.ed + ")" : "") + ". " + (v.j ? apaEnd(v.j) + " " : "") + (url || "")), v.j || warn.push("Falta la editorial.")) : ty === "chap" ? (parts.push(head + apaEnd(T || "T\xEDtulo del cap\xEDtulo") + " En " + (v.ed ? /\(Eds?\.\)/.test(v.ed) ? v.ed + ", " : v.ed + (/,|\sy\s|&/.test(v.ed) ? " (Eds.), " : " (Ed.), ") : "")), parts.push(["i", v.bk || "T\xEDtulo del libro"]), parts.push((v.p ? " (pp. " + apaPages(v.p) + ")" : "") + ". " + (v.j ? apaEnd(v.j) + " " : "") + (url || "")), v.bk || warn.push("Falta el t\xEDtulo del libro.")) : (parts.push(head), parts.push(["i", apaEnd(T || "T\xEDtulo de la p\xE1gina").replace(/\.$/, "")]), parts.push(". " + (v.j ? apaEnd(v.j) + " " : "") + (url || "URL")), url || warn.push("Falta la URL de la p\xE1gina."));
@@ -2901,7 +2901,7 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
     }).then((j) => j.message);
   }
   function apaCrossTitle(q) {
-    return fetch("https://api.crossref.org/works?rows=4&select=DOI,title,author,container-title,issued,type,volume,issue,page,publisher,editor&query.bibliographic=" + encodeURIComponent(q)).then((r) => {
+    return fetch("https://api.crossref.org/works?rows=10&select=DOI,title,author,container-title,issued,type,volume,issue,page,publisher,editor&query.bibliographic=" + encodeURIComponent(q)).then((r) => {
       if (!r.ok)
         throw new Error("net");
       return r.json();
@@ -2936,11 +2936,23 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
         apaStatus(box, "Sin coincidencias. Revisa el t\xEDtulo o completa manualmente.", "err");
         return;
       }
-      apaStatus(box, "Elige el documento correcto:", "ok"), items.forEach((m) => {
+      const tok = (x) => new Set(srNorm(apaStrip(x)).split(" ").filter((w) => w.length > 2)), qt = tok(q);
+      if (items.forEach((m) => {
+        const tt = tok((m.title || [])[0]);
+        let inter = 0;
+        qt.forEach((w) => {
+          tt.has(w) && inter++;
+        }), m.__sim = qt.size ? inter / Math.max(qt.size, tt.size || 1) : 0;
+      }), items.sort((x, y) => y.__sim - x.__sim), items[0].__sim >= 0.85) {
+        const r = apaFromCrossref(items[0]);
+        apaFill(box, r.d, r.ty), apaStatus(box, "\u2713 Coincidencia de " + Math.round(items[0].__sim * 100) + " % con el t\xEDtulo. Datos importados desde Crossref; revisa y ajusta si hace falta.", "ok");
+        return;
+      }
+      apaStatus(box, "No hay coincidencia exacta. Elige el documento correcto:", "warn"), items.slice(0, 5).forEach((m) => {
         const b = document.createElement("button");
         b.type = "button", b.className = "ap-choice";
         const yr = ((m.issued || {})["date-parts"] || [[]])[0][0] || "s. f.", au = (m.author || []).slice(0, 3).map((a) => a.family || a.name).join(", ") + ((m.author || []).length > 3 ? " et al." : "");
-        vzSet(b, [["b", apaStrip((m.title || [])[0]) || "Sin t\xEDtulo"], ["small", (au || "Sin autor") + " \xB7 " + yr + " \xB7 " + (apaStrip((m["container-title"] || [])[0]) || m.publisher || "")]]), b.__m = m, ch.appendChild(b);
+        vzSet(b, [["b", apaStrip((m.title || [])[0]) || "Sin t\xEDtulo"], ["small", (au || "Sin autor") + " \xB7 " + yr + " \xB7 " + (apaStrip((m["container-title"] || [])[0]) || m.publisher || "") + " \xB7 coincidencia " + Math.round((m.__sim || 0) * 100) + " %"]]), b.__m = m, ch.appendChild(b);
       });
     }).catch(() => apaStatus(box, "No fue posible conectar con Crossref. Intenta de nuevo o completa manualmente.", "err"));
   }
