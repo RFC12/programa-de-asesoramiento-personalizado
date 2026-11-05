@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PAP · Revista digital interactiva">
 
-<meta name="pap-version" content="1793914326884">
+<meta name="pap-version" content="1793914903497">
 <style>
 :root{--navy:#072d5b;--deep:#041b3a;--blue:#0d4784;--cyan:#25cbef;--orange:#ff6a18;--paper:#fffefa;--ink:#163452;--muted:#67788e;--line:#dce6f2;--shadow:0 28px 80px rgba(2,16,42,.27);--ease:cubic-bezier(.2,.76,.19,.99)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 2% 10%,#194e87 0,transparent 32%),radial-gradient(circle at 100% 90%,#10537d 0,transparent 34%),#061e3d;color:#152e4d;font:15px/1.47 'Segoe UI',Arial,Helvetica,sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c85022;outline-offset:3px}a{color:inherit}::selection{background:#baf3ff;color:#032348}
@@ -724,6 +724,53 @@ body.no-motion .vz-circle,body.no-motion .vz-bl span{animation:none}
 .yt-frame a,.yt-more{font-size:12px;font-weight:800;color:#c4302b;text-decoration:none}
 .yt-more{display:inline-block;margin-top:9px}
 .yt-note{font-size:10.5px!important;color:#8396a5!important;margin:6px 0 0!important}
+/* ===== Barra superior interactiva ===== */
+@media (min-width:1180px){
+.app-search{position:relative;max-width:620px!important;height:44px!important;gap:10px!important;padding:0 8px 0 6px!important;border-radius:14px!important;background:#ffffff12!important;transition:background .25s,border-color .25s,box-shadow .25s,max-width .3s}
+.app-search:hover,.app-search.open{background:#ffffff1c!important;border-color:#8bd8e466!important;box-shadow:0 0 0 4px #8bd8e414}
+.app-search.open{max-width:680px!important}
+.as-badge{display:flex;align-items:center;gap:6px;flex:0 0 auto;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:#123653;background:linear-gradient(90deg,#f8d1e0,#fbe9b5,#cdeed9);padding:5px 10px;border-radius:9px;white-space:nowrap}
+.as-badge i{width:7px;height:7px;border-radius:50%;background:#e2621f;box-shadow:0 0 0 0 #e2621f88;animation:as-pulse 2s infinite}
+@keyframes as-pulse{0%{box-shadow:0 0 0 0 #e2621f88}70%{box-shadow:0 0 0 7px #e2621f00}100%{box-shadow:0 0 0 0 #e2621f00}}
+.as-field{position:relative;flex:1;min-width:0;display:flex;align-items:center;height:100%}
+.as-field input{width:100%}
+.as-ph{position:absolute;left:0;top:50%;transform:translateY(-50%);pointer-events:none;font-size:13px;color:#a9c3d6;white-space:nowrap;overflow:hidden;max-width:100%}
+.as-type{color:#e6f4fb;font-weight:600}
+.as-caret{display:inline-block;width:1.5px;height:14px;background:#8bd8e4;margin-left:2px;vertical-align:-2px;animation:as-blink 1s steps(1) infinite}
+.as-ph.paused .as-caret{display:none}
+@keyframes as-blink{50%{opacity:0}}
+.as-count{flex:0 0 auto;font-size:10.5px;font-weight:700;color:#9fc0d6;white-space:nowrap}
+@media (max-width:1380px){.as-count{display:none}}
+.as-panel{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:80;background:#fff;border-radius:16px;box-shadow:0 22px 60px #06182f59,0 0 0 1px #dbe7ef;padding:14px;color:#173a55;max-height:min(70vh,560px);overflow-y:auto;animation:as-in .18s ease both;text-align:left}
+@keyframes as-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.as-sec{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#8094a5;margin:2px 2px 8px}
+.as-sec:not(:first-child){margin-top:14px}
+.as-cats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.as-cat{display:flex;flex-direction:column;align-items:flex-start;gap:3px;border:1px solid #e3ebf2;background:#fbfdfe;border-radius:12px;padding:10px;font:inherit;cursor:pointer;text-align:left;transition:transform .18s,border-color .18s,box-shadow .18s}
+.as-cat:hover{transform:translateY(-2px);border-color:#c9dbe8;box-shadow:0 8px 18px #1d3b5514}
+.as-cat b{font-size:12.5px;color:#173a55}.as-cat small{font-size:11px;color:#7a8e9e}
+.as-ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#e5f4f9;color:#2a87a5;flex:0 0 auto}
+.as-ic .icon{width:15px;height:15px}
+.as-p .as-ic{background:#fdecf3;color:#c24f80}.as-f .as-ic{background:#e7f5ec;color:#3c9460}.as-b .as-ic{background:#f1ecfa;color:#7559b5}
+.as-chips{display:flex;flex-wrap:wrap;gap:6px}
+.as-chip{border:1px solid #f2d3e0;background:#fdf3f7;color:#a8436f;font:inherit;font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:999px;cursor:pointer}
+.as-chip:hover{background:#fbe7ef}
+.as-tip{display:flex;flex-direction:column;gap:4px;width:100%;margin-top:14px;text-align:left;border:0;border-radius:12px;padding:11px 13px;background:linear-gradient(90deg,#fff7e6,#fdf2f7);font:inherit;cursor:pointer;color:#3f4f63;font-size:12.5px;line-height:1.5}
+.as-tip-k{font-size:11px;font-weight:800;color:#a8431b}
+.as-tip em{font-style:normal;font-weight:800;color:#c4683c;font-size:11.5px}
+.as-opt{display:grid;grid-template-columns:30px minmax(0,1fr) 18px;gap:10px;align-items:center;width:100%;border:0;background:transparent;border-radius:11px;padding:8px;font:inherit;text-align:left;cursor:pointer}
+.as-opt:hover,.as-opt.on{background:#eef4f9}
+.as-opt b{display:block;font-size:13px;color:#173a55}.as-opt small{display:block;font-size:11px;color:#7a8e9e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.as-opt mark{background:#fff0c2;color:inherit;border-radius:3px}
+.as-opt i{font-style:normal;color:#a0b0bd;font-size:12px;opacity:0}.as-opt.on i{opacity:1}
+.as-all{display:block;width:100%;margin-top:8px;border:0;background:#1f4f78;color:#fff;font:inherit;font-size:12px;font-weight:800;padding:9px 12px;border-radius:10px;cursor:pointer;text-align:center}
+.as-empty{font-size:12.5px;color:#5b7689;padding:4px 2px}
+.app-search input::placeholder{color:transparent}
+}
+body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
+@media (prefers-reduced-motion:reduce){.as-badge i,.as-caret{animation:none}}
+
+#appSearch::-webkit-search-cancel-button{display:none;-webkit-appearance:none}
 
 </style>
 <script>document.documentElement.className+=' js';</script>
@@ -2420,6 +2467,119 @@ body.no-motion .vz-circle,body.no-motion .vz-bl span{animation:none}
     const o = e.target.closest("[data-sr-open-q]");
     o && !o.closest("#dialog") && (e.preventDefault(), openSearch(o.getAttribute("data-sr-open-q")));
   });
+  function setupAppSearch() {
+    const brand = $(".appbar .brand-mini");
+    if (!brand)
+      return;
+    const nV = Object.keys(VID).reduce((a, k) => a + VID[k].length, 0), f = document.createElement("div");
+    f.className = "app-search", f.setAttribute("role", "combobox"), f.setAttribute("aria-expanded", "false"), f.setAttribute("aria-haspopup", "listbox"), f.innerHTML = '<span class="as-badge"><i></i>Centro de apoyo</span><svg width="18" height="18" class="icon"><use href="#ic-search"></use></svg><span class="as-field"><input id="appSearch" type="search" autocomplete="off" spellcheck="false" aria-label="Buscar en el Centro de apoyo" aria-controls="asPanel" /><span class="as-ph" aria-hidden="true"><span class="as-ph-pre">Busca </span><span class="as-type"></span><span class="as-caret"></span></span></span><span class="as-count">' + KB.length + " fichas \xB7 " + nV + ' videos</span><kbd>/</kbd><div class="as-panel" id="asPanel" role="listbox" hidden></div>', brand.parentNode.insertBefore(f, brand.nextSibling), document.documentElement.classList.add("has-app-search");
+    const ai = f.querySelector("input"), panel = f.querySelector(".as-panel"), ph = f.querySelector(".as-ph"), ty = f.querySelector(".as-type"), PH = ["t\xE9cnicas de estudio", "\u201Cno me concentro\u201D", "ansiedad en parciales", "citas en normas APA", "c\xF3mo organizar mi tiempo", "hoja de vida sin experiencia", "vencer la procrastinaci\xF3n", "c\xF3mo hablar en p\xFAblico"];
+    let pi = 0, ci = 0, del = !1, tm;
+    const reduce = (() => {
+      try {
+        return matchMedia("(prefers-reduced-motion: reduce)").matches;
+      } catch (e) {
+        return !1;
+      }
+    })();
+    function tick() {
+      if (document.body.classList.contains("no-motion") || reduce) {
+        ty.textContent = PH[0];
+        return;
+      }
+      const w = PH[pi];
+      if (del)
+        ci--, ci <= 0 && (del = !1, pi = (pi + 1) % PH.length);
+      else if (ci++, ci >= w.length) {
+        del = !0, tm = setTimeout(tick, 1600), ty.textContent = w;
+        return;
+      }
+      ty.textContent = w.slice(0, ci), tm = setTimeout(tick, del ? 28 : 62);
+    }
+    tick();
+    const syncPh = () => {
+      ph.style.visibility = ai.value ? "hidden" : "visible";
+    }, tipsSrc = KB.filter((r) => r.ex), day = Math.floor(Date.now() / 864e5), tip = tipsSrc[day % tipsSrc.length];
+    let sel = -1, items = [];
+    function catCount(c) {
+      return KB.filter((r) => r.c === c).length;
+    }
+    function home() {
+      items = [], sel = -1, panel.innerHTML = '<div class="as-sec">Explora por dimensi\xF3n</div><div class="as-cats">' + Object.keys(SR_CATS).map((c) => '<button type="button" class="as-cat as-' + c + '" data-as-cat="' + c + '"><span class="as-ic">' + srIcon(SR_CATS[c][1]) + "</span><b>" + SR_CATS[c][0] + "</b><small>" + catCount(c) + " fichas</small></button>").join("") + '</div><div class="as-sec">B\xFAsquedas frecuentes</div><div class="as-chips">' + SR_POPULAR.slice(0, 8).map((p) => '<button type="button" class="as-chip" data-as-q="' + srEsc(p) + '">' + srEsc(p) + "</button>").join("") + "</div>" + (tip ? '<button type="button" class="as-tip" data-as-open="' + srEsc(tip.t) + '"><span class="as-tip-k">\u{1F4A1} Tip del d\xEDa \xB7 ' + srEsc(tip.t) + "</span><span>" + srEsc(tip.ex) + "</span><em>Ver la ficha \u2192</em></button>" : "");
+    }
+    function suggest(q) {
+      const out = srSearch(q, ""), kb = out.res.filter((r) => r.d.kind === "kb"), top = kb[0] ? kb[0].sc : 0, list = kb.filter((r) => r.sc >= top * 0.35).slice(0, 6);
+      if (items = list.map((r) => r.d.t), sel = items.length ? 0 : -1, !list.length) {
+        const sug = srSuggest(q);
+        panel.innerHTML = '<div class="as-empty">Sin coincidencias para \xAB' + srEsc(q) + "\xBB." + (sug ? ' \xBFQuisiste decir <button type="button" class="sr-link" data-as-q="' + srEsc(sug) + '">' + srEsc(sug) + "</button>?" : "") + '</div><button type="button" class="as-all" data-as-full="' + srEsc(q) + '">Buscar en el Centro de apoyo y en internet \u2192</button>';
+        return;
+      }
+      panel.innerHTML = '<div class="as-sec">Sugerencias</div>' + list.map((r, i) => {
+        const d = r.d, c = SR_CATS[d.c];
+        return '<button type="button" class="as-opt as-' + d.c + (i === sel ? " on" : "") + '" role="option" data-as-open="' + srEsc(d.t) + '"><span class="as-ic">' + srIcon(c[1]) + '</span><span class="as-txt"><b>' + srMark(d.t, out.hits) + "</b><small>" + c[0] + (d.a ? " \xB7 " + srEsc(d.a) : "") + (VID[d.t] ? " \xB7 \u25B6 " + VID[d.t].length + " videos" : "") + (VIZ[d.t] ? " \xB7 vista interactiva" : "") + "</small></span><i>\u21B5</i></button>";
+      }).join("") + '<button type="button" class="as-all" data-as-full="' + srEsc(q) + '">Ver todos los resultados para \xAB' + srEsc(q) + "\xBB \u2192</button>";
+    }
+    function render2() {
+      const q = ai.value.trim();
+      q.length < 2 ? home() : suggest(q);
+    }
+    function open() {
+      panel.hidden && (panel.hidden = !1, f.classList.add("open"), f.setAttribute("aria-expanded", "true"), render2());
+    }
+    function close() {
+      panel.hidden = !0, f.classList.remove("open"), f.setAttribute("aria-expanded", "false");
+    }
+    function go(q) {
+      close();
+      const v = q;
+      ai.value = "", syncPh(), ai.blur(), openSearch(v);
+    }
+    function mark() {
+      panel.querySelectorAll(".as-opt").forEach((b, i) => b.classList.toggle("on", i === sel));
+    }
+    ai.addEventListener("focus", () => {
+      open(), clearTimeout(tm), ph.classList.add("paused");
+    }), ai.addEventListener("blur", () => {
+      ph.classList.remove("paused"), clearTimeout(tm), tm = setTimeout(tick, 600), setTimeout(() => {
+        f.contains(document.activeElement) || close();
+      }, 180);
+    }), ai.addEventListener("input", () => {
+      syncPh(), open(), clearTimeout(window.__asT), window.__asT = setTimeout(render2, 70);
+    }), ai.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowDown" && items.length)
+        e.preventDefault(), sel = (sel + 1) % items.length, mark();
+      else if (e.key === "ArrowUp" && items.length)
+        e.preventDefault(), sel = (sel - 1 + items.length) % items.length, mark();
+      else if (e.key === "Enter") {
+        e.preventDefault();
+        const q = ai.value.trim();
+        go(sel >= 0 && items[sel] ? items[sel] : q);
+      } else
+        e.key === "Escape" && (close(), ai.blur());
+    }), panel.addEventListener("mousedown", (e) => e.preventDefault()), panel.addEventListener("click", (e) => {
+      const o = e.target.closest("[data-as-open]");
+      if (o) {
+        go(o.getAttribute("data-as-open"));
+        return;
+      }
+      const q = e.target.closest("[data-as-q]");
+      if (q) {
+        ai.value = q.getAttribute("data-as-q"), syncPh(), render2(), ai.focus();
+        return;
+      }
+      const fu = e.target.closest("[data-as-full]");
+      if (fu) {
+        go(fu.getAttribute("data-as-full"));
+        return;
+      }
+      const c = e.target.closest("[data-as-cat]");
+      c && (srCat = c.getAttribute("data-as-cat"), go(""));
+    }), document.addEventListener("mousedown", (e) => {
+      f.contains(e.target) || close();
+    }), window.__papAppSearch = () => {
+      ai.focus();
+    };
+  }
   function openSearch(q) {
     const cats = '<button type="button" class="sr-cat' + (srCat ? "" : " on") + '" data-sr-cat="">Todos</button>' + Object.keys(SR_CATS).map((c) => '<button type="button" class="sr-cat' + (srCat === c ? " on" : "") + '" data-sr-cat="' + c + '">' + SR_CATS[c][0] + "</button>").join("");
     modal('<div class="dialog-card search-card" role="search"><div class="sr-top"><span class="sr-kicker">Centro de apoyo PAP</span><h2>\xBFQu\xE9 necesitas fortalecer hoy?</h2><p>Busca t\xE9cnicas de estudio, bienestar y orientaci\xF3n profesional. Escribe con tus palabras: entendemos sin\xF3nimos y errores de escritura.</p><label class="sr-field"><svg width="20" height="20" class="icon"><use href="#ic-search"></use></svg><input id="srInput" type="search" autocomplete="off" spellcheck="false" placeholder="Ej.: no me concentro, ansiedad en parciales, hoja de vida\u2026" aria-label="Buscar recursos de apoyo" aria-controls="srResults" /><button type="button" class="sr-clear" id="srClear" aria-label="Borrar b\xFAsqueda">\xD7</button></label><div class="sr-cats" role="group" aria-label="Filtrar por dimensi\xF3n">' + cats + '</div><div class="sr-status" id="srStatus" role="status" aria-live="polite"></div></div><div class="sr-results" id="srResults"></div><p class="sr-note">Recursos de orientaci\xF3n general. No reemplazan la atenci\xF3n psicol\xF3gica o cl\xEDnica.</p></div>');
@@ -2471,23 +2631,12 @@ body.no-motion .vz-circle,body.no-motion .vz-bl span{animation:none}
       if ($("#dialog").classList.contains("open"))
         return;
       const ae = document.activeElement, tag = (ae && ae.tagName || "").toLowerCase();
-      tag === "input" || tag === "textarea" || tag === "select" || ae && ae.isContentEditable || (e.key === "/" && !e.ctrlKey && !e.metaKey && !e.altKey || (e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K")) && (e.preventDefault(), openSearch(""));
-    }, !0);
-    const brand = $(".appbar .brand-mini");
-    if (brand) {
-      const f = document.createElement("label");
-      f.className = "app-search", f.innerHTML = '<svg width="18" height="18" class="icon"><use href="#ic-search"></use></svg><input id="appSearch" type="search" autocomplete="off" placeholder="Busca apoyo: t\xE9cnicas de estudio, estr\xE9s, hoja de vida\u2026" aria-label="Buscar en el centro de apoyo" /><kbd>/</kbd>', brand.parentNode.insertBefore(f, brand.nextSibling);
-      const ai = f.querySelector("input");
-      ai.addEventListener("input", () => {
-        const v = ai.value;
-        ai.value = "", openSearch(v);
-      }), ai.addEventListener("keydown", (e) => {
-        e.key === "Enter" && (e.preventDefault(), openSearch(ai.value), ai.value = "");
-      }), ai.addEventListener("mousedown", (e) => {
-        e.preventDefault(), openSearch("");
-      }), document.documentElement.classList.add("has-app-search");
-    }
-    document.addEventListener("click", (e) => {
+      if (!(tag === "input" || tag === "textarea" || tag === "select" || ae && ae.isContentEditable) && (e.key === "/" && !e.ctrlKey && !e.metaKey && !e.altKey || (e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K"))) {
+        e.preventDefault();
+        const as = document.querySelector(".app-search");
+        as && as.offsetParent && window.__papAppSearch ? window.__papAppSearch() : openSearch("");
+      }
+    }, !0), document.addEventListener("click", (e) => {
       e.target.closest("[data-sr-open]") && (e.preventDefault(), openSearch(""));
     }), window.__papSearch = (q) => (openSearch(q || ""), srSearch(q || "", "").res.slice(0, 5).map((r) => r.d.t));
   }(), WEB && window.fetch && fetch("version.json?_=" + Date.now(), { cache: "no-store" }).then((r) => r.ok ? r.json() : null).then((j) => {
@@ -2702,7 +2851,12 @@ body.no-motion .vz-circle,body.no-motion .vz-bl span{animation:none}
     }
     const f = document.createElement("div");
     f.className = "yt-frame", f.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&hl=es" title="Video de YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><a href="https://www.youtube.com/watch?v=' + id + '" target="_blank" rel="noopener">Abrir en YouTube \u2197</a>', c.replaceWith(f);
-  }), window.__papReady = !0;
+  });
+  try {
+    setupAppSearch();
+  } catch (e) {
+  }
+  window.__papReady = !0;
 })();
 
 </script>
