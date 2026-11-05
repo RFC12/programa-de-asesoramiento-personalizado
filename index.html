@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PAP · Revista digital interactiva">
 
-<meta name="pap-version" content="1793917795812"><link rel="preconnect" href="https://i.ytimg.com"><link rel="dns-prefetch" href="https://img.youtube.com"><link rel="dns-prefetch" href="https://i.ytimg.com"><link rel="dns-prefetch" href="https://www.youtube-nocookie.com"><link rel="dns-prefetch" href="https://www.youtube.com"><link rel="dns-prefetch" href="https://api.crossref.org"><link rel="dns-prefetch" href="https://api.openalex.org"><link rel="dns-prefetch" href="https://es.wikipedia.org"><link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+<meta name="pap-version" content="1793917932549"><link rel="preconnect" href="https://i.ytimg.com"><link rel="dns-prefetch" href="https://img.youtube.com"><link rel="dns-prefetch" href="https://i.ytimg.com"><link rel="dns-prefetch" href="https://www.youtube-nocookie.com"><link rel="dns-prefetch" href="https://www.youtube.com"><link rel="dns-prefetch" href="https://api.crossref.org"><link rel="dns-prefetch" href="https://api.openalex.org"><link rel="dns-prefetch" href="https://es.wikipedia.org"><link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 <style>
 :root{--navy:#072d5b;--deep:#041b3a;--blue:#0d4784;--cyan:#25cbef;--orange:#ff6a18;--paper:#fffefa;--ink:#163452;--muted:#67788e;--line:#dce6f2;--shadow:0 28px 80px rgba(2,16,42,.27);--ease:cubic-bezier(.2,.76,.19,.99)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 2% 10%,#194e87 0,transparent 32%),radial-gradient(circle at 100% 90%,#10537d 0,transparent 34%),#061e3d;color:#152e4d;font:15px/1.47 'Segoe UI',Arial,Helvetica,sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c85022;outline-offset:3px}a{color:inherit}::selection{background:#baf3ff;color:#032348}
@@ -2460,6 +2460,27 @@ html.as-open .as-panel{top:60px!important;background:#fff}
   }
   const SR_RISK = /suicid|matarme|quitarme la vida|no quiero vivir|hacerme dano|autolesi|cortarme|morirme|acabar con todo/, SR_POPULAR = ["T\xE9cnicas de estudio", "Normas APA", "Citas en APA", "Ansiedad ante ex\xE1menes", "Organizar mi tiempo", "No me concentro", "Procrastinaci\xF3n", "Estr\xE9s", "Hoja de vida", "Entrevista de trabajo"];
   let srCat = "";
+  function phoneUI() {
+    try {
+      return matchMedia("(max-width:760px)").matches;
+    } catch (e) {
+      return !1;
+    }
+  }
+  document.addEventListener("click", (e) => {
+    if (!phoneUI())
+      return;
+    const t = e.target.closest && e.target.closest('button,a,[role="option"],label.ap-file');
+    if (!t || t.closest("[data-as-fill]") || t.matches("[data-as-mic],[data-as-clear]") || !t.closest("#dialog,.as-panel,.cs-box,.cs-results,#csGrid"))
+      return;
+    const a = document.activeElement;
+    a && /^(INPUT|TEXTAREA)$/.test(a.tagName) && !(t.closest(".sr-viz") && t.closest(".vz-form")) && setTimeout(() => {
+      try {
+        a.blur();
+      } catch (x) {
+      }
+    }, 0);
+  }, !0);
   function srIcon(n) {
     return '<svg width="17" height="17" class="icon sm"><use href="#ic-' + n + '"></use></svg>';
   }
@@ -2590,7 +2611,7 @@ html.as-open .as-panel{top:60px!important;background:#fff}
     const c = e.target.closest("[data-cs-q]");
     if (c) {
       const i = $("#csInput");
-      i && (i.value = c.getAttribute("data-cs-q"), csRender(i.value));
+      i && (i.value = c.getAttribute("data-cs-q"), csRender(i.value), phoneUI() && i.blur());
       return;
     }
     const o = e.target.closest("[data-sr-open-q]");
@@ -2845,7 +2866,7 @@ html.as-open .as-panel{top:60px!important;background:#fff}
       }
       const q = e.target.closest("[data-as-q]");
       if (q) {
-        ai.value = q.getAttribute("data-as-q"), syncPh(), render2(), ai.focus();
+        ai.value = q.getAttribute("data-as-q"), syncPh(), render2(), isPhone2() ? ai.blur() : ai.focus();
         return;
       }
       const fl = e.target.closest("[data-as-fill]");
@@ -2945,7 +2966,7 @@ html.as-open .as-panel{top:60px!important;background:#fff}
     const qb = e.target.closest("[data-sr-q]");
     if (qb) {
       const inp = $("#srInput");
-      inp && (inp.value = qb.getAttribute("data-sr-q"), srRender(), inp.focus());
+      inp && (inp.value = qb.getAttribute("data-sr-q"), srRender(), phoneUI() ? inp.blur() : inp.focus());
       return;
     }
     const cb = e.target.closest("[data-sr-cat]");
@@ -2955,7 +2976,7 @@ html.as-open .as-panel{top:60px!important;background:#fff}
     }
     if (e.target.closest("#srClear")) {
       const inp = $("#srInput");
-      inp.value = "", srRender(), inp.focus();
+      inp.value = "", srRender(), phoneUI() || inp.focus();
     }
   }), function() {
     const btn = document.createElement("button");
