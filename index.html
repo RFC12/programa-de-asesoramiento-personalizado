@@ -23,7 +23,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PAP · Revista digital interactiva">
 
-<meta name="pap-version" content="1793915426738">
+<meta name="pap-version" content="1793915587639">
 <style>
 :root{--navy:#072d5b;--deep:#041b3a;--blue:#0d4784;--cyan:#25cbef;--orange:#ff6a18;--paper:#fffefa;--ink:#163452;--muted:#67788e;--line:#dce6f2;--shadow:0 28px 80px rgba(2,16,42,.27);--ease:cubic-bezier(.2,.76,.19,.99)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 2% 10%,#194e87 0,transparent 32%),radial-gradient(circle at 100% 90%,#10537d 0,transparent 34%),#061e3d;color:#152e4d;font:15px/1.47 'Segoe UI',Arial,Helvetica,sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c85022;outline-offset:3px}a{color:inherit}::selection{background:#baf3ff;color:#032348}
@@ -2865,7 +2865,7 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
     web: { au: "Ministerio de Salud y Protecci\xF3n Social", y: "s. f.", t: "L\xEDnea 106", j: "Minsalud", d: "https://minsalud.gov.co/salud/publica/salud-mental/Paginas/linea-106.aspx" }
   };
   function apaFill(box, data, ty) {
-    ty ? (box.querySelectorAll('[data-vz-g="ty"] button').forEach((b) => b.classList.toggle("on", b.getAttribute("data-v") === ty)), box.querySelector("[data-ap-form]").innerHTML = apaFormHTML(ty, data)) : Object.keys(data).forEach((k) => {
+    box.__en = apaEnglish(data && data.t), ty ? (box.querySelectorAll('[data-vz-g="ty"] button').forEach((b) => b.classList.toggle("on", b.getAttribute("data-v") === ty)), box.querySelector("[data-ap-form]").innerHTML = apaFormHTML(ty, data)) : Object.keys(data).forEach((k) => {
       const i = box.querySelector('[data-vz-in="' + k + '"]');
       i && (i.value = data[k]);
     }), vzUpdate(box);
@@ -2876,7 +2876,7 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
     const r = apaBuild(v);
     vzSet(box.querySelector("[data-vz-out]"), r.parts), box.querySelector("[data-ap-par]").textContent = r.par, box.querySelector("[data-ap-nar]").textContent = r.nar, box.querySelector("[data-ap-tex]").textContent = r.tex;
     const w = box.querySelector("[data-ap-warn]");
-    w.textContent = "", r.warn.forEach((x) => {
+    w.textContent = "", box.__en && apaEnglish(v.t) && r.warn.unshift("El registro trae el t\xEDtulo en ingl\xE9s. Si consultaste la versi\xF3n en espa\xF1ol, escribe el t\xEDtulo tal como aparece en ella."), r.warn.forEach((x) => {
       const li = document.createElement("li");
       li.textContent = x, w.appendChild(li);
     });
@@ -2907,6 +2907,12 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
       return r.json();
     }).then((j) => j.message && j.message.items || []);
   }
+  function apaOpenAlex(q) {
+    return fetch("https://api.openalex.org/works?per-page=8&search=" + encodeURIComponent(q)).then((r) => r.ok ? r.json() : { results: [] }).then((j) => (j.results || []).map((w) => ({ DOI: (w.doi || "").replace(/^https?:\/\/doi\.org\//, ""), title: [w.display_name || w.title || ""], author: (w.authorships || []).map((x) => ({ name: x.author && x.author.display_name || "" })), "container-title": [w.primary_location && w.primary_location.source && w.primary_location.source.display_name || ""], issued: { "date-parts": [[w.publication_year || ""]] }, volume: w.biblio && w.biblio.volume || "", issue: w.biblio && w.biblio.issue || "", page: w.biblio && w.biblio.first_page ? w.biblio.first_page + (w.biblio.last_page ? "-" + w.biblio.last_page : "") : "", type: w.type === "book" ? "book" : w.type === "book-chapter" ? "book-chapter" : "journal-article", __src: "OpenAlex" }))).catch(() => []);
+  }
+  function apaEnglish(t) {
+    return (String(t || "").match(/\b(the|of|and|among|with|for|in|on|to|a)\b/gi) || []).length >= 2 && !/\b(de|la|los|las|en|y|el|del)\b/i.test(t);
+  }
   function apaLookup(box, q) {
     if (q = String(q || "").trim(), !q) {
       apaStatus(box, "Escribe un DOI, un enlace o un t\xEDtulo.", "err");
@@ -2931,8 +2937,12 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
       p && (p.value = q, vzUpdate(box)), apaStatus(box, "Este enlace no incluye DOI (com\xFAn en SciELO y Redalyc). Copia y pega aqu\xED el t\xEDtulo del art\xEDculo para buscar sus datos; la URL ya qued\xF3 en el campo.", "warn");
       return;
     }
-    apaStatus(box, "Buscando \xAB" + q.slice(0, 60) + "\xBB en Crossref\u2026", "busy"), apaCrossTitle(q).then((items) => {
-      if (!items.length) {
+    apaStatus(box, "Buscando \xAB" + q.slice(0, 60) + "\xBB en Crossref y OpenAlex\u2026", "busy"), Promise.all([apaCrossTitle(q).catch(() => []), apaOpenAlex(q)]).then(([cr, oa]) => {
+      const seen = {}, items = [];
+      if (cr.concat(oa).forEach((m) => {
+        const k = (m.DOI || "").toLowerCase() || srNorm((m.title || [""])[0]);
+        !k || seen[k] || (seen[k] = 1, items.push(m));
+      }), !items.length) {
         apaStatus(box, "Sin coincidencias. Revisa el t\xEDtulo o completa manualmente.", "err");
         return;
       }
@@ -2951,10 +2961,10 @@ body.no-motion .as-badge i,body.no-motion .as-caret{animation:none}
       apaStatus(box, "No hay coincidencia exacta. Elige el documento correcto:", "warn"), items.slice(0, 5).forEach((m) => {
         const b = document.createElement("button");
         b.type = "button", b.className = "ap-choice";
-        const yr = ((m.issued || {})["date-parts"] || [[]])[0][0] || "s. f.", au = (m.author || []).slice(0, 3).map((a) => a.family || a.name).join(", ") + ((m.author || []).length > 3 ? " et al." : "");
-        vzSet(b, [["b", apaStrip((m.title || [])[0]) || "Sin t\xEDtulo"], ["small", (au || "Sin autor") + " \xB7 " + yr + " \xB7 " + (apaStrip((m["container-title"] || [])[0]) || m.publisher || "") + " \xB7 coincidencia " + Math.round((m.__sim || 0) * 100) + " %"]]), b.__m = m, ch.appendChild(b);
+        const yr = ((m.issued || {})["date-parts"] || [[]])[0][0] || "s. f.", au = (m.author || []).slice(0, 3).map((a) => a.family || (a.name || "").split(" ").slice(-2).join(" ")).join(", ") + ((m.author || []).length > 3 ? " et al." : "");
+        vzSet(b, [["b", apaStrip((m.title || [])[0]) || "Sin t\xEDtulo"], ["small", (au || "Sin autor") + " \xB7 " + yr + " \xB7 " + (apaStrip((m["container-title"] || [])[0]) || m.publisher || "") + " \xB7 " + (m.__src || "Crossref") + " \xB7 coincidencia " + Math.round((m.__sim || 0) * 100) + " %"]]), b.__m = m, ch.appendChild(b);
       });
-    }).catch(() => apaStatus(box, "No fue posible conectar con Crossref. Intenta de nuevo o completa manualmente.", "err"));
+    }).catch(() => apaStatus(box, "No fue posible conectar con las bases de datos. Intenta de nuevo o completa manualmente.", "err"));
   }
   let pdfjsP = null;
   function loadPdfjs() {
