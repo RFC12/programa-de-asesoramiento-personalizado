@@ -314,12 +314,86 @@ body.no-motion .cover-triple span,body.no-motion .cover-triple .icon,body.no-mot
 .cover .cover-intro,.cover .cover-ribbon,.cover .cover-title,.cover .cover-foot{position:relative;z-index:2}
 @media (max-width:700px){.cover .cover-bars{width:130px!important;height:130px!important;right:-72px!important;top:31%!important;opacity:.75}}
 
+/* ===== Centro de apoyo: buscador inteligente ===== */
+.dialog-card.search-card{width:760px;max-width:100%;padding:0!important;display:flex;flex-direction:column;max-height:calc(100vh - 60px);overflow:hidden}
+@supports (height:100dvh){.dialog-card.search-card{max-height:calc(100dvh - 60px)}}
+.sr-top{padding:24px 26px 12px;border-bottom:1px solid #e3edf3;background:#f7fbfd;flex:0 0 auto}
+.sr-kicker{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#c85022;margin-bottom:6px}
+.search-card h2{font-size:24px;letter-spacing:-.02em;margin:0 0 4px!important}
+.search-card .sr-top p{margin:0 0 14px;font-size:13px}
+.sr-field{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid #cfe1ec;border-radius:14px;padding:0 8px 0 14px;transition:border-color .2s,box-shadow .2s}
+.sr-field:focus-within{border-color:#1f6f8b;box-shadow:0 0 0 4px #1f6f8b22}
+.sr-field .icon{color:#1f6f8b;width:20px;height:20px}
+.sr-field input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:16px;color:#123653;padding:13px 0;-webkit-appearance:none;appearance:none}
+.sr-field input::-webkit-search-cancel-button{display:none}
+.sr-clear{border:0;background:#eef6fa;color:#3c6a86;width:30px;height:30px;border-radius:50%;font-size:18px;line-height:1;cursor:pointer}
+.sr-cats{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.sr-cat{border:1px solid #d4e6ef;background:#fff;color:#2b5672;font:inherit;font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;cursor:pointer}
+.sr-cat.on{background:#123653;border-color:#123653;color:#fff}
+.sr-status{font-size:11.5px;color:#5b7689;margin-top:10px;font-weight:600}
+.sr-results{overflow-y:auto;padding:14px 26px 6px;flex:1 1 auto;-webkit-overflow-scrolling:touch}
+.sr-section{font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#2a7a93;margin:6px 0 10px;display:flex;align-items:center;gap:10px}
+.sr-section:after{content:'';flex:1;height:1px;background:#d4e6ef}
+.sr-card{border:1px solid #dce9f0;border-left:4px solid #1f6f8b;border-radius:14px;padding:14px 16px;margin-bottom:10px;background:#fff;animation:sr-in .25s ease both}
+.sr-c-p{border-left-color:#e2621f}.sr-c-f{border-left-color:#2a9e76}.sr-c-b{border-left-color:#5a4fa0}
+.sr-head{display:flex;gap:12px;align-items:center}
+.sr-ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#e6f4f8;color:#1f6f8b;flex:0 0 auto}
+.sr-c-p .sr-ic{background:#fdeee5;color:#c85022}.sr-c-f .sr-ic{background:#e5f5ee;color:#1f7d5b}.sr-c-b .sr-ic{background:#eeecf8;color:#5a4fa0}
+.sr-tag{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#5b7689}
+.sr-card h3{margin:2px 0 0;font-size:16px;color:#123653;line-height:1.25}
+.sr-sum{margin:10px 0 6px!important;color:#3f5a6e!important;font-size:13.5px!important}
+.sr-card details summary{cursor:pointer;font-size:12.5px;font-weight:800;color:#1f6f8b;padding:4px 0;list-style:none}
+.sr-card details summary::-webkit-details-marker{display:none}
+.sr-card details summary:before{content:'+ '}.sr-card details[open] summary:before{content:'– '}
+.sr-card ol{margin:6px 0 4px;padding-left:20px;color:#244760;font-size:13px;line-height:1.55}
+.sr-card li{margin:3px 0}
+.sr-foot{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.sr-btn{font-size:12px;font-weight:700;color:#123653;background:#eef6fa;border:1px solid #d4e6ef;padding:7px 12px;border-radius:10px;text-decoration:none}
+.sr-btn:hover{background:#e0eff6}
+.sr-primary{background:#c85022;border-color:#c85022;color:#fff}.sr-primary:hover{background:#b34519}
+.sr-card mark,.sr-page mark{background:#fff0c2;color:inherit;border-radius:3px;padding:0 1px}
+.sr-page{display:grid;grid-template-columns:38px minmax(0,1fr) 18px;gap:12px;align-items:center;padding:10px 12px;border:1px solid #e3edf3;border-radius:12px;margin-bottom:8px;text-decoration:none;color:#173a55;background:#fbfdfe}
+.sr-page:hover{background:#eef6fa}
+.sr-pnum{font-weight:900;color:#22758a;font-size:15px;text-align:center}
+.sr-page b{display:block;font-size:13.5px}.sr-page small{display:block;font-size:12px;color:#5b7689;line-height:1.45;margin-top:2px}
+.sr-go{color:#c85022;font-weight:800}
+.sr-popular{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:14px}
+.sr-popular>span{width:100%;font-size:10.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#2a7a93;margin-bottom:2px}
+.sr-chip{border:1px solid #f3c9b3;background:#fff6f1;color:#a8431b;font:inherit;font-size:12px;font-weight:700;padding:6px 11px;border-radius:999px;cursor:pointer}
+.sr-chip:hover{background:#fdeee5}
+.sr-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding-bottom:8px}
+.sr-mini{display:flex;gap:10px;align-items:center;text-align:left;border:1px solid #e3edf3;background:#fff;border-radius:12px;padding:9px 11px;font:inherit;cursor:pointer;color:#173a55}
+.sr-mini:hover{border-color:#b9d6e4;background:#f7fbfd}
+.sr-mini .sr-ic{width:30px;height:30px}
+.sr-mini b{display:block;font-size:13px;line-height:1.25}.sr-mini small{font-size:11px;color:#5b7689}
+.sr-empty{padding:6px 0 10px;color:#244760;font-size:13.5px}
+.sr-empty p{margin:8px 0!important}
+.sr-link{border:0;background:none;color:#c85022;font:inherit;font-weight:800;text-decoration:underline;cursor:pointer;padding:0}
+.sr-alert{background:#fff4e8;border:1px solid #f1c39c;border-left:4px solid #c85022;border-radius:14px;padding:14px 16px;margin-bottom:12px;color:#5a2b12}
+.sr-alert p{margin:6px 0 0!important;color:#5a2b12!important;font-size:13.5px!important}
+.sr-note{margin:0!important;padding:10px 26px 14px;font-size:11px!important;color:#6d8394!important;border-top:1px solid #e3edf3;flex:0 0 auto}
+@keyframes sr-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+body.no-motion .sr-card{animation:none}
+@media (prefers-reduced-motion:reduce){.sr-card{animation:none}}
+@media (max-width:600px){.sr-top{padding:18px 16px 10px}.sr-results{padding:12px 16px 6px}.sr-note{padding:8px 16px 12px}.search-card h2{font-size:20px}.search-card .sr-top p{display:none}.sr-grid{grid-template-columns:1fr}.dialog-card.search-card{max-height:calc(100vh - 32px)}}
+@supports (height:100dvh){@media (max-width:600px){.dialog-card.search-card{max-height:calc(100dvh - 32px)}}}
+/* acceso en la barra lateral */
+.side-search{display:flex;align-items:center;gap:10px;width:100%;text-align:left;margin:4px 0 12px;padding:10px 12px;border-radius:12px;border:1px solid #ffffff2e;background:#ffffff14;color:#eaf6ff;font:inherit;cursor:pointer;transition:background .2s,border-color .2s}
+.side-search:hover{background:#ffffff22;border-color:#ff8a3d}
+.side-search .icon{color:#8bd8e4;width:18px;height:18px}
+.side-search span{flex:1;min-width:0}.side-search b{display:block;font-size:13px}.side-search small{display:block;font-size:11px;color:#b9d3e4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.side-search kbd{font:inherit;font-size:11px;font-weight:800;border:1px solid #ffffff40;border-radius:6px;padding:1px 7px;color:#cfe6f2}
+@media print{.side-search,#searchBtn{display:none!important}}
+#dialogInner{max-width:100%;min-width:0}
+.dialog-card.search-card{max-width:calc(100vw - 32px)!important}
+@media (max-width:600px){.dialog-card.search-card{width:calc(100vw - 24px)!important;max-width:calc(100vw - 24px)!important}.sr-cats{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-right:-16px;padding-right:16px}.sr-cat{flex:0 0 auto}.sr-cats::-webkit-scrollbar{display:none}}
+
 </style>
 <script>document.documentElement.className+=' js';</script>
 </head>
 <body>
 <svg width="0" height="0" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg"><defs>
-<symbol id="ic-book" viewBox="0 0 24 24"><path d="M12 7.1C9 4.7 6.1 4.3 2.5 4v15c3.7.1 6.8.6 9.5 2.8 2.7-2.2 5.8-2.7 9.5-2.8V4c-3.6.3-6.5.7-9.5 3.1Z"/><path d="M12 7.1V21"/></symbol>
+<symbol id="ic-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></symbol><symbol id="ic-book" viewBox="0 0 24 24"><path d="M12 7.1C9 4.7 6.1 4.3 2.5 4v15c3.7.1 6.8.6 9.5 2.8 2.7-2.2 5.8-2.7 9.5-2.8V4c-3.6.3-6.5.7-9.5 3.1Z"/><path d="M12 7.1V21"/></symbol>
 <symbol id="ic-cap" viewBox="0 0 24 24"><path d="m2 9.4 10-5 10 5-10 5-10-5Z"/><path d="M6 12v4c3 3 9 3 12 0v-4M22 9.5V17"/></symbol>
 <symbol id="ic-heart" viewBox="0 0 24 24"><path d="M20.8 7.7C18.4 2.7 13 4.4 12 7c-1-2.6-6.4-4.3-8.8.7-2.5 5.3 3 9.1 8.8 13 5.8-3.9 11.3-7.7 8.8-13Z"/></symbol>
 <symbol id="ic-briefcase" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="14" rx="2"/><path d="M8 7V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3M2.5 13c5.2 3.5 13.8 3.5 19 0M12 14v3"/></symbol>
@@ -1060,7 +1134,582 @@ body.no-motion .cover-triple span,body.no-motion .cover-triple .icon,body.no-mot
       } catch (e) {
       }
     }, 400);
-  }, !0), window.__papReady = !0;
+  }, !0);
+  const SR_CATS = { a: ["Acad\xE9mico", "cap"], p: ["Personal", "heart"], f: ["Profesional", "briefcase"], b: ["Bienestar y ayuda", "mind"] }, KB = [
+    {
+      t: "T\xE9cnica Pomodoro",
+      c: "a",
+      pg: 3,
+      k: "pomodoro concentraci\xF3n enfoque bloques descanso estudiar rendir distracci\xF3n celular",
+      s: "Estudia en bloques cortos de concentraci\xF3n total con pausas programadas para sostener la atenci\xF3n y evitar el agotamiento.",
+      p: ["Elige una sola tarea y silencia las notificaciones del celular.", "Trabaja 25 minutos sin interrupciones.", "Descansa 5 minutos lejos de la pantalla.", "Cada cuatro bloques toma un descanso largo de 15 a 30 minutos."]
+    },
+    {
+      t: "Pr\xE1ctica de recuperaci\xF3n (autoevaluaci\xF3n)",
+      c: "a",
+      pg: 3,
+      k: "memoria memorizar recordar repasar flashcards tarjetas preguntas olvido autoevaluaci\xF3n active recall",
+      s: "Intentar recordar sin mirar el material fortalece la memoria mucho m\xE1s que releer o subrayar.",
+      p: ["Cierra tus apuntes y escribe todo lo que recuerdas del tema.", "Hazte preguntas o usa tarjetas con pregunta y respuesta.", "Compara con el material y marca los vac\xEDos.", "Vuelve a practicar con lo que m\xE1s te cost\xF3."]
+    },
+    {
+      t: "Repetici\xF3n espaciada",
+      c: "a",
+      pg: 3,
+      k: "repaso memoria largo plazo intervalos calendario retener olvido estudiar \xFAltima hora trasnochar",
+      s: "Repasar en intervalos que se van alargando te ayuda a retener a largo plazo y evita estudiar todo la noche anterior.",
+      p: ["Repasa el mismo d\xEDa de la clase durante 10 minutos.", "Vuelve al tema a los 2 o 3 d\xEDas.", "Repasa de nuevo a la semana y antes de la evaluaci\xF3n.", "Agenda los repasos en tu calendario o en una app de tarjetas."]
+    },
+    {
+      t: "M\xE9todo Cornell para tomar apuntes",
+      c: "a",
+      pg: 3,
+      k: "apuntes notas clase cuaderno resumen cornell organizar informaci\xF3n",
+      s: "Organiza tus notas en tres zonas (notas, preguntas clave y resumen) para estudiar despu\xE9s con mayor facilidad.",
+      p: ["Divide la hoja: columna izquierda estrecha, zona derecha amplia y franja inferior.", "Durante la clase escribe las ideas en la zona derecha.", "Despu\xE9s formula preguntas clave en la columna izquierda.", "Cierra con un resumen de 3 a 5 l\xEDneas en la franja inferior."]
+    },
+    {
+      t: "Mapas mentales y conceptuales",
+      c: "a",
+      pg: 3,
+      k: "mapa mental conceptual esquema diagrama visual organizar ideas relacionar conceptos s\xEDntesis",
+      s: "Representa visualmente las ideas y sus relaciones para comprender temas extensos y repasarlos r\xE1pido.",
+      p: ["Escribe el tema central en el medio de la hoja.", "Agrega ramas con las ideas principales.", "Conecta conceptos con palabras de enlace o flechas.", "Usa colores o \xEDconos para destacar lo esencial."]
+    },
+    {
+      t: "T\xE9cnica Feynman: expl\xEDcalo con tus palabras",
+      c: "a",
+      pg: 3,
+      k: "feynman comprender entender explicar ense\xF1ar simple aprender profundidad",
+      s: "Si puedes explicar un tema con palabras sencillas, lo has comprendido; si no, descubres exactamente qu\xE9 te falta.",
+      p: ["Elige un concepto y escr\xEDbelo como t\xEDtulo.", "Expl\xEDcalo como si se lo contaras a alguien que no conoce el tema.", "Identifica d\xF3nde te trabas y vuelve al material.", "Simplifica la explicaci\xF3n y usa ejemplos propios."]
+    },
+    {
+      t: "Lectura acad\xE9mica: m\xE9todo EPL2R",
+      c: "a",
+      pg: 3,
+      k: "lectura leer textos art\xEDculos libros comprensi\xF3n lectora subrayar epl2r sq3r fotocopias",
+      s: "Explorar, Preguntar, Leer, Recitar y Repasar: una ruta para comprender mejor los textos de tus asignaturas.",
+      p: ["Explora: revisa t\xEDtulos, subt\xEDtulos, gr\xE1ficos y conclusiones.", "Pregunta: convierte los t\xEDtulos en preguntas.", "Lee buscando responder esas preguntas.", "Recita con tus palabras y repasa al final."]
+    },
+    {
+      t: "C\xF3mo prepararte para un parcial",
+      c: "a",
+      pg: 3,
+      k: "examen parcial quiz evaluaci\xF3n prueba final preparar estudiar nota calificaci\xF3n ganar materia",
+      s: "Un plan de una semana reduce la improvisaci\xF3n y la ansiedad antes de una evaluaci\xF3n.",
+      p: ["Pregunta al docente qu\xE9 temas y qu\xE9 tipo de preguntas habr\xE1.", "Divide los temas en sesiones cortas durante la semana.", "Practica con ejercicios o preguntas de evaluaciones anteriores.", "La noche anterior repasa lo esencial y duerme bien."]
+    },
+    {
+      t: "Escritura acad\xE9mica y normas APA",
+      c: "a",
+      pg: 3,
+      k: "escribir ensayo informe trabajo escrito redacci\xF3n citar citas referencias apa bibliograf\xEDa plagio fuentes",
+      s: "Planea, escribe y revisa por etapas; cita siempre tus fuentes para dar solidez a tu trabajo y evitar el plagio.",
+      p: ["Haz un esquema con introducci\xF3n, desarrollo y conclusi\xF3n.", "Escribe un primer borrador sin buscar perfecci\xF3n.", "Cita en el texto (Autor, a\xF1o) y arma la lista de referencias en APA 7.", "Revisa ortograf\xEDa, coherencia y formato antes de entregar."]
+    },
+    {
+      t: "Exposiciones y hablar en p\xFAblico",
+      c: "a",
+      pg: 3,
+      k: "exponer exposici\xF3n presentaci\xF3n hablar p\xFAblico nervios diapositivas sustentaci\xF3n oral",
+      s: "Prepararte con estructura y ensayo convierte los nervios en energ\xEDa para comunicar con claridad.",
+      p: ["Define un mensaje central y tres ideas de apoyo.", "Usa diapositivas con poco texto e im\xE1genes claras.", "Ensaya en voz alta y cronom\xE9trate.", "Antes de iniciar respira lento y mira a personas concretas del p\xFAblico."]
+    },
+    {
+      t: "Trabajo en equipo acad\xE9mico",
+      c: "a",
+      pg: 3,
+      k: "grupo equipo compa\xF1eros trabajo grupal roles conflicto colaborar responsabilidades",
+      s: "Acordar roles, fechas y canales desde el inicio evita sobrecargas y conflictos en los trabajos grupales.",
+      p: ["Definan objetivo, entregables y fecha l\xEDmite interna.", "Repartan roles seg\xFAn fortalezas.", "Usen un documento compartido y un canal de comunicaci\xF3n.", "Hagan un cierre breve para revisar el trabajo final juntos."]
+    },
+    {
+      t: "Gesti\xF3n del tiempo y planificaci\xF3n semanal",
+      c: "a",
+      pg: 3,
+      k: "tiempo organizar horario agenda calendario planificar prioridades eisenhower urgente importante trabajo estudio",
+      s: "Planificar la semana y priorizar por importancia te da control sobre clases, tareas, trabajo y descanso.",
+      p: ["Cada domingo anota clases, entregas y compromisos fijos.", "Clasifica tareas: urgente e importante, importante, delegable, eliminable.", "Bloquea en tu agenda espacios de estudio como si fueran citas.", "Deja tiempos libres para imprevistos y descanso."]
+    },
+    {
+      t: "Vencer la procrastinaci\xF3n",
+      c: "a",
+      pg: 3,
+      k: "procrastinar procrastinaci\xF3n postergar aplazar pereza dejar para despu\xE9s \xFAltima hora motivaci\xF3n empezar",
+      s: "Postergar suele ser una forma de evitar una emoci\xF3n inc\xF3moda; empezar en peque\xF1o rompe el ciclo.",
+      p: ["Divide la tarea en un primer paso de menos de 5 minutos.", "Usa la f\xF3rmula: \u201CCuando termine X, har\xE9 Y\u201D con hora y lugar.", "Aleja el celular durante el primer bloque de trabajo.", "Reconoce tu avance, aunque sea peque\xF1o."]
+    },
+    {
+      t: "Concentraci\xF3n y espacio de estudio",
+      c: "a",
+      pg: 3,
+      k: "concentrar concentraci\xF3n distraer distracci\xF3n enfoque atenci\xF3n celular redes sociales ruido lugar estudio",
+      s: "Un espacio ordenado y sin distractores digitales facilita que tu atenci\xF3n se mantenga en la tarea.",
+      p: ["Estudia en un lugar fijo, iluminado y con lo necesario a mano.", "Deja el celular en otra habitaci\xF3n o en modo concentraci\xF3n.", "Ten a la vista solo el material de la tarea actual.", "Empieza por lo m\xE1s exigente cuando tengas m\xE1s energ\xEDa."]
+    },
+    {
+      t: "Ansiedad ante los ex\xE1menes",
+      c: "p",
+      pg: 4,
+      k: "ansiedad nervios miedo p\xE1nico bloqueo mente blanco examen parcial preocupaci\xF3n respiraci\xF3n calma",
+      s: "Sentir nervios es normal; con preparaci\xF3n y t\xE9cnicas de regulaci\xF3n puedes evitar que te bloqueen.",
+      p: ["Practica respiraci\xF3n lenta: inhala en 4 tiempos y exhala en 6, durante 2 minutos.", "Cambia \u201Cvoy a fallar\u201D por \u201Cme prepar\xE9 y har\xE9 lo mejor posible\u201D.", "En el examen empieza por las preguntas que dominas.", "Si la ansiedad es intensa o frecuente, solicita acompa\xF1amiento."]
+    },
+    {
+      t: "Manejo del estr\xE9s acad\xE9mico",
+      c: "p",
+      pg: 4,
+      k: "estr\xE9s estresado agobio presi\xF3n carga sobrecarga cansancio agotamiento burnout tensi\xF3n",
+      s: "Reconocer las se\xF1ales del estr\xE9s y actuar a tiempo protege tu bienestar y tu rendimiento.",
+      p: ["Identifica tus se\xF1ales: tensi\xF3n, irritabilidad, dificultad para dormir.", "Prioriza y divide las tareas pendientes.", "Incluye actividad f\xEDsica y pausas reales en tu d\xEDa.", "Habla con alguien de confianza o con el equipo PAP."]
+    },
+    {
+      t: "Higiene del sue\xF1o",
+      c: "p",
+      pg: 4,
+      k: "sue\xF1o dormir insomnio trasnochar descanso cansancio noche rutina",
+      s: "Dormir bien consolida lo que aprendes; trasnochar para estudiar suele afectar la memoria y el \xE1nimo.",
+      p: ["Procura acostarte y levantarte a horas similares.", "Evita pantallas y cafe\xEDna en las horas previas a dormir.", "Mant\xE9n tu cuarto oscuro, fresco y silencioso.", "Si no logras dormir en 20 minutos, lev\xE1ntate y haz algo tranquilo."]
+    },
+    {
+      t: "Gesti\xF3n de emociones",
+      c: "p",
+      pg: 4,
+      k: "emociones sentimientos tristeza triste rabia enojo frustraci\xF3n llorar regular gestionar \xE1nimo",
+      s: "Nombrar lo que sientes y darte una pausa antes de reaccionar te ayuda a responder con mayor claridad.",
+      p: ["Ponle nombre a la emoci\xF3n: \u201Csiento frustraci\xF3n\u201D.", "Haz una pausa y respira antes de actuar.", "Preg\xFAntate qu\xE9 necesitas en este momento.", "Busca apoyo si la emoci\xF3n se mantiene o te desborda."]
+    },
+    {
+      t: "Motivaci\xF3n y metas SMART",
+      c: "p",
+      pg: 4,
+      k: "motivaci\xF3n motivado desmotivado ganas metas objetivos prop\xF3sito smart logro disciplina",
+      s: "Las metas espec\xEDficas, medibles y con fecha convierten la intenci\xF3n en avances visibles.",
+      p: ["Define la meta: espec\xEDfica, medible, alcanzable, relevante y con tiempo.", "Div\xEDdela en acciones semanales.", "Registra tu progreso en un lugar visible.", "Revisa y ajusta cada semana sin culparte."]
+    },
+    {
+      t: "Adaptaci\xF3n a la vida universitaria",
+      c: "p",
+      pg: 4,
+      k: "adaptaci\xF3n primer semestre nuevo universidad cambio colegio integrarse amigos soledad",
+      s: "Los primeros semestres implican cambios; conocer los recursos y construir redes facilita la transici\xF3n.",
+      p: ["Conoce tu plan de estudios, plataformas y fechas clave.", "Ac\xE9rcate a docentes y compa\xF1eros desde las primeras semanas.", "Participa en actividades de Bienestar Universitario.", "Pide orientaci\xF3n al PAP cuando lo necesites."]
+    },
+    {
+      t: "Comunicaci\xF3n asertiva",
+      c: "p",
+      pg: 4,
+      k: "asertividad comunicaci\xF3n conflicto discutir decir no l\xEDmites expresar opini\xF3n relaciones",
+      s: "Expresar lo que piensas y necesitas con respeto mejora tus relaciones y reduce conflictos.",
+      p: ["Habla en primera persona: \u201CYo siento\u2026 cuando\u2026\u201D.", "Describe hechos concretos, no juicios.", "Expresa lo que te gustar\xEDa que pasara.", "Escucha la otra postura antes de responder."]
+    },
+    {
+      t: "Autocuidado y equilibrio",
+      c: "p",
+      pg: 4,
+      k: "autocuidado equilibrio bienestar familia trabajo estudio tiempo libre alimentaci\xF3n ejercicio salud",
+      s: "Equilibrar estudio, trabajo, familia y descanso es parte de tu \xE9xito acad\xE9mico, no un lujo.",
+      p: ["Agenda tiempo de descanso y ocio como cualquier compromiso.", "Mant\xE9n horarios regulares de comida y sue\xF1o.", "Mu\xE9vete al menos 30 minutos varios d\xEDas por semana.", "Conserva espacios con personas que te hacen bien."]
+    },
+    {
+      t: "Hoja de vida efectiva",
+      c: "f",
+      pg: 5,
+      k: "hoja de vida cv curr\xEDculum curriculum perfil experiencia empleo trabajo vacante",
+      s: "Una hoja de vida clara y orientada a logros aumenta tus posibilidades de conseguir una entrevista.",
+      p: ["Inicia con un perfil profesional de 3 a 4 l\xEDneas.", "Describe experiencias con logros concretos, no solo funciones.", "Adapta la hoja de vida a cada vacante.", "Revisa ortograf\xEDa y gu\xE1rdala en PDF."]
+    },
+    {
+      t: "Entrevista de trabajo",
+      c: "f",
+      pg: 5,
+      k: "entrevista empleo trabajo selecci\xF3n preguntas star competencias nervios laboral",
+      s: "Prepararte con ejemplos concretos te permite mostrar tus competencias con seguridad.",
+      p: ["Investiga la organizaci\xF3n y el cargo.", "Prepara ejemplos con el m\xE9todo STAR: situaci\xF3n, tarea, acci\xF3n y resultado.", "Ten preguntas para el entrevistador.", "Cuida puntualidad, presentaci\xF3n y lenguaje corporal."]
+    },
+    {
+      t: "Proyecto de vida y orientaci\xF3n vocacional",
+      c: "f",
+      pg: 5,
+      k: "proyecto de vida vocaci\xF3n vocacional carrera cambiar de carrera elegir futuro decisi\xF3n prop\xF3sito intereses",
+      s: "Revisar tus intereses, habilidades y valores te ayuda a tomar decisiones acad\xE9micas y profesionales con sentido.",
+      p: ["Haz una lista de lo que te apasiona y lo que haces bien.", "Explora campos de acci\xF3n de tu carrera con egresados o docentes.", "Define metas a 1, 3 y 5 a\xF1os.", "Conversa tus dudas vocacionales con el equipo PAP."]
+    },
+    {
+      t: "Prep\xE1rate para tus pr\xE1cticas profesionales",
+      c: "f",
+      pg: 5,
+      k: "pr\xE1cticas pr\xE1ctica profesional pasant\xEDa empresa convenio requisitos laboral experiencia",
+      s: "Planificar tus pr\xE1cticas con anticipaci\xF3n te permite elegir un escenario alineado con tus metas.",
+      p: ["Consulta requisitos y fechas con tu programa.", "Actualiza tu hoja de vida y perfil profesional.", "Identifica las \xE1reas en las que quieres crecer.", "Durante la pr\xE1ctica registra aprendizajes y logros."]
+    },
+    {
+      t: "Perfil profesional y LinkedIn",
+      c: "f",
+      pg: 5,
+      k: "linkedin perfil profesional marca personal redes networking contactos empleo",
+      s: "Un perfil digital actualizado ampl\xEDa tu red de contactos y tu visibilidad profesional.",
+      p: ["Usa una foto profesional y un titular claro.", "Resume qui\xE9n eres y qu\xE9 ofreces en el \u201CAcerca de\u201D.", "Agrega experiencia, voluntariados, cursos y proyectos.", "Conecta con docentes, egresados y organizaciones de tu \xE1rea."]
+    },
+    {
+      t: "\xBFCu\xE1ndo y d\xF3nde pedir ayuda?",
+      c: "b",
+      pg: 7,
+      k: "ayuda apoyo psic\xF3logo psicol\xF3gico crisis urgencia emergencia hablar alguien bienestar l\xEDnea 106 riesgo",
+      s: "Pedir ayuda es una muestra de cuidado. El PAP brinda orientaci\xF3n y acompa\xF1amiento, no atenci\xF3n cl\xEDnica; si lo necesitas, te orienta hacia el servicio adecuado.",
+      p: ["Para orientaci\xF3n acad\xE9mica, personal o profesional: solicita acompa\xF1amiento PAP.", "Para atenci\xF3n psicol\xF3gica: acude a Bienestar Universitario o a tu EPS.", "L\xEDnea 106: orientaci\xF3n en salud mental gratuita y confidencial, 24 horas.", "Ante una emergencia o riesgo inmediato: llama al 123."]
+    },
+    {
+      t: "C\xF3mo solicitar acompa\xF1amiento PAP",
+      c: "b",
+      pg: 10,
+      k: "solicitar asesor\xEDa acompa\xF1amiento cita formulario inscribirme pedir asesor contacto pap",
+      s: "Diligencia el formulario y el equipo PAP te contactar\xE1 para iniciar tu proceso de acompa\xF1amiento.",
+      p: ["Abre el formulario de solicitud desde el bot\xF3n \u201CFormulario\u201D.", "Describe brevemente en qu\xE9 te gustar\xEDa recibir acompa\xF1amiento.", "Espera el contacto del equipo PAP.", "Asiste a tu primer encuentro con tus preguntas y metas."],
+      form: !0
+    }
+  ], SYN = {
+    "no me concentro": "concentraci\xF3n distracci\xF3n",
+    "me distraigo": "concentraci\xF3n distracci\xF3n",
+    celular: "distracci\xF3n concentraci\xF3n",
+    memorizar: "memoria recuperaci\xF3n repetici\xF3n",
+    olvido: "memoria repetici\xF3n",
+    "se me olvida": "memoria repetici\xF3n",
+    recordar: "memoria",
+    parcial: "examen",
+    quiz: "examen",
+    evaluacion: "examen",
+    prueba: "examen",
+    final: "examen",
+    "perder la materia": "examen estudiar",
+    nervios: "ansiedad",
+    miedo: "ansiedad",
+    panico: "ansiedad",
+    bloqueo: "ansiedad",
+    "mente en blanco": "ansiedad",
+    agobio: "estr\xE9s",
+    presion: "estr\xE9s",
+    agotado: "estr\xE9s agotamiento",
+    cansado: "estr\xE9s sue\xF1o",
+    burnout: "estr\xE9s",
+    dormir: "sue\xF1o",
+    insomnio: "sue\xF1o",
+    trasnocho: "sue\xF1o repetici\xF3n",
+    triste: "emociones tristeza",
+    llorar: "emociones",
+    rabia: "emociones",
+    "me siento mal": "emociones ayuda",
+    pereza: "procrastinaci\xF3n",
+    "dejar para despues": "procrastinaci\xF3n",
+    aplazar: "procrastinaci\xF3n",
+    "no tengo ganas": "motivaci\xF3n procrastinaci\xF3n",
+    cv: "hoja vida",
+    curriculum: "hoja vida",
+    empleo: "entrevista hoja vida",
+    trabajo: "entrevista hoja gesti\xF3n tiempo",
+    vocacion: "vocacional proyecto",
+    "que estudiar": "vocacional",
+    "cambiar de carrera": "vocacional proyecto",
+    leer: "lectura",
+    lecturas: "lectura",
+    texto: "lectura",
+    articulo: "lectura escritura",
+    ensayo: "escritura",
+    citar: "escritura apa",
+    referencias: "apa escritura",
+    normas: "apa escritura",
+    exponer: "exposici\xF3n",
+    sustentar: "exposici\xF3n",
+    presentacion: "exposici\xF3n",
+    grupo: "equipo",
+    companeros: "equipo",
+    horario: "tiempo planificaci\xF3n",
+    organizarme: "tiempo planificaci\xF3n",
+    agenda: "tiempo planificaci\xF3n",
+    "no me alcanza el tiempo": "tiempo planificaci\xF3n",
+    desmotivado: "motivaci\xF3n",
+    ganas: "motivaci\xF3n",
+    metas: "motivaci\xF3n metas",
+    "primer semestre": "adaptaci\xF3n",
+    "soy nuevo": "adaptaci\xF3n",
+    nueva: "adaptaci\xF3n",
+    discutir: "asertiva comunicaci\xF3n",
+    "decir que no": "asertiva l\xEDmites",
+    psicologo: "ayuda",
+    "hablar con alguien": "ayuda",
+    crisis: "ayuda",
+    urgencia: "ayuda",
+    cita: "solicitar acompa\xF1amiento",
+    asesoria: "solicitar acompa\xF1amiento",
+    asesor: "solicitar acompa\xF1amiento",
+    inscribirme: "solicitar formulario",
+    "tecnicas de estudio": "pomodoro recuperaci\xF3n repetici\xF3n cornell mapas feynman lectura",
+    "como estudiar": "pomodoro recuperaci\xF3n repetici\xF3n cornell feynman",
+    "estudiar mejor": "pomodoro recuperaci\xF3n repetici\xF3n"
+  }, STOP = new Set("a al algo como con de del el en es esta este ha la las lo los me mi mis muy no o para pero por que se si sin sobre su sus te tu tus un una uno y ya yo quiero necesito tengo puedo hacer mas mejor cual cuales donde cuando hay ser estar".split(" ")), SUF = ["asiones", "isiones", "amientos", "imientos", "amiento", "imiento", "aciones", "iciones", "idades", "acion", "icion", "asion", "ision", "mente", "idad", "ables", "ibles", "able", "ible", "istas", "ista", "ismos", "ismo", "ando", "iendo", "arme", "erme", "irme", "arse", "erse", "irse", "aron", "ieron", "amos", "emos", "imos", "ados", "idos", "adas", "idas", "ado", "ido", "ada", "ida", "ar", "er", "ir", "es", "os", "as", "s", "o", "a", "e"];
+  function srNorm(x) {
+    return String(x).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+  }
+  function srPhon(w) {
+    return w.replace(/z/g, "s").replace(/c([ei])/g, "s$1").replace(/v/g, "b").replace(/ll/g, "y").replace(/^h/, "");
+  }
+  function srStem(w) {
+    for (let i = 0; i < SUF.length; i++) {
+      const f = SUF[i];
+      if (w.length - f.length >= 3 && w.slice(-f.length) === f)
+        return srPhon(w.slice(0, -f.length));
+    }
+    return srPhon(w);
+  }
+  function srTokens(x) {
+    return srNorm(x).split(" ").filter((w) => w && !STOP.has(w));
+  }
+  function srLev(a, b, max) {
+    if (Math.abs(a.length - b.length) > max)
+      return max + 1;
+    let prev2 = [];
+    for (let j = 0; j <= b.length; j++)
+      prev2[j] = j;
+    for (let i = 1; i <= a.length; i++) {
+      const cur = [i];
+      let best = i;
+      for (let j = 1; j <= b.length; j++) {
+        const c = a[i - 1] === b[j - 1] ? 0 : 1;
+        let v = Math.min(prev2[j] + 1, cur[j - 1] + 1, prev2[j - 1] + c);
+        cur[j] = v, v < best && (best = v);
+      }
+      if (best > max)
+        return max + 1;
+      prev2 = cur;
+    }
+    return prev2[b.length];
+  }
+  const SR_FIELDS = [["t", 3], ["k", 2.4], ["s", 1.4], ["p", 1]];
+  let SR_DOCS = null, SR_VOCAB = null, SR_DF = null, SR_SURF = null;
+  function srEsc(x) {
+    return String(x).replace(/[&<>"]/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]);
+  }
+  function srBuild() {
+    SR_DOCS = [], SR_DF = {}, SR_SURF = {};
+    const add = (d) => {
+      d.tf = {}, SR_FIELDS.forEach((f) => {
+        const w = f[1], txt = Array.isArray(d[f[0]]) ? d[f[0]].join(" ") : d[f[0]] || "";
+        String(txt).toLowerCase().replace(/[a-záéíóúüñ0-9]+/g, (word) => {
+          const n = srNorm(word);
+          if (!n || STOP.has(n))
+            return word;
+          const st = srStem(n);
+          return d.tf[st] = (d.tf[st] || 0) + w, SR_SURF[st] || (SR_SURF[st] = word), word;
+        });
+      }), Object.keys(d.tf).forEach((st) => {
+        SR_DF[st] = (SR_DF[st] || 0) + 1;
+      }), SR_DOCS.push(d);
+    };
+    KB.forEach((r, i) => add(Object.assign({ kind: "kb", id: i }, r))), pages.forEach((pg, i) => {
+      if (i === 0)
+        return;
+      const ttl = (pg.querySelector(".p-title") || {}).textContent || labels[i], body = pg.textContent.replace(/\s+/g, " ");
+      add({ kind: "page", id: i, t: ttl, k: labels[i] + " " + chapterOf(i), s: body.slice(0, 4e3), p: "", pg: i, body });
+    }), SR_VOCAB = Object.keys(SR_DF);
+  }
+  function srExpand(q) {
+    const nq = " " + srNorm(q) + " ", groups = [];
+    srTokens(q).forEach((w) => {
+      groups.push({ w, terms: [[srStem(w), 1]] });
+    });
+    const extra = [];
+    return Object.keys(SYN).forEach((key) => {
+      const nk = srNorm(key);
+      (nk.indexOf(" ") >= 0 ? nq.indexOf(" " + nk + " ") >= 0 : groups.some((g) => g.w === nk || srStem(g.w) === srStem(nk))) && srTokens(SYN[key]).forEach((t) => extra.push([srStem(t), 0.75]));
+    }), groups.forEach((g) => {
+      const s = g.terms[0][0];
+      Object.keys(SYN).forEach((key) => {
+        const nk = srNorm(key);
+        nk.indexOf(" ") < 0 && srStem(nk) === s && srTokens(SYN[key]).forEach((t) => g.terms.push([srStem(t), 0.75]));
+      });
+    }), { groups, extra };
+  }
+  function srMatch(term) {
+    const out = [], max = term.length >= 8 ? 2 : term.length >= 5 ? 1 : 0;
+    for (let i = 0; i < SR_VOCAB.length; i++) {
+      const v = SR_VOCAB[i];
+      if (v === term) {
+        out.push([v, 1]);
+        continue;
+      }
+      if (term.length >= 3 && v.indexOf(term) === 0) {
+        out.push([v, 0.85]);
+        continue;
+      }
+      if (v.length >= 4 && term.indexOf(v) === 0 && term.length - v.length <= 3) {
+        out.push([v, 0.8]);
+        continue;
+      }
+      max && srLev(term, v, max) <= max && out.push([v, 0.6]);
+    }
+    return out;
+  }
+  function srSearch(q, cat) {
+    SR_DOCS || srBuild();
+    const ex = srExpand(q);
+    if (!ex.groups.length && !ex.extra.length)
+      return { res: [], hits: {} };
+    const N = SR_DOCS.length, hits = {}, scoreTerms = (terms, d) => {
+      let best = 0;
+      return terms.forEach((tw) => {
+        srMatch(tw[0]).forEach((m) => {
+          const tf = d.tf[m[0]];
+          if (!tf)
+            return;
+          hits[m[0]] = 1;
+          const idf = Math.log(1 + N / SR_DF[m[0]]), v = tw[1] * m[1] * idf * (1 + Math.log(tf));
+          v > best && (best = v);
+        });
+      }), best;
+    }, res = [];
+    return SR_DOCS.forEach((d) => {
+      if (cat && (d.kind !== "kb" || d.c !== cat))
+        return;
+      let sc = 0, cov = 0;
+      ex.groups.forEach((g) => {
+        const v = scoreTerms(g.terms, d);
+        v > 0 && (cov++, sc += v);
+      });
+      const e = ex.extra.length ? scoreTerms(ex.extra, d) : 0;
+      sc += e * 0.9;
+      const ng = ex.groups.length || 1, ratio = ex.groups.length ? cov / ng : e > 0 ? 1 : 0;
+      if (sc <= 0 || ex.groups.length > 1 && ratio < 0.5 && e === 0)
+        return;
+      const fin = sc * (0.45 + 0.55 * ratio) * (d.kind === "page" ? 0.7 : 1);
+      res.push({ d, sc: fin });
+    }), res.sort((a, b) => b.sc - a.sc), { res, hits };
+  }
+  function srSuggest(q) {
+    SR_DOCS || srBuild();
+    let changed = !1;
+    const out = srTokens(q).map((w) => {
+      const st = srStem(w);
+      if (SR_DF[st])
+        return w;
+      let best = null, bd = 3;
+      return SR_VOCAB.forEach((v) => {
+        const dd = srLev(st, v, 2);
+        dd < bd && (bd = dd, best = v);
+      }), best && bd <= 2 ? (changed = !0, srNorm(SR_SURF[best])) : w;
+    });
+    return changed ? out.join(" ") : "";
+  }
+  function srMark(text, hits) {
+    return srEsc(text).replace(/[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]+/g, (w) => {
+      const n = srNorm(w);
+      return n && !STOP.has(n) && hits[srStem(n)] ? "<mark>" + w + "</mark>" : w;
+    });
+  }
+  function srSnippet(body, hits) {
+    const words = body.split(" ");
+    let at = -1;
+    for (let i = 0; i < words.length; i++) {
+      const n = srNorm(words[i]);
+      if (n && hits[srStem(n.split(" ")[0])]) {
+        at = i;
+        break;
+      }
+    }
+    if (at < 0)
+      return words.slice(0, 26).join(" ") + "\u2026";
+    const a = Math.max(0, at - 10);
+    return (a ? "\u2026" : "") + words.slice(a, a + 28).join(" ") + "\u2026";
+  }
+  const SR_RISK = /suicid|matarme|quitarme la vida|no quiero vivir|hacerme dano|autolesi|cortarme|morirme|acabar con todo/, SR_POPULAR = ["T\xE9cnicas de estudio", "Ansiedad ante ex\xE1menes", "Organizar mi tiempo", "No me concentro", "Procrastinaci\xF3n", "Estr\xE9s", "Hoja de vida", "Entrevista de trabajo", "Dormir mejor", "Normas APA"];
+  let srCat = "";
+  function srIcon(n) {
+    return '<svg width="17" height="17" class="icon sm"><use href="#ic-' + n + '"></use></svg>';
+  }
+  function srCard(r, hits, first) {
+    const d = r.d, cat = SR_CATS[d.c];
+    return '<article class="sr-card sr-c-' + d.c + '"><div class="sr-head"><span class="sr-ic">' + srIcon(cat[1]) + '</span><div><span class="sr-tag">' + cat[0] + "</span><h3>" + srMark(d.t, hits) + '</h3></div></div><p class="sr-sum">' + srMark(d.s, hits) + "</p><details" + (first ? " open" : "") + "><summary>C\xF3mo aplicarlo</summary><ol>" + d.p.map((x) => "<li>" + srMark(x, hits) + "</li>").join("") + '</ol></details><div class="sr-foot">' + (d.form ? '<a class="sr-btn sr-primary" href="' + srEsc(FORM_URL) + '" target="_blank" rel="noopener">Abrir formulario \u2192</a>' : "") + '<a class="sr-btn" href="#pag-' + (d.pg + 1) + '" data-jump="' + d.pg + '">Ver en la revista \xB7 p\xE1g. ' + String(d.pg + 1).padStart(2, "0") + "</a></div></article>";
+  }
+  function srPageRow(r, hits) {
+    const d = r.d;
+    return '<a class="sr-page" href="#pag-' + (d.id + 1) + '" data-jump="' + d.id + '"><span class="sr-pnum">' + String(d.id + 1).padStart(2, "0") + "</span><span><b>" + srEsc(labels[d.id]) + "</b><small>" + srMark(srSnippet(d.body, hits), hits) + '</small></span><span class="sr-go">\u2192</span></a>';
+  }
+  function srRender() {
+    const inp = $("#srInput");
+    if (!inp)
+      return;
+    const q = inp.value.trim(), box = $("#srResults"), st = $("#srStatus");
+    if (SR_RISK.test(srNorm(q))) {
+      box.innerHTML = '<div class="sr-alert"><b>No est\xE1s solo o sola.</b><p>Si sientes que est\xE1s en riesgo o piensas en hacerte da\xF1o, busca ayuda ahora: llama a la <b>L\xEDnea 106</b> (orientaci\xF3n en salud mental, gratuita y confidencial, 24 horas) o al <b>123</b> si es una emergencia. Tambi\xE9n puedes acudir a Bienestar Universitario o a alguien de confianza.</p></div>' + srCard({ d: Object.assign({ kind: "kb" }, KB[KB.length - 2]) }, {}, !0), st.textContent = "Recursos de ayuda inmediata";
+      return;
+    }
+    if (!q) {
+      const list = KB.filter((r) => !srCat || r.c === srCat);
+      box.innerHTML = '<div class="sr-popular"><span>B\xFAsquedas frecuentes</span>' + SR_POPULAR.map((p) => '<button type="button" class="sr-chip" data-sr-q="' + srEsc(p) + '">' + srEsc(p) + "</button>").join("") + '</div><div class="sr-grid">' + list.map((r) => '<button type="button" class="sr-mini sr-c-' + r.c + '" data-sr-q="' + srEsc(r.t) + '"><span class="sr-ic">' + srIcon(SR_CATS[r.c][1]) + "</span><span><b>" + srEsc(r.t) + "</b><small>" + SR_CATS[r.c][0] + "</small></span></button>").join("") + "</div>", st.textContent = list.length + " recursos disponibles";
+      return;
+    }
+    const out = srSearch(q, srCat), kb = out.res.filter((r) => r.d.kind === "kb"), pg = out.res.filter((r) => r.d.kind === "page").slice(0, 4);
+    if (!kb.length && !pg.length) {
+      const sug = srSuggest(q);
+      box.innerHTML = '<div class="sr-empty"><b>No encontramos resultados para \u201C' + srEsc(q) + "\u201D.</b>" + (sug ? '<p>\xBFQuisiste decir <button type="button" class="sr-link" data-sr-q="' + srEsc(sug) + '">' + srEsc(sug) + "</button>?</p>" : "<p>Prueba con otras palabras o explora un tema frecuente.</p>") + '<div class="sr-popular">' + SR_POPULAR.slice(0, 6).map((p) => '<button type="button" class="sr-chip" data-sr-q="' + srEsc(p) + '">' + srEsc(p) + "</button>").join("") + '</div><p>\xBFPrefieres hablar con alguien? <a href="' + srEsc(FORM_URL) + '" target="_blank" rel="noopener">Solicita acompa\xF1amiento PAP \u2192</a></p></div>', st.textContent = "Sin resultados";
+      return;
+    }
+    const top = kb[0] ? kb[0].sc : 0, kbs = kb.filter((r) => r.sc >= top * 0.35).slice(0, 8);
+    box.innerHTML = (kbs.length ? '<div class="sr-section">Recursos de apoyo</div>' + kbs.map((r, i) => srCard(r, out.hits, i === 0)).join("") : "") + (pg.length ? '<div class="sr-section">En esta revista</div>' + pg.map((r) => srPageRow(r, out.hits)).join("") : ""), st.textContent = kbs.length + (kbs.length === 1 ? " recurso" : " recursos") + (pg.length ? " \xB7 " + pg.length + (pg.length === 1 ? " p\xE1gina" : " p\xE1ginas") + " de la revista" : "");
+  }
+  function openSearch(q) {
+    const cats = '<button type="button" class="sr-cat' + (srCat ? "" : " on") + '" data-sr-cat="">Todos</button>' + Object.keys(SR_CATS).map((c) => '<button type="button" class="sr-cat' + (srCat === c ? " on" : "") + '" data-sr-cat="' + c + '">' + SR_CATS[c][0] + "</button>").join("");
+    modal('<div class="dialog-card search-card" role="search"><div class="sr-top"><span class="sr-kicker">Centro de apoyo PAP</span><h2>\xBFQu\xE9 necesitas fortalecer hoy?</h2><p>Busca t\xE9cnicas de estudio, bienestar y orientaci\xF3n profesional. Escribe con tus palabras: entendemos sin\xF3nimos y errores de escritura.</p><label class="sr-field"><svg width="20" height="20" class="icon"><use href="#ic-search"></use></svg><input id="srInput" type="search" autocomplete="off" spellcheck="false" placeholder="Ej.: no me concentro, ansiedad en parciales, hoja de vida\u2026" aria-label="Buscar recursos de apoyo" aria-controls="srResults" /><button type="button" class="sr-clear" id="srClear" aria-label="Borrar b\xFAsqueda">\xD7</button></label><div class="sr-cats" role="group" aria-label="Filtrar por dimensi\xF3n">' + cats + '</div><div class="sr-status" id="srStatus" role="status" aria-live="polite"></div></div><div class="sr-results" id="srResults"></div><p class="sr-note">Recursos de orientaci\xF3n general. No reemplazan la atenci\xF3n psicol\xF3gica o cl\xEDnica.</p></div>');
+    const inp = $("#srInput");
+    inp.value = q || "";
+    let tmr;
+    inp.addEventListener("input", () => {
+      clearTimeout(tmr), tmr = setTimeout(srRender, 90);
+    }), inp.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault(), clearTimeout(tmr), srRender();
+        const f = $("#srResults .sr-card summary, #srResults .sr-page, #srResults .sr-mini");
+        f && f.focus();
+      }
+    }), srRender(), setTimeout(() => {
+      try {
+        inp.focus({ preventScroll: !0 });
+      } catch (e) {
+        inp.focus();
+      }
+    }, 30);
+  }
+  $("#dialog").addEventListener("click", (e) => {
+    const qb = e.target.closest("[data-sr-q]");
+    if (qb) {
+      const inp = $("#srInput");
+      inp && (inp.value = qb.getAttribute("data-sr-q"), srRender(), inp.focus());
+      return;
+    }
+    const cb = e.target.closest("[data-sr-cat]");
+    if (cb) {
+      srCat = cb.getAttribute("data-sr-cat"), document.querySelectorAll(".sr-cat").forEach((b) => b.classList.toggle("on", b === cb)), srRender();
+      return;
+    }
+    if (e.target.closest("#srClear")) {
+      const inp = $("#srInput");
+      inp.value = "", srRender(), inp.focus();
+    }
+  }), function() {
+    const btn = document.createElement("button");
+    btn.className = "tool-btn", btn.id = "searchBtn", btn.type = "button", btn.title = "Buscar recursos de apoyo ( / )", btn.setAttribute("aria-label", "Buscar recursos de apoyo"), btn.innerHTML = '<svg width="17" height="17" class="icon sm"><use href="#ic-search"></use></svg><span class="tool-text">Buscar</span>';
+    const ref = $("#contentsBtn");
+    ref && ref.parentNode && ref.parentNode.insertBefore(btn, ref), btn.addEventListener("click", () => openSearch(""));
+    const side = document.createElement("button");
+    side.type = "button", side.className = "side-search", side.setAttribute("aria-label", "Abrir el centro de apoyo y buscar"), side.innerHTML = '<svg width="18" height="18" class="icon"><use href="#ic-search"></use></svg><span><b>Centro de apoyo</b><small>T\xE9cnicas de estudio, bienestar\u2026</small></span><kbd>/</kbd>';
+    const toc = $("#toc");
+    toc && toc.parentNode && toc.parentNode.insertBefore(side, toc), side.addEventListener("click", () => openSearch("")), window.addEventListener("keydown", (e) => {
+      if ($("#dialog").classList.contains("open"))
+        return;
+      const ae = document.activeElement, tag = (ae && ae.tagName || "").toLowerCase();
+      tag === "input" || tag === "textarea" || tag === "select" || ae && ae.isContentEditable || (e.key === "/" && !e.ctrlKey && !e.metaKey && !e.altKey || (e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K")) && (e.preventDefault(), openSearch(""));
+    }, !0), window.__papSearch = (q) => (openSearch(q || ""), srSearch(q || "", "").res.slice(0, 5).map((r) => r.d.t));
+  }(), window.__papReady = !0;
 })();
 
 </script>
